@@ -8,6 +8,7 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 * After it's done, select the VM you just created and click on *Settings* --> *Storage*
 * Click on the optical disk under *Controller: IDE* and then click on the tiny optical disk icon to the right under *Attributes* and select your **Ubuntu 18.04 Server** ISO file
 * Then go to *Network* (on the left pane) and attach *Adapter 1* to *Bridged Adapter*
+
     >This lets your VM access the internet. Refer to [this website](https://www.virtualbox.org/manual/ch06.html) to know more about this setting.
 * This is the basic configuration we need right now. Feel free to play around with the settings as long as you know what you are doing!
 
@@ -16,7 +17,9 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 * Choose your language and keyboard layout and choose *Install Ubuntu*
 * The next screen shows your network interface along with your IPv4 and IPv6 configurations, along with the protocol it will use to set the IP addresses. Hit *Done*
 * Leave the proxy address field blank
+
     > A proxy server is basically another computer which serves as a hub through which internet requests are processed. It may act as a firewall or can be used to anonymously surf the web.
+    
 * For disk partitioning, choose *Use An Entire Disk*, unless you know how to manually partition. In that case, partition it logically keeping enough space for `/` and `/home` directories.
 * Selet *Continue* when it requests confirmation for formatting the partitions
 * Fill in the fields appropriately. You will need to remember your *username* and *password*. Hit *Done* and wait for installation to finish
