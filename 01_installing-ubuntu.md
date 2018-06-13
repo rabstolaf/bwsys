@@ -23,7 +23,7 @@ Before you start this training, make sure to have an image (ISO) of Ubuntu 18.04
 * Hit *Reboot Now* and press *Enter* when prompted to remove installation media
 * After reboot finishes, you should be able to login with your *username* and *password*!
 ***
-The rest of the tutorial consists of typing a lot of commands which will be written in the following manner: 
+The rest of the tutorial consists of typing a lot of commands which will be written in the following manner:
 `ls -lah`
 Some commands would require more permissions to run them, use `sudo` with the command in that case. It is advised to not become `root` while going through this training, unless absolutely necessary.
 ***
