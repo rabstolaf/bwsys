@@ -22,6 +22,8 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 * Fill in the fields appropriately. You will need to remember your *username* and *password*. Hit *Done* and wait for installation to finish
 * Hit *Reboot Now* and press *Enter* when prompted to remove installation media
 * After reboot finishes, you should be able to login with your *username* and *password*!
+
+
 ***
 The rest of the tutorial consists of typing a lot of commands which will be written in the following manner: 
 `$ ls -lah`
@@ -32,11 +34,13 @@ Some commands would require more permissions to run them, use `sudo` with the co
 * `$ apt update`
 * `$ apt upgrade`
     > These two commands are used to update the versions of already installed packages on the machine.
+
 * `$ apt install <package_name>` --- used for installing new packages
 * Install the following packages: w3m, iptables, openssh-client, wget, nano, info, man-db, manpages, friendly-recovery, bash-completion, command-not-found, dnsutils, lshw, lsof, mtr, psmisc, tcpdump, apt-transport-https, update-manager-core, gcc, g++, libtool, gedit, emacs, pssh, sshpass, xorg
 
 #### 4. Configuring LDAP
 > LDAP is used to look up authorizations on a server so that users get access only to things they should have access to. [This link](http://www.gracion.com/server/whatldap.html) and [this video](https://www.youtube.com/watch?v=F2nFtlS8uEo) explains more about LDAP.
+
 * `$ apt install libnss-ldap`
     * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu` 
     * The base dn is `dc=ad,dc=stolaf,dc=edu`
