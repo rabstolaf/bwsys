@@ -23,6 +23,7 @@ This training will take you through setting up a cluster ( a network of computer
 Do the following steps before continuing with the rest of the training:
 * Download and install **VirtualBox**
 * Download **Ubuntu 18.04 Server** ISO file
+* This training assumes basic knowledge of the Linux environment and working in the Shell prompt. If you are new to this, you may find [this link](https://web.archive.org/web/20180104184520/http://linuxcommand.org/lc3_lts0010.php) useful to get started
 
 #### Glossary of Terms
 * **VM** --- Virtual Machine
