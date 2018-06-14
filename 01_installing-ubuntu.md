@@ -9,6 +9,7 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 * Click on the optical disk under *Controller: IDE* and then click on the tiny optical disk icon to the right under *Attributes* and select your **Ubuntu 18.04 Server** ISO file
 * Then go to *Network* (on the left pane) and attach *Adapter 1* to *Bridged Adapter*
     >This lets your VM access the internet. Refer to [this website](https://www.virtualbox.org/manual/ch06.html) to know more about this setting.
+
 * This is the basic configuration we need right now. Feel free to play around with the settings as long as you know what you are doing!
 
 #### 2. Installing Ubuntu 18.04 Server
