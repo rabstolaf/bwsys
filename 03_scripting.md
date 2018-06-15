@@ -65,6 +65,7 @@ $ echo $HOME
 /home/user
 ```
 There are also special variables that can be accessed in side the script itself
+
 | Variable | Value |
 | ------ | ------ |
 | $0 | Name of script |
