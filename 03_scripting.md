@@ -5,7 +5,7 @@ There times where I reference the following link, as it is very comprehensive
 
 ## Introduction
 Bash is a very common shell interface on linux machines. Bash scripts are often used to take make repetative tasks simple, or automate a process.
-Any line begining with a $ will be a command line command. 
+Any line begining with a $ will be a command line command.
 
 ## Basics
 To create your first script,
@@ -13,9 +13,9 @@ To create your first script,
 $ touch myscript.sh
 ```
 This will create an empty file named _myscript.sh_
-Notice the .sh file extension. This is not requrired but it is convention. 
+Notice the .sh file extension. This is not requrired but it is convention.
 
-Let's edit this file to create our first script. 
+Let's edit this file to create our first script.
 ```sh
 $ nano myscript.sh
 ```
@@ -25,17 +25,17 @@ Here we will write the script
 # A simple bash script
 echo Hello World!
 ```
-The first line will be repeated through all bash scripts. The first two characters (#!) are known as the Shebang. They set the path to the interpreter, in our case, the bash shell. 
+The first line will be repeated through all bash scripts. The first two characters (#!) are known as the Shebang. They set the path to the interpreter, in our case, the bash shell.
 
 Pound symbols are used to denote a comment in bash scripting
 
-The third line is the command we will execute. Notice that you can also type this command in the terminal and you will get the same result. 
+The third line is the command we will execute. Notice that you can also type this command in the terminal and you will get the same result.
 
 Lets run this script. From the command line, run the program
 ```sh
 $ ./myscript.sh
 ```
-This should have returned 
+This should have returned
 ```sh
 bash: ./myscript.sh: Permission denied
 ```
@@ -44,21 +44,21 @@ This is because by default, files are not executable, a simple fix.
 $ chmod u+x myscript.sh
 ```
 This will add (+) execute (x) permission to the user (u)
-When you run the program this time, you should get an output. 
+When you run the program this time, you should get an output.
 ```sh
 $ ./myscript.sh
 Hello World!
 ```
 
 ## Variables
-Before we get into variables in scripting, lets try out variables on the command line first. 
+Before we get into variables in scripting, lets try out variables on the command line first.
 ```sh
 $ A=apple
 $ echo $A
 apple
 ```
-These lines set A to the string apple, keep in mind that you canno't have any spaces. 
-To read the variable, put a dollar sign in front of its name. 
+These lines set A to the string apple, keep in mind that you canno't have any spaces.
+To read the variable, put a dollar sign in front of its name.
 Bash has many special variables with information about the enviroment, called enviroment variables, they can be accessed the same as variables you set manualy, for example,
 ```sh
 $ echo $HOME
@@ -122,7 +122,7 @@ This is similar to _let_ except, it prints the result instead of saving it to a 
 ```sh
 #!/bin/bash
 
-expr 3+4 
+expr 3+4
 
 expr 15 % 2
 ```
@@ -197,7 +197,7 @@ else
     commands
 fi
 ```
-in between _if_ and _fi_ 
+in between _if_ and _fi_
 
 ### Case statements
 ```sh
@@ -300,8 +300,24 @@ The break keyword leaves the loop immediately
 ### Continue
 The continue keyword will skip the rest of that iteration of the loop and move on to the next one
 
+
+
+
 ## More advanced Bash Scripting
-### Functions
+1. [Introduction](#introduction)
+2. [Functions](#functions)
+3. [User Interface](#userinterface)
+4. [The Backtick](#backtick)
+5. [Defining Commands](#commands)
+6. [Formating / Best Practices](#format)
+7. [Other Types of Scripts](#otherscripts)
+
+
+### Introduction <a name="introduction"></a>
+In this section, we will cover some of more advanced options available in bash scripting. You can pick and choose which of these lessons you complete.
+
+### Functions <a name="functions"></a>
+
 function delcarations come in two different forms
 ```sh
 func1 () {
@@ -347,3 +363,76 @@ This is a function
 3
 ```
 The value of the most recent funtion's return value is stored in the variable '?' and can be accessed with '$?'
+
+### User Interface <a name="userinterface"></a>
+
+So far the backend of the bash scripts are looking promising. However the front end user interface is lacking
+
+#### tput
+The tput command is a very powerful tool for output formatting.
+It can get very complex fast so lets take it one step at a time and put them together at the end.
+Try entering this in your command line:
+```sh
+$ tput cols
+
+$ tput lines
+```
+These commands will show you how many columns and rows your current terminal window contains. These numbers are useful for formatting what you want to display.
+
+In order to format a information display, it is useful to have a blank screen to work with.
+```sh
+$ tput clear
+```
+
+Next enter this command:
+```sh
+$ tput cup 0 0
+```
+the cup command will move your cursor to the specified row and column. In this case it should have returned your cursor to the top of the screen (0,0).
+
+You can also do text formating commands with tput for example,
+```sh
+$ tput bold
+```
+will make make your output bold
+If you want to reset your text formating, use the command
+```sh
+$ tput sgr0
+```
+
+Here is an commented example script using these commands
+```sh
+#!/bin/bash
+# Print message in center of terminal
+cols=$( tput cols ) # finds the number of columns
+rows=$( tput lines ) # finds the number of lines (rows)
+message=$@ # message is equal to the whole argument string, not tokenized
+input_length=${#message} # finds the length of message using '#'
+half_input_length=$(( $input_length / 2 )) # calculates half of the characters in the input using the double parentheses method of arithmetic expressions
+middle_row=$(( $rows / 2 )) # finds the middle row
+middle_col=$(( ($cols / 2) - $half_input_length )) #find the middle column offset by how long the input it
+tput clear # clear the text to get ready for output
+tput cup $middle_row $middle_col # set the cursor at the middle row and offset column
+tput bold # bold formatting for the text
+echo $@ # Time to print the text
+tput sgr0 # Reset formatting to defaults
+tput cup $( tput lines ) 0 # put the cursor at the bottom of the screen
+```
+This script will take the command line arguments and print them in the center of the terminal window.
+Try it out! Run this script, resize your window and run it again.
+
+To find out more about the tput command, use the _man_ command
+```sh
+$ man tput
+```
+
+### The Backtick <a name="backtick"></a>
+
+
+### Defining Commands <a name="commands"></a>
+
+
+### Formating / Best Practices <a name="format"></a>
+
+
+### Other Types of Scripts <a name="otherscripts"></a>
