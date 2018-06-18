@@ -1,7 +1,11 @@
 # Training 1
+
+This is the first training document. This will take you through the steps for creating a virtual machine and configuring it properly. Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine. After that, there is a link to a website that can help you get familiar with the Linux Command Line environment.
+
 Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine.
 
-#### 1. Create a Virtual Machine (VM)
+## 1. Create a Virtual Machine (VM)
+
 * Open VirtualBox and click on *New* to create a new VM
 * Give it a name, set the type to *Linux* and version to *Ubuntu (64-bit)*
 * Allocate some RAM (atleast 1 GB) and create a *Virtual Hard Disk* (fixed size -- atleast 10 GB) for the VM
@@ -12,7 +16,8 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 
 * This is the basic configuration we need right now. Feel free to play around with the settings as long as you know what you are doing!
 
-#### 2. Installing Ubuntu 18.04 Server
+## 2. Installing Ubuntu 18.04 Server
+
 * Start your VM, it should load up the installer
 * Choose your language and keyboard layout and choose *Install Ubuntu*
 * The next screen shows your network interface along with your IPv4 and IPv6 configurations, along with the protocol it will use to set the IP addresses. Hit *Done*
@@ -27,33 +32,21 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 
 
 ***
+
 The rest of the tutorial consists of typing a lot of commands which will be written in the following manner: 
 `$ ls -lah`
 
 Some commands would require more permissions to run them, use `sudo` with the command in that case. It is advised to not become `root` while going through this training, unless absolutely necessary.
+
 ***
 
-#### 3. Update and Install Some Packages
+## 3. Update and Install Some Packages
+
 * `$ apt update`
 * `$ apt upgrade`
     > These two commands are used to update the versions of already installed packages on the machine.
 
 * `$ apt install <package_name>` --- used for installing new packages
-* Install the following packages: w3m, iptables, openssh-client, wget, nano, info, man-db, manpages, friendly-recovery, bash-completion, command-not-found, dnsutils, lshw, lsof, mtr, psmisc, tcpdump, apt-transport-https, update-manager-core, gcc, g++, libtool, gedit, emacs, pssh, sshpass, xorg
+* **Install the following packages**: w3m, iptables, openssh-client, wget, nano, info, man-db, manpages, friendly-recovery, bash-completion, command-not-found, dnsutils, lshw, lsof, mtr, psmisc, tcpdump, apt-transport-https, update-manager-core, gcc, g++, libtool, gedit, emacs, pssh, sshpass, xorg
 
-#### 4. Configuring LDAP
-> LDAP is used to look up authorizations on a server so that users get access only to things they should have access to. [This link](http://www.gracion.com/server/whatldap.html) and [this video](https://www.youtube.com/watch?v=F2nFtlS8uEo) explains more about LDAP.
-
-* `$ apt install libnss-ldap`
-    * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu` 
-    * The base dn is `dc=ad,dc=stolaf,dc=edu`
-    * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
-    * After installing LDAP, configure it by running: `$ auth-client-config -t nss -p lac_ldap`
-    * The files you might (probably will) have to modify after this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`, and `/etc/nsswitch.conf`. These are the files that contain the LDAP configuration. Ask a Cluster Manager for bind password and certificate requirements.
-* `$ apt install libpam-ldap`
-    > **libpam-ldap** provides an interface between an LDAP server and the PAM user authentication system. Using it along with libnss-ldapd or libnss-ldap allows LDAP to entirely replace other lookup methods (such as NIS or flat-file) for system account tables.
-
-* It is time to test LDAP. Logout of your VM and try to log back in using your St. Olaf *username* and *password*. If it works, then you did it right!
-
-#### 5. Setting Up NTP
-> NTP is used for synchronizing clocks between computer systems. [Here](http://www.ntp.org/ntpfaq/NTP-s-def.htm) is a comprehensive documentation on NTP. [This video](https://www.youtube.com/watch?v=EkQPkQb2D3g) gives a concise explanation on this topic.
+* If you are new to the Linux Command Line, you may find [this link](https://web.archive.org/web/20180104184520/http://linuxcommand.org/lc3_lts0010.php) useful to get familiar with the basic commands.
