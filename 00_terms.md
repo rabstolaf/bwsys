@@ -1,9 +1,15 @@
 # Welcome!
 
-#### Intro
-This training will take you through setting up a cluster ( a network of computers ) on your own personal laptop. This document will give you an overview of what you will do in the training as well as a glossary of terms you should familiarize yourself with before moving on with the training. The rest of the documents should be followed in order till document 5, after which the training branches off into specializations and you may choose what exactly you want to do ( or do all of them! ). Throughout the training, **Google** will be your best friend but do not hesitate to ask Trainers for help in case you need any sort of help. Have fun!
+## Intro
 
-#### Goals
+This training will take you through setting up a cluster ( a network of computers ) on your own personal laptop.
+This document will give you an overview of what you will do in the training as well as a glossary of terms you should familiarize yourself with before moving on with the training.
+The rest of the documents should be followed in order till document 5, after which the training branches off into specializations and you may choose what exactly you want to do ( or do all of them! ).
+Throughout the training, **Google** will be your best friend but do not hesitate to ask Trainers for help in case you need any sort of help.
+Have fun!
+
+## Goals
+
 * Familiarity with System Administration terms and concepts
 * Familiarity with Ubuntu and Linux operations
 * Knowledge about clusters: servers, hosts and the networking between them
@@ -11,7 +17,8 @@ This training will take you through setting up a cluster ( a network of computer
 * Knowledge about Docker and containers
 
 
-#### Overview
+## Overview
+
 1. Setup a Virtual Machine with Ubuntu 18.04 running on it.
 2. Configure networking on the VM to set it up as the headnode/server.
 3. Learn shell scripting.
@@ -19,15 +26,19 @@ This training will take you through setting up a cluster ( a network of computer
 5. Create a Docker image and configure it to act as your golden node.
 6. Clone the Docker image to create a cluster of Docker containers running on your VM.
 
-#### First Steps
+## First Steps
+
 Do the following steps before continuing with the rest of the training:
 * Download and install **VirtualBox**
 * Download **Ubuntu 18.04 Server** ISO file
-* This training assumes basic knowledge of the Linux environment and working in the Shell prompt. If you are new to this, you may find [this link](https://web.archive.org/web/20180104184520/http://linuxcommand.org/lc3_lts0010.php) useful to get started
 
-#### Glossary of Terms
+
+## Glossary of Terms
+
 * **VM** --- Virtual Machine
 * **Cluster** --- Network of computers working together
+* **server** --- a computer that manages access to centralized resources and services in a network 
+* **client** --- a workstation that is capable of obtaining information and applications from a server
 * **DHCP** --- Dynamic Host Configuration Protocol
 * **DNS** --- Domain Name System
 * **NAT** --- Network Address Translation
