@@ -73,3 +73,15 @@ If they are, then you did it right!
   * Press `Enter` to use no passphrase (Passphrase is not necessary either)
 * `$ cat ~/.ssh/id_rsa.pub > .ssh/authorized_keys` - this is the file your nodes will access to SSH into your machine
 * You can test this after setting up your golden node
+
+## 5. Adding hosts
+
+> This step modifies the `/etc/hosts` file and adds IP addresses corresponding to the worker nodes that we will use in setting up our cluster. [This discussion](https://askubuntu.com/questions/183176/what-is-the-use-of-etc-hosts) gives a nice idea about the intents and purposes for editing this file.
+
+* We need to edit the `/etc/hosts` file to add the worker nodes in our cluster
+  * Add a new line for every worker node you want to add.
+  For example: `10.0.0.1 worker01`
+  * Add a line to set the headnode IP to `10.0.0.254`
+* We can test this step: 
+  * `$ ssh localhost` should log you back into your machine
+  * `$ ssh <worker_node>` should give you a `no route to host` error
