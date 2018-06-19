@@ -1,7 +1,7 @@
 # Bash Scripting Lesson
 This document will cover the basic features of bash scripting
 There times where I reference the following link, as it is very comprehensive
-#### [Bash Reference Manual](https://nodesource.com/products/nsolid)
+#### [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 
 ## Introduction
 Bash is a very common shell interface on linux machines. Bash scripts are often used to take make repetative tasks simple, or automate a process.
@@ -74,7 +74,7 @@ There are also special variables that can be accessed in side the script itself
 | $HOSTNAME | Machine hostname|
 | $RANDOM | Returns a random number  |
 
-More variables can be found in the [Reference Manual](https://nodesource.com/products/nsolid)
+More variables can be found in the [Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 
 These are some of the basic variables
 
@@ -182,7 +182,7 @@ There are many test cases you can put in the square brackets ( _[ ]_ ). Here are
 | -z STR | String length is zero |
 | -d DIR | Directory exists |
 | -e FILE| File exists |
-[Bash Reference Manual](https://nodesource.com/products/nsolid)
+[Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 You can see that both of the if statements end their scope with _fi_
 
 Else if and Else also can be acomplished by adding
