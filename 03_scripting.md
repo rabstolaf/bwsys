@@ -304,7 +304,7 @@ The continue keyword will skip the rest of that iteration of the loop and move o
 
 
 ## More advanced Bash Scripting
-1. [Introduction](#introduction)
+1. [Introduction](#intro)
 2. [Functions](#functions)
 3. [User Interface](#userinterface)
 4. [The Backtick](#backtick)
@@ -313,7 +313,7 @@ The continue keyword will skip the rest of that iteration of the loop and move o
 7. [Other Types of Scripts](#otherscripts)
 
 
-### Introduction <a name="introduction"></a>
+### Introduction <a name="intro"></a>
 In this section, we will cover some of more advanced options available in bash scripting. You can pick and choose which of these lessons you complete.
 
 ### Functions <a name="functions"></a>
