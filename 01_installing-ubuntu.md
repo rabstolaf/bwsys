@@ -1,6 +1,9 @@
-# Training 1
+# Installing Ubuntu
 
-This is the first training document. This will take you through the steps for creating a virtual machine and configuring it properly. Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine. After that, there is a link to a website that can help you get familiar with the Linux Command Line environment.
+This is the first training document.
+This will take you through the steps for creating a virtual machine and configuring it properly.
+Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine.
+After that, there is a link to a website that can help you get familiar with the Linux Command Line environment.
 
 Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine.
 
@@ -12,7 +15,7 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 * After it's done, select the VM you just created and click on *Settings* --> *Storage*
 * Click on the optical disk under *Controller: IDE* and then click on the tiny optical disk icon to the right under *Attributes* and select your **Ubuntu 18.04 Server** ISO file
 * Then go to *Network* (on the left pane) and attach *Adapter 1* to *Bridged Adapter*
-    >This lets your VM access the internet. Refer to [this website](https://www.virtualbox.org/manual/ch06.html) to know more about this setting.
+  >This lets your VM access the internet. Refer to [this website](https://www.virtualbox.org/manual/ch06.html) to know more about this setting.
 
 * This is the basic configuration we need right now. Feel free to play around with the settings as long as you know what you are doing!
 
@@ -22,7 +25,7 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 * Choose your language and keyboard layout and choose *Install Ubuntu*
 * The next screen shows your network interface along with your IPv4 and IPv6 configurations, along with the protocol it will use to set the IP addresses. Hit *Done*
 * Leave the proxy address field blank
-    > A proxy server is basically another computer which serves as a hub through which internet requests are processed. It may act as a firewall or can be used to anonymously surf the web.
+  > A proxy server is basically another computer which serves as a hub through which internet requests are processed. It may act as a firewall or can be used to anonymously surf the web.
     
 * For disk partitioning, choose *Use An Entire Disk*, unless you know how to manually partition. In that case, partition it logically keeping enough space for `/` and `/home` directories.
 * Selet *Continue* when it requests confirmation for formatting the partitions
@@ -44,7 +47,7 @@ Some commands would require more permissions to run them, use `sudo` with the co
 
 * `$ apt update`
 * `$ apt upgrade`
-    > These two commands are used to update the versions of already installed packages on the machine.
+  > These two commands are used to update the versions of already installed packages on the machine.
 
 * `$ apt install <package_name>` --- used for installing new packages
 * **Install the following packages**: w3m, iptables, openssh-client, wget, nano, info, man-db, manpages, friendly-recovery, bash-completion, command-not-found, dnsutils, lshw, lsof, mtr, psmisc, tcpdump, apt-transport-https, update-manager-core, gcc, g++, libtool, gedit, emacs, pssh, sshpass, xorg
