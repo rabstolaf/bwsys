@@ -75,7 +75,8 @@ If they are, then you did it right!
 
 ## 5. Adding hosts
 
-> This step modifies the `/etc/hosts` file and adds IP addresses corresponding to the worker nodes that we will use in setting up our cluster. [This discussion](https://askubuntu.com/questions/183176/what-is-the-use-of-etc-hosts) gives a nice idea about the intents and purposes for editing this file.
+> This step modifies the `/etc/hosts` file and adds IP addresses corresponding to the worker nodes that we will use in setting up our cluster.
+> [This discussion](https://askubuntu.com/questions/183176/what-is-the-use-of-etc-hosts) gives a nice idea about the intents and purposes for editing this file.
 
 * We need to edit the `/etc/hosts` file to add the worker nodes in our cluster
   * Add a new line for every worker node you want to add.
