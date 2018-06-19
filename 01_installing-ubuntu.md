@@ -1,6 +1,9 @@
-# Training 1
+# Installing Ubuntu
 
-This is the first training document. This will take you through the steps for creating a virtual machine and configuring it properly. Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine. After that, there is a link to a website that can help you get familiar with the Linux Command Line environment.
+This is the first training document.
+This will take you through the steps for creating a virtual machine and configuring it properly.
+Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine.
+After that, there is a link to a website that can help you get familiar with the Linux Command Line environment.
 
 Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine.
 
