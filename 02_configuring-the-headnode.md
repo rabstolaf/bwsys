@@ -1,4 +1,4 @@
-# Training 2
+# Configuring the Head Node
 
 This is the second training document. 
 First we configure our machine to access the St. Olaf LDAP server to login to our machine using our St. Olaf credentials. 
@@ -42,5 +42,5 @@ Ask a Cluster Manager for bind password and certificate requirements.
 		> Instead, they should sync time with your headnode.
 
 * `$ systemctl restart ntp` - restarts the service
-* `$ ntpq -p` --> Check and see if these values are as one would expect.
+* `$ ntpq -p` &#8594; Check and see if these values are as one would expect.
 If they are, then you did it right!
