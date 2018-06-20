@@ -304,7 +304,7 @@ The continue keyword will skip the rest of that iteration of the loop and move o
 
 
 ## More advanced Bash Scripting
-1. [Introduction](#introduction)
+1. [Introduction](#intro)
 2. [Functions](#functions)
 3. [User Interface](#userinterface)
 4. [The Backtick](#backtick)
@@ -313,7 +313,7 @@ The continue keyword will skip the rest of that iteration of the loop and move o
 7. [Other Types of Scripts](#otherscripts)
 
 
-### Introduction <a name="introduction"></a>
+### Introduction <a name="intro"></a>
 In this section, we will cover some of more advanced options available in bash scripting. You can pick and choose which of these lessons you complete.
 
 ### Functions <a name="functions"></a>
@@ -427,7 +427,28 @@ $ man tput
 ```
 
 ### The Backtick <a name="backtick"></a>
+The backtick ( \` ) can easily be confused for a single quotation mark ( ' ).
+The key is located above the 'tab' key on your keyboard.
+It may look like a quotation mark but has a very different meaning in bash scripting.
+Everything that is within two backticks will be executed before the main command.
+For example...
+```sh
+#!/bin/bash
 
+sudo chown `id -u` /dir
+```
+This will execute the _id -u_ command before the _chown_ like so
+```sh
+sudo chown 1000 /dir
+```
+Backticks are usefull but can be picky if you wanted to have a backslash (\\) in your command because it will escape it. 
+There is a newer way of executing commands inside of commands that we have already seen used for variable values.
+```sh
+#!/bin/bash
+
+sudo chown $(id -u) /dir
+```
+This will acomplish the same thing as before.
 
 ### Defining Commands <a name="commands"></a>
 
@@ -436,3 +457,19 @@ $ man tput
 
 
 ### Other Types of Scripts <a name="otherscripts"></a>
+
+This lesson has focussed on bash scripting, however, these types of script files are not restrained to just bash.
+By changeing the shebang path, you can change what interpreter is used for the file. This means that if you put something like 
+```sh
+#!/usr/bin/env python
+```
+It will use your python interpreter instead of bash.
+Therefore you won't have to write
+```sh
+$ python myscript.py
+```
+to execute the script, you will simply execute it like we did a bash script
+```sh
+$ ./myscript.py
+```
+and it will find the interpreter on its own. 
