@@ -11,11 +11,12 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 
 * Open VirtualBox and click on *New* to create a new VM
 * Give it a name, set the type to *Linux* and version to *Ubuntu (64-bit)*
-* Allocate some RAM (atleast 1 GB) and create a *Virtual Hard Disk* (fixed size -- atleast 10 GB) for the VM
-* After it's done, select the VM you just created and click on *Settings* --> *Storage*
+* Allocate some RAM (atleast 1 GB) and create a *Virtual Hard Disk* (fixed size - atleast 10 GB) for the VM
+* After it's done, select the VM you just created and click on *Settings* &rarr; *Storage*
 * Click on the optical disk under *Controller: IDE* and then click on the tiny optical disk icon to the right under *Attributes* and select your **Ubuntu 18.04 Server** ISO file
 * Then go to *Network* (on the left pane) and attach *Adapter 1* to *Bridged Adapter*
   > This lets your VM access the internet. Refer to [this website](https://www.virtualbox.org/manual/ch06.html) to know more about this setting.
+
 * Go to the *Adapter 2* tab and enable it. Attach it to *Internal Network* and give it some name.
 * This is the basic configuration we need right now. Feel free to play around with the settings as long as you know what you are doing!
 
@@ -27,6 +28,7 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 * Leave the proxy address field blank
   > A proxy server is basically another computer which serves as a hub through which internet requests are processed. 
   > It may act as a firewall or can be used to anonymously surf the web.
+
 * For disk partitioning, choose *Use An Entire Disk*, unless you know how to manually partition. In that case, partition it logically keeping enough space for `/` and `/home` directories.
 * Select *Continue* when it requests confirmation for formatting the partitions
 * Fill in the fields appropriately. You will need to remember your *username* and *password*. Hit *Done* and wait for installation to finish
