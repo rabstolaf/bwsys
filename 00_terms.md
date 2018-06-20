@@ -35,25 +35,25 @@ Do the following steps before continuing with the rest of the training:
 
 ## Glossary of Terms
 
-* **VM** --- Virtual Machine
-* **Cluster** --- Network of computers working together
-* **server** --- a computer that manages access to centralized resources and services in a network 
-* **client** --- a workstation that is capable of obtaining information and applications from a server
-* **DHCP** --- Dynamic Host Configuration Protocol
-* **DNS** --- Domain Name System
-* **NAT** --- Network Address Translation
-* **NFS** --- Network File System
-* **LDAP** -- Lighweight Directory Access Protocol
-* **NTP** --- Network Time Protocol
-* **Shell Script** --- A computer program designed to be run by the Unix shell
-* **SSH** --- Secure SHell
-* **sudo** --- Super User DO
-* **Containers** --- A method of operating system virtualization
-* **IPv4** --- 32-bit IP address
-* **IPv6** --- 128-bit hexadecimal IP address
-* **TCP** --- Transmission Control Protocol
-* **UDP** --- User Datagram Protocol
-* **packets** --- Data units transferred over a network
-* **Network Interface** --- Point of connection between a computer and a network
-* **LVM** --- Logical Volume Manager
-* **TFTP** --- Trivial File Transfer Protocol
+* **VM** &mdash; Virtual Machine
+* **Cluster** &mdash; Network of computers working together
+* **server** &mdash; a computer that manages access to centralized resources and services in a network
+* **client** &mdash; a workstation that is capable of obtaining information and applications from a server
+* **DHCP** &mdash; Dynamic Host Configuration Protocol
+* **DNS** &mdash; Domain Name System
+* **NAT** &mdash; Network Address Translation
+* **NFS** &mdash; Network File System
+* **LDAP** &mdash; Lighweight Directory Access Protocol
+* **NTP** &mdash; Network Time Protocol
+* **Shell Script** &mdash; A computer program designed to be run by the Unix shell
+* **SSH** &mdash; Secure SHell
+* **sudo** &mdash; Super User DO
+* **Containers** &mdash; A method of operating system virtualization
+* **IPv4** &mdash; 32-bit IP address
+* **IPv6** &mdash; 128-bit hexadecimal IP address
+* **TCP** &mdash; Transmission Control Protocol
+* **UDP** &mdash; User Datagram Protocol
+* **packets** &mdash; Data units transferred over a network
+* **Network Interface** &mdash; Point of connection between a computer and a network
+* **LVM** &mdash; Logical Volume Manager
+* **TFTP** &mdash; Trivial File Transfer Protocol
