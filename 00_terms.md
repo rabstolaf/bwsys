@@ -2,9 +2,9 @@
 
 ## Intro
 
-This training will take you through setting up a cluster ( a network of computers ) on your own personal laptop.
+This training will take you through setting up a cluster (a network of computers) on your own personal laptop.
 This document will give you an overview of what you will do in the training as well as a glossary of terms you should familiarize yourself with before moving on with the training.
-The rest of the documents should be followed in order till document 5, after which the training branches off into specializations and you may choose what exactly you want to do ( or do all of them! ).
+The rest of the documents should be followed in order till document 5, after which the training branches off into specializations and you may choose what exactly you want to do. (or do all of them!)
 Throughout the training, **Google** will be your best friend but do not hesitate to ask Trainers for help in case you need any sort of help.
 Have fun!
 
@@ -15,7 +15,6 @@ Have fun!
 * Knowledge about clusters: servers, hosts and the networking between them
 * Ability to write bash scripts
 * Knowledge about Docker and containers
-
 
 ## Overview
 
@@ -29,9 +28,9 @@ Have fun!
 ## First Steps
 
 Do the following steps before continuing with the rest of the training:
+
 * Download and install **VirtualBox**
 * Download **Ubuntu 18.04 Server** ISO file
-
 
 ## Glossary of Terms
 
