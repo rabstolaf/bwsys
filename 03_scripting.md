@@ -427,7 +427,28 @@ $ man tput
 ```
 
 ### The Backtick <a name="backtick"></a>
+The backtick ( \` ) can easily be confused for a single quotation mark ( ' ).
+The key is located above the 'tab' key on your keyboard.
+It may look like a quotation mark but has a very different meaning in bash scripting.
+Everything that is within two backticks will be executed before the main command.
+For example...
+```sh
+#!/bin/bash
 
+sudo chown `id -u` /dir
+```
+This will execute the _id -u_ command before the _chown_ like so
+```sh
+sudo chown 1000 /dir
+```
+Backticks are usefull but can be picky if you wanted to have a backslash (\\) in your command because it will escape it. 
+There is a newer way of executing commands inside of commands that we have already seen used for variable values.
+```sh
+#!/bin/bash
+
+sudo chown $(id -u) /dir
+```
+This will acomplish the same thing as before.
 
 ### Defining Commands <a name="commands"></a>
 
