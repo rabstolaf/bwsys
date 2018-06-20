@@ -457,3 +457,19 @@ This will acomplish the same thing as before.
 
 
 ### Other Types of Scripts <a name="otherscripts"></a>
+
+This lesson has focussed on bash scripting, however, these types of script files are not restrained to just bash.
+By changeing the shebang path, you can change what interpreter is used for the file. This means that if you put something like 
+```sh
+#!/usr/bin/env python
+```
+It will use your python interpreter instead of bash.
+Therefore you won't have to write
+```sh
+$ python myscript.py
+```
+to execute the script, you will simply execute it like we did a bash script
+```sh
+$ ./myscript.py
+```
+and it will find the interpreter on its own. 
