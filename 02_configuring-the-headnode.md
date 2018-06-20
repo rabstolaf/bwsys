@@ -80,7 +80,7 @@ If they are, then you did it right!
 
 * We need to edit the `/etc/hosts` file to add the worker nodes in our cluster
   * Add a new line for every worker node you want to add.
-  For example: `10.0.0.1 worker01`
+  For example: `10.0.0.1  worker01`
   * Add a line to set the headnode IP to `10.0.0.254`
 * We can test this step: 
   * `$ ssh localhost` should log you back into your machine
