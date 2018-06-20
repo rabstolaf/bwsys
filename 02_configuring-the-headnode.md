@@ -58,3 +58,32 @@ If they are, then you did it right!
   * Save and exit as you would for `nano` editor
 * `$ usermod -aG bw-sudo <username>` - this adds yourself to the group bw-sudo
 * Log out and log back in for the `usermod` to take effect
+
+## 4. Passwordless SSH
+
+> SSH helps set up a secure connection between two machines.
+> Passwordless SSH would not require you to type in your password everytime you try to establish the connection.
+> Go to [this website](https://www.ssh.com/ssh/protocol/) to learn more about SSH.
+> [This link](https://blog.tinned-software.net/ssh-passwordless-login-with-ssh-key/) may be useful for learning about SSH Keys and Passwordless SSH.
+
+* `mkdir ~/.ssh` - This needs to be done if you have not used SSH on your machine before
+* `$ ssh-keygen -t rsa` - This generates an SSH key with RSA encryption
+  * Press `Enter` to use default directory for saving the SSH key
+  * Press `Enter` to use no passphrase (Passphrase is not necessary either)
+* `$ cat ~/.ssh/id_rsa.pub > .ssh/authorized_keys` - this is the file your nodes will access to SSH into your machine
+* You can test this after setting up your golden node
+
+## 5. Adding hosts
+
+> This step modifies the `/etc/hosts` file and adds IP addresses corresponding to the worker nodes that we will use in setting up our cluster.
+> [This discussion](https://askubuntu.com/questions/183176/what-is-the-use-of-etc-hosts) gives a nice idea about the intents and purposes for editing this file.
+
+* We need to edit the `/etc/hosts` file to add the worker nodes in our cluster
+  * Add a new line for every worker node you want to add.
+  For example: `10.0.0.1  worker01`
+  * Add a line to set the headnode IP to `10.0.0.254`
+* We can test this step: 
+  * `$ ssh localhost` should log you back into your machine
+  * `$ ssh <worker_node>` should give you a `no route to host` error
+
+## 6. Configure Networking
