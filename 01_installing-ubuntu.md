@@ -35,9 +35,11 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
 ---
 
 The rest of the tutorial consists of typing a lot of commands which will be written in the following manner:
+
 `$ ls -lah`
 
-Some commands would require more permissions to run them, use `sudo` with the command in that case. It is advised to not become `root` while going through this training, unless absolutely necessary.
+Some commands would require more permissions to run them, use `sudo` with the command in that case.
+It is advised to not become `root` while going through this training, unless absolutely necessary.
 
 ---
 
@@ -47,5 +49,5 @@ Some commands would require more permissions to run them, use `sudo` with the co
 * `$ apt upgrade`
   > These two commands are used to update the versions of already installed packages on the machine.
 * `$ apt install <package_name>` &mdash; used for installing new packages
-* **Install the following packages**: w3m, iptables, openssh-client, wget, nano, info, man-db, manpages, friendly-recovery, bash-completion, command-not-found, dnsutils, lshw, lsof, mtr, psmisc, tcpdump, apt-transport-https, update-manager-core, gcc, g++, libtool, gedit, emacs, pssh, sshpass, xorg
+* **Install the following packages**: `w3m`, `iptables`, `openssh-client`, `wget`, `nano`, `info`, `man-db`, `manpages`, `friendly-recovery`, `bash-completion`, `command-not-found`, `dnsutils`, `lshw`, `lsof`, `mtr`, `psmisc`, `tcpdump`, `apt-transport-https`, `update-manager-core`, `gcc`, `g++`, `libtool`, `gedit`, `emacs`, `ssh`, `sshpass`, `xorg`
 * If you are new to the Linux Command Line, you may find [this link](https://web.archive.org/web/20180104184520/http://linuxcommand.org/lc3_lts0010.php) useful to get familiar with the basic commands.
