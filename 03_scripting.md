@@ -308,9 +308,8 @@ The continue keyword will skip the rest of that iteration of the loop and move o
 2. [Functions](#functions)
 3. [User Interface](#userinterface)
 4. [The Backtick](#backtick)
-5. [Defining Commands](#commands)
-6. [Formating / Best Practices](#format)
-7. [Other Types of Scripts](#otherscripts)
+5. [Formating / Best Practices](#format)
+6. [Other Types of Scripts](#otherscripts)
 
 
 ### Introduction <a name="intro"></a>
@@ -450,10 +449,37 @@ sudo chown $(id -u) /dir
 ```
 This will acomplish the same thing as before.
 
-### Defining Commands <a name="commands"></a>
+### More usefull features <a name="format"></a>
+This section will focus on a few best practices for making your scripts more uniform and readable.
 
+#### Arguments
+While using the shorthand of an argument is convenient in the terminal,
+Using the long option of an argument means that it is more readable for the future.
+```sh
+$ ls --recursive
+vs
+$ ls -r
+```
 
-### Formating / Best Practices <a name="format"></a>
+#### Stop on Error
+```sh 
+#!/bin/bash
+
+set -o errexit
+
+...
+```
+This is a very important line to have in longer, important scripts expecialy.
+It makes sure that when there is an error in the script, it closes.
+If this is not set it could get out of control. 
+
+#### Startup Scripts
+You will find it useful as times to be able to run a script every time you start up your machine.
+These would be commands you want to run maybe to start services that you want on as soon as you boot the machine, without having to manualy start them.
+To run a script on startup, place it, with execute privilege in the directory
+```sh
+/etc/init.d/
+```
 
 
 ### Other Types of Scripts <a name="otherscripts"></a>
