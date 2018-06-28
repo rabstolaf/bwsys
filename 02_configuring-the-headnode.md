@@ -4,6 +4,9 @@ This is the second training document.
 First we configure our machine to access the St. Olaf LDAP server to login to our machine using our St. Olaf credentials.
 Then we synchronize time on our machine using NTP.
 After that, we modify the `/etc/sudoers.tmp` file to allow `sudo` permissions for a group.
+We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes.
+After that, we activate our second network interface and configure it to have a static ip address.
+
 
 Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before proceeding with this document.
 
@@ -15,12 +18,13 @@ Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before 
 
 * `$ apt install libnss-ldap`
   * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu`
-  * The base dn is `dc=ad,dc=stolaf,dc=edu`
+  * The base dn is `ou=stoUsers,dc=ad,dc=stolaf,dc=edu`
   * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
-  * After installing LDAP, configure it by running: `$ auth-client-config -t nss -p lac_ldap`
-  * The files you might (probably will) have to modify after this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`, and `/etc/nsswitch.conf`.
+  * The files you might (probably will) have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
 These are the files that contain the LDAP configuration.
 Ask a Cluster Manager for bind password and certificate requirements.
+  * Modify the `/etc/nsswitch.conf` file and set the `hosts` line to `files mdns4_minimal [NOTFOUND=return] dns mdns4`.
+Save the file and exit
 
 * `$ apt install libpam-ldap`
   > **libpam-ldap** provides an interface between an LDAP server and the PAM user authentication system.
@@ -70,7 +74,7 @@ Ask a Cluster Manager for bind password and certificate requirements.
 > [This link](https://blog.tinned-software.net/ssh-passwordless-login-with-ssh-key/) may be useful for learning about SSH Keys and Passwordless SSH.
 
 * `mkdir ~/.ssh` &mdash; This needs to be done if you have not used SSH on your machine before
-* `$ ssh-keygen -t rsa` &mdash; This generates an SSH key with RSA encryption
+* `$ ssh-keygen -t rsa -b 4096` &mdash; This generates an SSH key with RSA encryption
   * Press `Enter` to use default directory for saving the SSH key
   * Press `Enter` to use no passphrase (Passphrase is not necessary either)
 * `$ cat ~/.ssh/id_rsa.pub > .ssh/authorized_keys` &mdash; this is the file your nodes will access to SSH into your machine
@@ -89,5 +93,40 @@ Ask a Cluster Manager for bind password and certificate requirements.
   * `$ ssh localhost` should log you back into your machine
   * `$ ssh <worker_node>` should give you a `no route to host` error
 
-## 6. Configure Networking
+## 6. Configure Networking Interfaces
 
+> In this step, we will configure the networking interfaces on our machine.
+> One interface will receive DHCP from St. Olaf and the other (Internal Network) will be connected to our our cluster.
+> We will do this using `netplan`.
+> [This document](https://www.howtoforge.com/linux-basics-set-a-static-ip-on-ubuntu) explains how to do this.
+> Google networking terms and concepts you are unfamiliar with.
+
+* `$ ip ad` &mdash; this lists out all the interfaces you have and their configurations (should show 3)
+* Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder
+* Add the not-configured interface under `ethernets` (Use website as template)
+* Set `addresses` to `[10.0.0.0/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
+* Set `dhcp4` to `no`
+* **Do not set any gateway**
+* Save and exit
+* `$ netplan --debug apply` &mdash; This puts the configuration into effect
+* Check that the interface is configured using `$ ip ad`
+* Make sure you still have internet by using `ping` command
+
+## 7. Install etckeeper
+
+> `etckeeper` is a version control system for the `/etc` folder.
+> It automatically commits the changes you make to the `/etc` folder.
+
+* `$ apt install etckeeper`
+
+## 8. Setting up NFS
+
+> We will use NFS to mount our `/home` folders on the headnode onto the `/home` folders on our worker nodes through the network. 
+> This enables us to use one folder to store all our work instead of having separate folders on the separate machines.
+> [This video](https://www.youtube.com/watch?v=wpg4WgNXoV8&t=1254s) describes how to do this.
+
+* `$ apt install nfs-kernel-server` &mdash; this package controls the NFS mounting
+* Open the `/etc/exports` file
+* Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
+* Save and exit
+* You can test this step when setting up your golden node
