@@ -4,6 +4,9 @@ This is the second training document.
 First we configure our machine to access the St. Olaf LDAP server to login to our machine using our St. Olaf credentials.
 Then we synchronize time on our machine using NTP.
 After that, we modify the `/etc/sudoers.tmp` file to allow `sudo` permissions for a group.
+We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes.
+After that, we activate our second network interface and configure it to have a static ip address.
+
 
 Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before proceeding with this document.
 
@@ -91,5 +94,21 @@ Save the file and exit
   * `$ ssh localhost` should log you back into your machine
   * `$ ssh <worker_node>` should give you a `no route to host` error
 
-## 6. Configure Networking
+## 6. Configure Networking Interfaces
 
+> In this step, we will configure the networking interfaces on our machine.
+> One interface will receive DHCP from St. Olaf and the other (Internal Network) will be connected to our our cluster.
+> We will do this using `netplan`.
+> [This document](https://www.howtoforge.com/linux-basics-set-a-static-ip-on-ubuntu) explains how to do this.
+> Google networking terms and concepts you are unfamiliar with.
+
+* `$ ip ad` &mdash; this lists out all the interfaces you have and their configurations (should show 3)
+* Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder
+* Add the not-configured interface under `ethernets` (Use website as template)
+* Set `addressess` to `[10.0.0.0/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
+* Set `dhcp4` to `no`
+* **Do not set any gateway**
+* Save and exit
+* `$ netplan --debug apply` &mdash; This puts the configuration into effect
+* Check that the interface is configured using `$ ip ad`
+* Make sure you still have internet by using `ping` command
