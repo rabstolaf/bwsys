@@ -112,3 +112,22 @@ Save the file and exit
 * `$ netplan --debug apply` &mdash; This puts the configuration into effect
 * Check that the interface is configured using `$ ip ad`
 * Make sure you still have internet by using `ping` command
+
+## 7. Install etckeeper
+
+> `etckeeper` is a version control system for the `/etc` folder.
+> It automatically commits the changes you make to the `/etc` folder.
+
+* `$ apt install etckeeper`
+
+## 8. Setting up NFS
+
+> We will use NFS to mount our `/home` folders on the headnode onto the `/home` folders on our worker nodes through the network. 
+> This enables us to use one folder to store all our work instead of having separate folders on the separate machines.
+> [This video](https://www.youtube.com/watch?v=wpg4WgNXoV8&t=1254s) describes how to do this.
+
+* `$ apt install nfs-kernel-server` &mdash; this package controls the NFS mounting
+* Open the `/etc/exports` file
+* Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
+* Save and exit
+* You can test this step when setting up your golden node
