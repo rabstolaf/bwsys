@@ -149,3 +149,19 @@ Take a look at the [scripting tutorial](03_scripting.md) to get an idea of how t
   * Change permissions on the file with `chmod` and run the script.
   * `$ sudo update-rc.d ipv4forward.sh defaults` &mdash; may execute with some error
 * You can test this step when setting up the golden node
+
+## 10. Configure DHCP
+
+> DHCP is a protocol that assigns IP addresses to nodes so that they can be uniquely identified on a network.
+> [This video](https://www.youtube.com/watch?v=S43CFcpOZSI) explains how DHCP works in a network.
+
+* `$ apt install isc-dhcp-server` &mdash; this package will let your headnode provide dhcp to the worker nodes
+* Open the file `/etc/dhcp/dhcpd.conf` &mdash; this is the configuration file
+* Make sure all lines are commented out
+* Refer to the provided `/etc/dhcp/dhcpd.conf` file to create your own file
+* Save and exit
+* Open the `/etc/default/isc-dhcp-server` file
+* Enable DHCP only on your cluster facing interface
+* Save and exit
+* `$ systemctl start isc-dhcp-server`
+* `$ tail -n 30 /var/log/syslog` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
