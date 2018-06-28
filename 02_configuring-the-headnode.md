@@ -23,8 +23,7 @@ Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before 
   * The files you might (probably will) have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
 These are the files that contain the LDAP configuration.
 Ask a Cluster Manager for bind password and certificate requirements.
-  * After installing LDAP, configure it by running: `$ auth-client-config -t nss -p lac_ldap`
-  * Modify the `/etc/nsswitch.conf` file and set the `hosts` line to `mdsn4_minimal [NOTFOUND=return] dns mdns4`.
+  * Modify the `/etc/nsswitch.conf` file and set the `hosts` line to `files mdns4_minimal [NOTFOUND=return] dns mdns4`.
 Save the file and exit
 
 * `$ apt install libpam-ldap`
@@ -105,7 +104,7 @@ Save the file and exit
 * `$ ip ad` &mdash; this lists out all the interfaces you have and their configurations (should show 3)
 * Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder
 * Add the not-configured interface under `ethernets` (Use website as template)
-* Set `addressess` to `[10.0.0.0/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
+* Set `addresses` to `[10.0.0.0/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
 * Set `dhcp4` to `no`
 * **Do not set any gateway**
 * Save and exit
