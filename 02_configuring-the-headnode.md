@@ -91,29 +91,3 @@ Ask a Cluster Manager for bind password and certificate requirements.
 
 ## 6. Configure Networking
 
-> Watch [this video](https://www.youtube.com/watch?v=PYTG7bvpvRI&t=621s) to get an idea about networking in linux.
-> Our headnode should have two network interfaces.
-> One connects to the internet.
-> The other one connects to the nodes on our cluster.
-> We will use a service called systemd-networkd to configure our interfaces.
-> [This page](https://wiki.archlinux.org/index.php/systemd-networkd) should give you some ideas on how to do this.
-
-* `$ ip ad` &mdash; This command lists out the interfaces you have and the ip addresses.
-* Open the file `/etc/systemd/network/00_itnet.network`
-  > This is for our outward facing interface. It should get DHCP from the IT servers.
-  
-  * Make a section named `[Match]` and set the `Name` equal to the name of the outward bound interface that is connected to the internet
-  * Make another section named `[Network]` and set `DHCP=ipv4`
-  * Save and close the file
-* Open another file `/etc/systemd/network/01_internalnet.network`
-  > This is for our internal interface that will connect with the nodes in our cluster.
-  > The nodes will access the internet through the headnode.
-  
-  * Make a section named `[Match]` and set the `Name` equal to the appropriate interface
-  * Make another section named `[Nerwork]`. Set `Address=10.0.0.0/24` and `Gateway=10.0.0.254`
-  * Save and close the file
-* `$ systemctl enable systemd-networkd.service`
-* `$ systemctl start systemd-networkd.service`
-* These two commands start the service.
-Run `$ ip ad` to see if your interfaces are configured properly.
-If not, try rebooting your machine and then check.

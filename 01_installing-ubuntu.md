@@ -18,6 +18,7 @@ Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.
   > This lets your VM access the internet. Refer to [this website](https://www.virtualbox.org/manual/ch06.html) to know more about this setting.
 
 * Go to the *Adapter 2* tab and enable it. Attach it to *Internal Network* and give it some name.
+Click on the *Advanced* and set *Adapter Type* to "PCnet-FAST III" and *Promiscuous Mode* to "Allow All"
 * This is the basic configuration we need right now. Feel free to play around with the settings as long as you know what you are doing!
 
 ## 2. Installing Ubuntu 18.04 Server
