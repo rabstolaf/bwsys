@@ -15,12 +15,14 @@ Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before 
 
 * `$ apt install libnss-ldap`
   * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu`
-  * The base dn is `dc=ad,dc=stolaf,dc=edu`
+  * The base dn is `ou=stoUsers,dc=ad,dc=stolaf,dc=edu`
   * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
-  * After installing LDAP, configure it by running: `$ auth-client-config -t nss -p lac_ldap`
-  * The files you might (probably will) have to modify after this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`, and `/etc/nsswitch.conf`.
+  * The files you might (probably will) have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
 These are the files that contain the LDAP configuration.
 Ask a Cluster Manager for bind password and certificate requirements.
+  * After installing LDAP, configure it by running: `$ auth-client-config -t nss -p lac_ldap`
+  * Modify the `/etc/nsswitch.conf` file and set the `hosts` line to `mdsn4_minimal [NOTFOUND=return] dns mdns4`.
+Save the file and exit
 
 * `$ apt install libpam-ldap`
   > **libpam-ldap** provides an interface between an LDAP server and the PAM user authentication system.
@@ -70,7 +72,7 @@ Ask a Cluster Manager for bind password and certificate requirements.
 > [This link](https://blog.tinned-software.net/ssh-passwordless-login-with-ssh-key/) may be useful for learning about SSH Keys and Passwordless SSH.
 
 * `mkdir ~/.ssh` &mdash; This needs to be done if you have not used SSH on your machine before
-* `$ ssh-keygen -t rsa` &mdash; This generates an SSH key with RSA encryption
+* `$ ssh-keygen -t rsa -b 4096` &mdash; This generates an SSH key with RSA encryption
   * Press `Enter` to use default directory for saving the SSH key
   * Press `Enter` to use no passphrase (Passphrase is not necessary either)
 * `$ cat ~/.ssh/id_rsa.pub > .ssh/authorized_keys` &mdash; this is the file your nodes will access to SSH into your machine
