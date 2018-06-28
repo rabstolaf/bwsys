@@ -130,3 +130,22 @@ Save the file and exit
 * Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
 * Save and exit
 * You can test this step when setting up your golden node
+
+## 9. Configure NAT
+
+> NAT will allow the worker nodes to get access to the internet.
+> It will translate and forward packets through the headnode so that they reach the correct worker nodes.
+> [This video](https://www.youtube.com/watch?v=QBqPzHEDzvo) explains NAT in more detail.
+
+* Open the file `/etc/sysctl.conf` &mdash; this file contains kernel runtime configuration.
+Be careful when you modify it
+* Uncomment the line `net.ipv4.ip_forward=1`
+* Save and exit
+* Test it: `$ sysctl -p` should display the changes you made
+* Now we have to write a script.
+Take a look at the [scripting tutorial](03_scripting.md) to get an idea of how to do it.
+  * Write a script containing the following command: `iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` where *interface* is the name of your St. Olaf network facing interface.
+  * Save it in a file called `ipv4forward.sh` in the folder `/etc/init.d` &mdash; this folder contains scripts that run when the machine boots.
+  * Change permissions on the file with `chmod` and run the script.
+  * `$ sudo update-rc.d ipv4forward.sh defaults` &mdash; may execute with some error
+* You can test this step when setting up the golden node
