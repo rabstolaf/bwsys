@@ -49,3 +49,24 @@ First we install `etckeeper` for keeping track of the `/etc` directory.
 * Now we install `slurm` &mdash; `$ apt install libpam-slurm libpmi0 libpmi0-dev libpmi2-0 libpmi2-0-dev`
 * Copy the `slurm.conf` configuration file provided over to `/etc/slurm-llnl/slurm.conf` &mdash; make the directory if it does not exist
 * You can test this after setting up the Golden Node
+
+## 4. OpenMPI
+
+> Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.
+> [This video](https://www.youtube.com/watch?v=D0-xSWBGNAw) gives a brief introduction on MPI and OpenMPI.
+
+* `$ wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz`
+* `$ tar -xzf openmpi-1.6.5.tar.gz` &mdash; extract it and go into the directory
+* `$  ./configure --prefix=/usr/lib/openmpi-1.6.5` &mdash; this runs the `configure` script with the install location.
+This step will take some time.
+* `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`
+* `$ cd /usr/lib`
+* `$ ln -s openmpi-1.6.5 openmpi`
+* This step involves writing a script.
+Refer to [the scripting tutorial](03_scripting.md) to know more about how to do this.
+  * `update-alternatives --install "/usr/bin/${prog}" "$prog" "/usr/lib/openmpi/bin/${prog}" 1` &mdash; this command should run for every `prog` in the following list:
+`ompi-checkpoint` `ompi-clean` `ompi_info` `ompi-ps` `ompi-restart` `ompi-server` `opal_wrapper` `ortec++` `orted` `orte-ps` `orterun` `ortecc` `orte-clean` `orte-iof` `ompi-clean` `ompi_info` `ompi-iof` `ompi-ps` `ompi-server` `mpic++` `mpicc` `mpiCC` `mpicxx` `mpiexec` `mpif77` `mpiru`
+  * Change the permissions of the script file and execute it with the programs listed above as argument
+* You can test this step when setting up the Golden Node
+
+## 5. Netbooting
