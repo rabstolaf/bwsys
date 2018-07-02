@@ -6,6 +6,8 @@ Then we synchronize time on our machine using NTP.
 After that, we modify the `/etc/sudoers.tmp` file to allow `sudo` permissions for a group.
 We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes.
 After that, we activate our second network interface and configure it to have a static ip address.
+We use NFS to publish our home directory from the headnode.
+Lastly, we configure NAT and DHCP so that our golden node can get a proper ip address and connect to the internet.
 
 
 Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before proceeding with this document.
@@ -112,14 +114,7 @@ Save the file and exit
 * Check that the interface is configured using `$ ip ad`
 * Make sure you still have internet by using `ping` command
 
-## 7. Install etckeeper
-
-> `etckeeper` is a version control system for the `/etc` folder.
-> It automatically commits the changes you make to the `/etc` folder.
-
-* `$ apt install etckeeper`
-
-## 8. Setting up NFS
+## 7. Setting up NFS
 
 > We will use NFS to mount our `/home` folders on the headnode onto the `/home` folders on our worker nodes through the network. 
 > This enables us to use one folder to store all our work instead of having separate folders on the separate machines.
@@ -131,7 +126,7 @@ Save the file and exit
 * Save and exit
 * You can test this step when setting up your golden node
 
-## 9. Configure NAT
+## 8. Configure NAT
 
 > NAT will allow the worker nodes to get access to the internet.
 > It will translate and forward packets through the headnode so that they reach the correct worker nodes.
@@ -150,7 +145,7 @@ Take a look at the [scripting tutorial](03_scripting.md) to get an idea of how t
   * `$ sudo update-rc.d ipv4forward.sh defaults` &mdash; may execute with some error
 * You can test this step when setting up the golden node
 
-## 10. Configure DHCP
+## 9. Configure DHCP
 
 > DHCP is a protocol that assigns IP addresses to nodes so that they can be uniquely identified on a network.
 > [This video](https://www.youtube.com/watch?v=S43CFcpOZSI) explains how DHCP works in a network.
