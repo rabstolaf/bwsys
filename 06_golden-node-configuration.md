@@ -1,10 +1,6 @@
 # Golden Node Configuration
 
-This document will help you set up your golden node.
-This will be a worker node with ideal configuration.
-This node will be cloned to create all new worker nodes.
-
-After updating the repository and upgrading packages, we will update the `/etc/hosts` file and enable passworldless ssh.
+After updating the repository and upgrading packages on your Golden Node, we will update the `/etc/hosts` file and enable passworldless ssh.
 Then we use NFS to mount our `/home` from our headnode onto the golden node.
 Next, we set the headnode as the NTP server for the headnode and install and configure LDAP.
 
