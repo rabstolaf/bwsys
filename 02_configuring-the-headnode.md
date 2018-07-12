@@ -142,14 +142,14 @@ Be careful when you modify it
 * Uncomment the line `net.ipv4.ip_forward=1`
 * Save and exit
 * Test it: `$ sysctl -p` should display the changes you made
-* Now we have to write a script.
-Take a look at the [scripting tutorial](03_scripting.md) to get an idea of how to do it.
-  * Write a script containing the following command: `iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` where *interface* is the name of your St. Olaf network facing interface.
-  * Save it in a file called `ipv4forward.sh` in the folder `/etc/init.d` &mdash; this folder contains scripts that run when the machine boots.
-  * Change permissions on the file with `chmod` and run the script.
-  * `$ sudo update-rc.d ipv4forward.sh defaults` &mdash; may execute with some error
-* You can test this step when setting up the golden node
-
+* `$ iptables -t nat -L` &mdash; this will list out all present iptables rule.
+This should be clean.
+If not, run `$ iptables -t nat -F`.
+* `$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; this command will mask the IP addresses of your cluster so that the nodes can access the internet
+* List the rules again to see if the rule was added
+* `$ apt install iptables-persistent` &mdash; this package will permanently save your iptable rules (which does not happen otherwise).
+Save the `ipv4` rules and not the `ipv6` rules.
+* If you reboot your machine and list the rules again, the rule should still be there!
 ## 9. Configure DHCP
 
 > DHCP is a protocol that assigns IP addresses to nodes so that they can be uniquely identified on a network.
@@ -161,7 +161,7 @@ Take a look at the [scripting tutorial](03_scripting.md) to get an idea of how t
 * Refer to the provided `/etc/dhcp/dhcpd.conf` file to create your own file
 * Save and exit
 * Open the `/etc/default/isc-dhcp-server` file
-* Enable DHCP only on your cluster facing interface
+* Enable DHCP only on your cluster facing interface (look at the comments in the file to get a hint on how to do this)
 * Save and exit
 * `$ systemctl start isc-dhcp-server`
-* `$ tail -n 30 /var/log/syslog` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
+* `$ systemctl status isc-dhcp-server` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
