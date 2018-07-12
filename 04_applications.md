@@ -4,7 +4,7 @@ This document contains some applications that you should have on your headnode.
 They will be useful in keeping a record of configuration changes and running parallel computing processes in your cluster.
 First we install `etckeeper` for keeping track of the `/etc` directory.
 After that we install apt-cacher to create a local ubuntu mirror on our headnode.
-Next we install and configure Munge, Slurm and OpenMPI.
+Next we install and configure OpenMPI.
 Finally, we download the netbooting image for Ubuntu and configure our headnode to allow the golden node to netboot from it.
 
 ## 1. Install etckeeper
@@ -31,29 +31,7 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
   * At the bottom, click `Start Import` and wait for it to finish
 * Done!
 
-## 3. Munge and Slurm
-
-> Munge and Slurm are applications for job-scheduling for Linux and Unix Kernels. They are also useful for resource management. Go to [this link](https://kb.iu.edu/d/bdah) to read more about it.
-
-* First we install `munge` &mdash; `$ apt install munge`
-* Change permissions of folders:
-  * `$ chmod 0700 /etc/munge/`
-  * `$ chmod 0711 /var/lib/munge/`
-  * `$ chmod 0700 /var/log/munge/`
-* Make the key
-  * `$ mkdir /var/run/munge/` &mdash; might exist already
-  * `$ chown munge:munge /var/run/munge/`
-  * `$ chmod 0755 /var/run/munge/`
-  * `$ dd if=/dev/urandom bs=1 count=1024 > /etc/munge/munge.key` &mdash; you may need to become `root` for this one
-  * $ `chown munge:munge /etc/munge/munge.key`
-  * $ `chmod 600 /etc/munge/munge.key`
-  * $ `chmod 755 /var/log/`
-* `$ systemctl start munge`
-* Now we install `slurm` &mdash; `$ apt install libpam-slurm libpmi0 libpmi0-dev libpmi2-0 libpmi2-0-dev`
-* Copy the `slurm.conf` configuration file provided over to `/etc/slurm-llnl/slurm.conf` &mdash; make the directory if it does not exist
-* You can test this after setting up the Golden Node
-
-## 4. OpenMPI
+## 3. OpenMPI
 
 > Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.
 > [This video](https://www.youtube.com/watch?v=D0-xSWBGNAw) gives a brief introduction on MPI and OpenMPI.
@@ -72,7 +50,7 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
   * Change the permissions of the script file and execute it with the programs listed above as argument
 * You can test this step when setting up the Golden Node
 
-## 5. Netbooting
+## 4. Netbooting
 
 > Netbooting will allow the Golden Node to boot using the network. The headnode will provide the installation file for the operating system.
 > [This link](https://www.howtogeek.com/57601/what-is-network-booting-pxe-and-how-can-you-use-it/) can help you understand this concept in greater detail.
@@ -86,5 +64,6 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
 <br/>`MENU LABEL Boot From Hard Disk`
 <br/>`LOCALBOOT  0`
 * Save and exit
+* `$ chmod 755 /var/lib/tftpboot/ubuntu-installer/amd64/*` &mdash; to let other machines access the installer
 
 This concludes what we have to do on the headnode (for now)! Now we move on to another physical machine (or another virtual machine) that will be our Golden Node!
