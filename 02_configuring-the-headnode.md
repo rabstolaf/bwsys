@@ -107,9 +107,11 @@ If they are, then you did it right!
 > Google networking terms and concepts you are unfamiliar with.
 
 * `$ ip ad` &mdash; this lists out all the interfaces you have and their configurations (should show 3)
-* Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder
+* Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder.
+Be sure to use spaces and **not tabs** in the file.
 * Add the not-configured interface under `ethernets` (Use website as template)
-* Set `addresses` to `[10.0.0.0/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
+* Set `renderer` to `networkd`
+* Set `addresses` to `[10.0.0.254/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
 * Set `dhcp4` to `no`
 * **Do not set any gateway**
 * Save and exit
