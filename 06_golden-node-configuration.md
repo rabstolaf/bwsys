@@ -3,6 +3,7 @@
 After updating the repository and upgrading packages on your Golden Node, we will update the `/etc/hosts` file and enable passworldless ssh.
 Then we use NFS to mount our `/home` from our headnode onto the golden node.
 Next, we set the headnode as the NTP server for the headnode and install and configure LDAP.
+Finally, we redo the OpenMPI steps that we did for the headnode.
 
 ## 1. Update `/etc/hosts` file
 
@@ -64,3 +65,19 @@ Do the same except the following:
 * Follow through the instructions and do exactly what you did for the headnode
 * This essentially means that `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` should be the same as the ones in your headnode
 * Test it the same way you tested for the headnode
+
+## 6. OpenMPI
+
+Follow the exact same steps as you did for your headnode.
+Refer to [this document](02_configuring-the-headnode.md) to recall what you have to do.
+You can `scp` the `.tar.gz` file from your headnode to your golden node instead of downloading it again from the internet.
+
+***
+
+This is the end of the Cluster Manager Training!
+Congratulations for making it!
+Feel free to go through the training multiple times as that will give you a better understanding of how everything works.
+There will be serveral other documents with information about other stuff you can learn.
+All of them will build off of this basic training.
+That means that you are mostly free to read through and work with those documents in any order you want.
+Best of luck!
