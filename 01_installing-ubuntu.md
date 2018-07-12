@@ -49,9 +49,10 @@ It is advised to not become `root` while going through this training, unless abs
 
 ## 3. Update and Install Some Packages
 
-* `$ apt update`
-* `$ apt upgrade`
-  > These two commands are used to update the versions of already installed packages on the machine.
+* `$ apt update` and `$ apt upgrade` &mdash; These two commands are used to update the versions of already installed packages on the machine
 * `$ apt install <package_name>` &mdash; used for installing new packages
-* **Install the following packages**: `w3m`, `iptables`, `openssh-client`, `wget`, `nano`, `info`, `man-db`, `manpages`, `friendly-recovery`, `bash-completion`, `command-not-found`, `dnsutils`, `lshw`, `lsof`, `mtr`, `psmisc`, `tcpdump`, `apt-transport-https`, `update-manager-core`, `gcc`, `g++`, `libtool`, `gedit`, `emacs`, `ssh`, `sshpass`, `xorg`
+* **Install the following packages**: `w3m`, `iptables`, `openssh-client`, `wget`, `nano`, `info`, `man-db`, `manpages`, `friendly-recovery`, `tmux`, `grub2`, `traceroute`, `bash-completion`, `command-not-found`, `dnsutils`, `lshw`, `lsof`, `mtr`, `psmisc`, `tcpdump`, `apt-transport-https`, `update-manager-core`, `gcc`, `g++`, `libtool`, `gedit`, `emacs`, `ssh`, `sshpass`, `xorg`
 * If you are new to the Linux Command Line, you may find [this link](https://web.archive.org/web/20180104184520/http://linuxcommand.org/lc3_lts0010.php) useful to get familiar with the basic commands.
+* `$ sudo shutdown now` and `$ sudo restart now` are command line instructions to shutdown and restart your VM
+* <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F2</kbd> &mdash; Use this or any other key like <kbd>F3</kbd> or <kbd>F4</kbd> to open another terminal
+* Restart your VM and proceed to the next section!
