@@ -33,12 +33,14 @@ Use it the appropriate number of times to get back to your Golden Node. The comm
 > In our headnode, we had used the `/etc/exports` file to publish and make our `/home` directory available for mounting. We will now mount it on the Golden Node
 
 * `$ apt install nfs-kernel-server`
-* `$ showmount -e` &mdash; this will show you the directories available for mounting and the IPs sharing them
+* `$ showmount -e *headnode*` &mdash; where *headnode* is the name of your headnode.
+This will show you the directories available for mounting from your headnode
 * Open `/etc/fstab`
 * Add the following line:
 <br/>`*headnode*:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
 * `$ mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
-* Test this by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
+* You might have to log out and log back in to your golden node for this mounting to take effect
+* Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
 
 ## 4. NTP
 
