@@ -79,11 +79,10 @@ If they are, then you did it right!
 > Go to [this website](https://www.ssh.com/ssh/protocol/) to learn more about SSH.
 > [This link](https://blog.tinned-software.net/ssh-passwordless-login-with-ssh-key/) may be useful for learning about SSH Keys and Passwordless SSH.
 
-* `mkdir ~/.ssh` &mdash; This needs to be done if you have not used SSH on your machine before
 * `$ ssh-keygen -t rsa -b 4096` &mdash; This generates an SSH key with RSA encryption
   * Press `Enter` to use default directory for saving the SSH key
   * Press `Enter` to use no passphrase (Passphrase is not necessary either)
-* `$ cat ~/.ssh/id_rsa.pub > .ssh/authorized_keys` &mdash; this is the file your nodes will access to SSH into your machine
+* `$ cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys` &mdash; this is the file your nodes will access to SSH into your machine
 * You can test this after setting up your golden node
 
 ## 5. Adding hosts
@@ -128,7 +127,7 @@ If they are, then you did it right!
 * Open the `/etc/exports` file
 * Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
 * Save and exit
-* You can test this step when setting up your golden node
+* `$ showmount -e` &mdash; this should show you the folder that you published
 
 ## 8. Configure NAT
 
