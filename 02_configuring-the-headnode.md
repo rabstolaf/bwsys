@@ -3,7 +3,7 @@
 This is the second training document.
 First we configure our machine to access the St. Olaf LDAP server to login to our machine using our St. Olaf credentials.
 Then we synchronize time on our machine using NTP.
-After that, we modify the `/etc/sudoers.tmp` file to allow `sudo` permissions for a group.
+After that, we modify the `/etc/sudoers` file to allow `sudo` permissions for a newly created group.
 We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes.
 After that, we activate our second network interface and configure it to have a static ip address.
 We use NFS to publish our home directory from the headnode.
@@ -18,19 +18,18 @@ Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before 
 > We are using it to enable logging in to the VM using your St. Olaf credentials.
 > [This link](http://www.gracion.com/server/whatldap.html) and [this video](https://www.youtube.com/watch?v=F2nFtlS8uEo) explains more about LDAP.
 
-* `$ apt install libnss-ldap`
+* `$ apt install libnss-ldap libpam-ldap`
   * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu`
   * The base dn is `ou=stoUsers,dc=ad,dc=stolaf,dc=edu`
-  * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
-  * The files you might (probably will) have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
+  * LDAP Version is 3
+  * **Do not** make local root database admin
+  * LDAP Database **does not** require login
+  * The files you have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
 These are the files that contain the LDAP configuration.
 Ask a Cluster Manager for bind password and certificate requirements.
+  * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
   * Modify the `/etc/nsswitch.conf` file and set the `hosts` line to `files mdns4_minimal [NOTFOUND=return] dns mdns4`.
 Save the file and exit
-
-* `$ apt install libpam-ldap`
-  > **libpam-ldap** provides an interface between an LDAP server and the PAM user authentication system.
-  > Using it along with libnss-ldapd or libnss-ldap allows LDAP to entirely replace other lookup methods (such as NIS or flat-file) for system account tables.
 
 * It is time to test LDAP.
   Logout of your VM and try to log back in using your St. Olaf *username* and *password*.
