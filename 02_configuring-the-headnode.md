@@ -145,7 +145,8 @@ Be careful when you modify it
 * `$ iptables -t nat -L` &mdash; this will list out all present iptables rule.
 This should be clean.
 If not, run `$ iptables -t nat -F`.
-* `$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; this command will mask the IP addresses of your cluster so that the nodes can access the internet
+* `$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your St. Olaf network facing interface.
+This command will mask the IP addresses of your cluster so that the nodes can access the internet
 * List the rules again to see if the rule was added
 * `$ apt install iptables-persistent` &mdash; this package will permanently save your iptable rules (which does not happen otherwise).
 Save the `ipv4` rules and not the `ipv6` rules.
