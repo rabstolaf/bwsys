@@ -41,6 +41,11 @@ Save the file and exit
 > [Here](http://www.ntp.org/ntpfaq/NTP-s-def.htm) is a comprehensive documentation on NTP.
 > [This video](https://www.youtube.com/watch?v=EkQPkQb2D3g) gives a concise explanation on this topic.
 
+* `$ date` &mdash; this command will show you the date and time
+* If you notice that your timezone is not set correctly, you have to fix it.
+The file `/etc/localtime` is a symlink to your timezone.
+Delete the file and create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.
+That should fix your timezone.
 * `$ apt install ntp`
 * We need to edit the `/etc/ntp.conf` file to make the machine access time from the St. Olaf time servers to enable faster time synchronization.
   * Comment out all lines that access ubuntu time servers for the time
@@ -51,8 +56,8 @@ Save the file and exit
     > Instead, they should sync time with your headnode.
 
 * `$ systemctl restart ntp` &mdash; restarts the service
-* `$ ntpq -p` &mdash; Check and see if these values are as one would expect.
-  If they are, then you did it right!
+* `$ ntpq -p` &mdash; Check and see if these values are as one would expect (Refer to the [linked video](https://www.youtube.com/watch?v=EkQPkQb2D3g)).
+If they are, then you did it right!
 
 ## 3. Alter sudoers
 
