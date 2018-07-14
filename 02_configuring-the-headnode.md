@@ -108,7 +108,8 @@ If they are, then you did it right!
 
 * `$ ip ad` &mdash; this lists out all the interfaces you have and their configurations (should show 3)
 * Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder.
-Be sure to use spaces and **not tabs** in the file.
+Be sure to use spaces and **not tabs** in the file
+`(tabs are invalid in yaml files)`
 * Add the not-configured interface under `ethernets` (Use website as template)
 * Set `renderer` to `networkd`
 * Set `addresses` to `[10.0.0.254/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
@@ -151,6 +152,7 @@ This command will mask the IP addresses of your cluster so that the nodes can ac
 * `$ apt install iptables-persistent` &mdash; this package will permanently save your iptable rules (which does not happen otherwise).
 Save the `ipv4` rules and not the `ipv6` rules.
 * If you reboot your machine and list the rules again, the rule should still be there!
+
 ## 9. Configure DHCP
 
 > DHCP is a protocol that assigns IP addresses to nodes so that they can be uniquely identified on a network.
