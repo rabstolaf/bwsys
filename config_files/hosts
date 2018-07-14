@@ -3,7 +3,7 @@
 
 10.0.0.254	headnode
 
-10.0.0.1	golden
+10.0.0.1	worker00
 10.0.0.2	worker01
 
 # The following lines are desirable for IPv6 capable hosts
