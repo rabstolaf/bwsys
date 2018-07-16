@@ -3,7 +3,7 @@
 This is the second training document.
 First we configure our machine to access the St. Olaf LDAP server to login to our machine using our St. Olaf credentials.
 Then we synchronize time on our machine using NTP.
-After that, we modify the `/etc/sudoers.tmp` file to allow `sudo` permissions for a group.
+After that, we modify the `/etc/sudoers` file to allow `sudo` permissions for a newly created group.
 We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes.
 After that, we activate our second network interface and configure it to have a static ip address.
 We use NFS to publish our home directory from the headnode.
@@ -18,19 +18,18 @@ Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before 
 > We are using it to enable logging in to the VM using your St. Olaf credentials.
 > [This link](http://www.gracion.com/server/whatldap.html) and [this video](https://www.youtube.com/watch?v=F2nFtlS8uEo) explains more about LDAP.
 
-* `$ apt install libnss-ldap`
+* `$ apt install libnss-ldap libpam-ldap`
   * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu`
   * The base dn is `ou=stoUsers,dc=ad,dc=stolaf,dc=edu`
-  * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
-  * The files you might (probably will) have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
+  * LDAP Version is 3
+  * **Do not** make local root database admin
+  * LDAP Database **does not** require login
+  * The files you have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
 These are the files that contain the LDAP configuration.
 Ask a Cluster Manager for bind password and certificate requirements.
+  * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
   * Modify the `/etc/nsswitch.conf` file and set the `hosts` line to `files mdns4_minimal [NOTFOUND=return] dns mdns4`.
 Save the file and exit
-
-* `$ apt install libpam-ldap`
-  > **libpam-ldap** provides an interface between an LDAP server and the PAM user authentication system.
-  > Using it along with libnss-ldapd or libnss-ldap allows LDAP to entirely replace other lookup methods (such as NIS or flat-file) for system account tables.
 
 * It is time to test LDAP.
   Logout of your VM and try to log back in using your St. Olaf *username* and *password*.
@@ -42,6 +41,11 @@ Save the file and exit
 > [Here](http://www.ntp.org/ntpfaq/NTP-s-def.htm) is a comprehensive documentation on NTP.
 > [This video](https://www.youtube.com/watch?v=EkQPkQb2D3g) gives a concise explanation on this topic.
 
+* `$ date` &mdash; this command will show you the date and time
+* If you notice that your timezone is not set correctly, you have to fix it.
+The file `/etc/localtime` is a symlink to your timezone.
+Delete the file and create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.
+That should fix your timezone.
 * `$ apt install ntp`
 * We need to edit the `/etc/ntp.conf` file to make the machine access time from the St. Olaf time servers to enable faster time synchronization.
   * Comment out all lines that access ubuntu time servers for the time
@@ -52,8 +56,8 @@ Save the file and exit
     > Instead, they should sync time with your headnode.
 
 * `$ systemctl restart ntp` &mdash; restarts the service
-* `$ ntpq -p` &mdash; Check and see if these values are as one would expect.
-  If they are, then you did it right!
+* `$ ntpq -p` &mdash; Check and see if these values are as one would expect (Refer to the [linked video](https://www.youtube.com/watch?v=EkQPkQb2D3g)).
+If they are, then you did it right!
 
 ## 3. Alter sudoers
 
@@ -75,11 +79,10 @@ Save the file and exit
 > Go to [this website](https://www.ssh.com/ssh/protocol/) to learn more about SSH.
 > [This link](https://blog.tinned-software.net/ssh-passwordless-login-with-ssh-key/) may be useful for learning about SSH Keys and Passwordless SSH.
 
-* `mkdir ~/.ssh` &mdash; This needs to be done if you have not used SSH on your machine before
 * `$ ssh-keygen -t rsa -b 4096` &mdash; This generates an SSH key with RSA encryption
   * Press `Enter` to use default directory for saving the SSH key
   * Press `Enter` to use no passphrase (Passphrase is not necessary either)
-* `$ cat ~/.ssh/id_rsa.pub > .ssh/authorized_keys` &mdash; this is the file your nodes will access to SSH into your machine
+* `$ cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys` &mdash; this is the file your nodes will access to SSH into your machine
 * You can test this after setting up your golden node
 
 ## 5. Adding hosts
@@ -104,9 +107,12 @@ Save the file and exit
 > Google networking terms and concepts you are unfamiliar with.
 
 * `$ ip ad` &mdash; this lists out all the interfaces you have and their configurations (should show 3)
-* Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder
+* Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder.
+Be sure to use spaces and **not tabs** in the file.
+(Tabs are invalid in yaml files)
 * Add the not-configured interface under `ethernets` (Use website as template)
-* Set `addresses` to `[10.0.0.0/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
+* Set `renderer` to `networkd`
+* Set `addresses` to `[10.0.0.254/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
 * Set `dhcp4` to `no`
 * **Do not set any gateway**
 * Save and exit
@@ -124,7 +130,7 @@ Save the file and exit
 * Open the `/etc/exports` file
 * Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
 * Save and exit
-* You can test this step when setting up your golden node
+* `$ showmount -e` &mdash; this should show you the folder that you published
 
 ## 8. Configure NAT
 
@@ -137,13 +143,15 @@ Be careful when you modify it
 * Uncomment the line `net.ipv4.ip_forward=1`
 * Save and exit
 * Test it: `$ sysctl -p` should display the changes you made
-* Now we have to write a script.
-Take a look at the [scripting tutorial](03_scripting.md) to get an idea of how to do it.
-  * Write a script containing the following command: `iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` where *interface* is the name of your St. Olaf network facing interface.
-  * Save it in a file called `ipv4forward.sh` in the folder `/etc/init.d` &mdash; this folder contains scripts that run when the machine boots.
-  * Change permissions on the file with `chmod` and run the script.
-  * `$ sudo update-rc.d ipv4forward.sh defaults` &mdash; may execute with some error
-* You can test this step when setting up the golden node
+* `$ iptables -t nat -L` &mdash; this will list out all present iptables rule.
+This should be clean.
+If not, run `$ iptables -t nat -F`.
+* `$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your St. Olaf network facing interface.
+This command will mask the IP addresses of your cluster so that the nodes can access the internet
+* List the rules again to see if the rule was added
+* `$ apt install iptables-persistent` &mdash; this package will permanently save your iptable rules (which does not happen otherwise).
+Save the `ipv4` rules and not the `ipv6` rules.
+* If you reboot your machine and list the rules again, the rule should still be there!
 
 ## 9. Configure DHCP
 
@@ -156,7 +164,7 @@ Take a look at the [scripting tutorial](03_scripting.md) to get an idea of how t
 * Refer to the provided `/etc/dhcp/dhcpd.conf` file to create your own file
 * Save and exit
 * Open the `/etc/default/isc-dhcp-server` file
-* Enable DHCP only on your cluster facing interface
+* Enable DHCP only on your cluster facing interface (look at the comments in the file to get a hint on how to do this)
 * Save and exit
 * `$ systemctl start isc-dhcp-server`
-* `$ tail -n 30 /var/log/syslog` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
+* `$ systemctl status isc-dhcp-server` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
