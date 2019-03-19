@@ -18,22 +18,23 @@ Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before 
 > We are using it to enable logging in to the VM using your St. Olaf credentials.
 > [This link](http://www.gracion.com/server/whatldap.html) and [this video](https://www.youtube.com/watch?v=F2nFtlS8uEo) explains more about LDAP.
 
-* `$ apt install libnss-ldap libpam-ldap`
-  * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu`
+* `$ apt install libpam-ldap`
+  * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu` (**Two `/` not Three `/`**)
   * The base dn is `ou=stoUsers,dc=ad,dc=stolaf,dc=edu`
   * LDAP Version is 3
   * **Do not** make local root database admin
   * LDAP Database **does not** require login
   * The files you have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
 These are the files that contain the LDAP configuration.
-Ask a Cluster Manager for bind password and certificate requirements.
   * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
-  * Modify the `/etc/nsswitch.conf` file and set the `hosts` line to `files mdns4_minimal [NOTFOUND=return] dns mdns4`.
-Save the file and exit
+  * Ask a Cluster Manager for bind password.
+  * At the end of both the files, put `TLS_REQCERT never`
 
 * It is time to test LDAP.
   Logout of your VM and try to log back in using your St. Olaf *username* and *password*.
   If it works, then you did it right!
+* **Note:** If your username on your VM is different than your St. Olaf username, then you need to create a user first.
+  Run the following command before testing: `useradd -m -s /bin/bash <stolaf-username>`
 
 ## 2. Setting Up NTP
 
