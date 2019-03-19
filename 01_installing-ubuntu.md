@@ -30,9 +30,14 @@ Click on the *Advanced* and set *Adapter Type* to "PCnet-FAST III" and *Promiscu
   > A proxy server is basically another computer which serves as a hub through which internet requests are processed. 
   > It may act as a firewall or can be used to anonymously surf the web.
 
-* For disk partitioning, choose *Use An Entire Disk*, unless you know how to manually partition. In that case, partition it logically keeping enough space for `/` and `/home` directories.
+* For disk partitioning, choose *Use An Entire Disk*, unless you know how to manually partition.
+In that case, partition it logically keeping enough space for `/` and `/home` directories.
 * Select *Continue* when it requests confirmation for formatting the partitions
-* Fill in the fields appropriately. You will need to remember your *username* and *password*. Hit *Done* and wait for installation to finish
+* Fill in the fields appropriately. You will need to remember your *username* and *password*.
+It is recommended to use your St. Olaf *username* but not your St. Olaf *password*.
+Hit *Done* and wait for installation to finish
+* If prompted, install the `OpenSSH Server`
+* If a screen pops up with a list of things to install, you may disregard it and select *Done*
 * Hit *Reboot Now* and press *Enter* when prompted to remove installation media
 * After reboot finishes, you should be able to login with your *username* and *password*!
 
@@ -53,6 +58,6 @@ It is advised to not become `root` while going through this training, unless abs
 * `$ apt install <package_name>` &mdash; used for installing new packages
 * **Install the following packages**: `w3m`, `iptables`, `openssh-client`, `wget`, `nano`, `info`, `man-db`, `manpages`, `friendly-recovery`, `tmux`, `grub2`, `traceroute`, `bash-completion`, `command-not-found`, `dnsutils`, `lshw`, `lsof`, `mtr`, `psmisc`, `tcpdump`, `apt-transport-https`, `update-manager-core`, `gcc`, `g++`, `libtool`, `gedit`, `emacs`, `ssh`, `sshpass`, `xorg`
 * If you are new to the Linux Command Line, you may find [this link](https://web.archive.org/web/20180104184520/http://linuxcommand.org/lc3_lts0010.php) useful to get familiar with the basic commands.
-* `$ sudo shutdown now` and `$ sudo restart now` are command line instructions to shutdown and restart your VM
+* `$ sudo shutdown now` and `$ sudo reboot now` are command line instructions to shutdown and restart your VM
 * <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F2</kbd> &mdash; Use this or any other key like <kbd>F3</kbd> or <kbd>F4</kbd> to open another terminal
 * Restart your VM and proceed to the next section!
