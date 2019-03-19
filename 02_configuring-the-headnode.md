@@ -33,7 +33,7 @@ These are the files that contain the LDAP configuration.
 * It is time to test LDAP.
   Logout of your VM and try to log back in using your St. Olaf *username* and *password*.
   If it works, then you did it right!
-* **Note:** If your username on your VM is different than your St. Olaf username, then you need to create a user first.
+* **Note:** If your *username* on your VM is different than your St. Olaf *username*, then you need to create a user first.
   Run the following command before testing: `useradd -m -s /bin/bash <stolaf-username>`
 
 ## 2. Setting Up NTP
