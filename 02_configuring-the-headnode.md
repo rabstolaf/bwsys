@@ -24,11 +24,12 @@ Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before 
   * LDAP Version is 3
   * **Do not** make local root database admin
   * LDAP Database **does not** require login
-  * The files you have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf`.
+  * The files you have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and maybe `/etc/nsswitch.conf`.
 These are the files that contain the LDAP configuration.
   * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
   * Ask a Cluster Manager for bind password.
   * At the end of both the files, put `TLS_REQCERT never`
+  * Modify `/etc/nsswitch.conf` file and set the `hosts` line to `files mdns4_minimal [NOTFOUND=return] dns mdns4`
 
 * It is time to test LDAP.
   Logout of your VM and try to log back in using your St. Olaf *username* and *password*.
