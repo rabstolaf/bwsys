@@ -132,6 +132,7 @@ Be sure to use spaces and **not tabs** in the file.
 * Open the `/etc/exports` file
 * Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
 * Save and exit
+* `$ exportfs -a` &mdash; have changes to /etc/exports take effect immediately
 * `$ showmount -e` &mdash; this should show you the folder that you published
 
 ## 8. Configure NAT
