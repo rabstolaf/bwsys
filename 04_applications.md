@@ -46,7 +46,7 @@ This step will take some time.
 * This step involves writing a script.
 Refer to [the scripting tutorial](03_scripting.md) to know more about how to do this.
   * `update-alternatives --install "/usr/bin/${prog}" "$prog" "/usr/lib/openmpi/bin/${prog}" 1` &mdash; this command should run for every `prog` in the following list:
-`ompi-checkpoint` `ompi-clean` `ompi_info` `ompi-ps` `ompi-restart` `ompi-server` `opal_wrapper` `ortec++` `orted` `orte-ps` `orterun` `ortecc` `orte-clean` `orte-iof` `ompi-clean` `ompi_info` `ompi-iof` `ompi-ps` `ompi-server` `mpic++` `mpicc` `mpiCC` `mpicxx` `mpiexec` `mpif77` `mpiru`
+`ompi-checkpoint` `ompi-clean` `ompi_info` `ompi-ps` `ompi-restart` `ompi-server` `opal_wrapper` `ortec++` `orted` `orte-ps` `orterun` `ortecc` `orte-clean` `orte-iof` `ompi-clean` `ompi_info` `ompi-iof` `ompi-ps` `ompi-server` `mpic++` `mpicc` `mpiCC` `mpicxx` `mpiexec` `mpif77` `mpirun`
   * Change the permissions of the script file and execute it with the programs listed above as argument
 * You can test this step when setting up the Golden Node
 
