@@ -25,13 +25,6 @@ Have fun!
 5. Create a Docker image and configure it to act as your golden node.
 6. Clone the Docker image to create a cluster of Docker containers running on your VM.
 
-## First Steps
-
-Do the following steps before continuing with the rest of the training:
-
-* Download and install [**VirtualBox**](https://www.virtualbox.org/)
-* Download [**Ubuntu 18.04 Server**](https://releases.ubuntu.com/18.04.5/ubuntu-18.04.5-live-server-amd64.iso) ISO file
-
 ## Glossary of Terms
 
 * **VM** &mdash; Virtual Machine
