@@ -5,7 +5,7 @@ This will take you through the steps for creating a virtual machine and configur
 Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine.
 After that, there is a link to a website that can help you get familiar with the Linux Command Line environment.
 
-Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine.
+Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine (see README).
 
 ## 1. Create a Virtual Machine (VM)
 
