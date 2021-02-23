@@ -29,8 +29,8 @@ Have fun!
 
 Do the following steps before continuing with the rest of the training:
 
-* Download and install **VirtualBox**
-* Download **Ubuntu 18.04 Server** ISO file
+* Download and install [**VirtualBox**](https://www.virtualbox.org/)
+* Download [**Ubuntu 18.04 Server**](https://releases.ubuntu.com/18.04.5/ubuntu-18.04.5-live-server-amd64.iso) ISO file
 
 ## Glossary of Terms
 
