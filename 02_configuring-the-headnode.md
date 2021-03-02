@@ -114,7 +114,7 @@ Be sure to use spaces and **not tabs** in the file.
 (Tabs are invalid in yaml files)
 * Add the not-configured interface under `ethernets` (Use website as template)
 * Set `renderer` to `networkd`
-* Set `addresses` to `[10.0.0.254/24]` &mdash; This creates a network of ip addressess from `10.0.0.0` to `10.0.0.255`
+* Set `addresses` to `[10.0.0.254/24]` &mdash; This creates a network of ip addresses from `10.0.0.0` to `10.0.0.255`
 * Set `dhcp4` to `no`
 * **Do not set any gateway**
 * Save and exit
