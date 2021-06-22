@@ -36,13 +36,13 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
 > Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.
 > [This video](https://www.youtube.com/watch?v=D0-xSWBGNAw) gives a brief introduction on MPI and OpenMPI.
 
-* `$ wget https://www.open-mpi.org/software/ompi/v1.6/downloads/openmpi-1.6.5.tar.gz`
-* `$ tar -xzf openmpi-1.6.5.tar.gz` &mdash; extract it and go into the directory
-* `$  ./configure --prefix=/usr/lib/openmpi-1.6.5` &mdash; this runs the `configure` script with the install location.
+* `$ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz`
+* `$ tar -zxf openmpi-4.1.1.tar.gz` &mdash; extract it and go into the directory
+* `$  ./configure --prefix=/usr/lib/openmpi-4.1.1` &mdash; this runs the `configure` script with the install location.
 This step will take some time.
 * `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`
 * `$ cd /usr/lib`
-* `$ ln -s openmpi-1.6.5 openmpi`
+* `$ ln -s openmpi-4.1.1 openmpi`
 * This step involves writing a script.
 Refer to [the scripting tutorial](03_scripting.md) to know more about how to do this.
   * `update-alternatives --install "/usr/bin/${prog}" "$prog" "/usr/lib/openmpi/bin/${prog}" 1` &mdash; this command should run for every `prog` in the following list:
