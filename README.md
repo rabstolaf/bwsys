@@ -1,4 +1,4 @@
-# Cluster Management Training Documents
+# Remote Cluster Management Training Documents
 
 This repository contains training documents for Remote St. Olaf Cluster Management. This training differs from the standard documentation in walking the trainee through installing a desktop environment, installing a program from source code, and setting up a VPN.
 
