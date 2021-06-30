@@ -7,7 +7,7 @@ Finally, we redo the OpenMPI steps that we did for the headnode.
 
 ## 1. Update `/etc/hosts` file
 
-> This file is mainly for hostname resolving, so make this identical to the headnode's file.
+> This file is mainly for hostname resolving, include the same information about the headnode and worker addresses that you used when setting up the headnode host file. 
 > Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
 
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
@@ -37,8 +37,9 @@ Use it the appropriate number of times to get back to your Golden Node. The comm
 * `$ showmount -e *headnode*` &mdash; where *headnode* is the name of your headnode.
 This will show you the directories available for mounting from your headnode
 * Open `/etc/fstab`
-* Add the following line:
+* Add the following lines:
 <br/>`*headnode*:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
+<br/>`*headnode*:/opt 	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
 * `$ mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
 * You might have to log out and log back in to your golden node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
@@ -68,9 +69,8 @@ Do the same except the following:
 
 ## 6. OpenMPI
 
-Follow the exact same steps as you did for your headnode.
-Refer to [this document](02_configuring-the-headnode.md) to recall what you have to do.
-You can `scp` the `.tar.gz` file from your headnode to your golden node instead of downloading it again from the internet.
+* Since we've mounted the `/opt` folder, the golden node can access all the files needed to run OpenMPI. So, all you have to do is run the same script you wrote earlier to link the binaries in `/opt/openmpi/bin/` to your local `/usr/bin/`
+* `$ ./mpi_script.sh`
 
 ***
 

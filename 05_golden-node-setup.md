@@ -16,7 +16,11 @@ This will involve letting your Golden Node netboot from the headnode.
 * There is one change for this VM
   * Under *Network*, enable only one *Adapter*
   * Connect it to *Internal Network* and give it the same name and advanced configuration as the *Internal Network* on your headnode VM
-  * Take a note of the *MAC Address* of this VM
+  * You'll need to know the MAC address for later, so make a note of it somewhere. You can change it to something easier to remember if you'd like. When used by real devices, different parts of a MAC address correspond to things like manufacturer, but you can set it to any valid set of six groups of two digits in hexadecimal. Examples include:
+    * AA:BB:CC:DD:EE:FF
+    * 00:A2:B4:C6:8D:F0
+    * 00:11:22:33:44:55
+  * Note that when entering a MAC address into VirtualBox, you omit the colons typically used when displaying MAC addresses.
 
 ## 2. Edit the `/etc/dhcp/dhcpd.conf` file
 
