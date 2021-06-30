@@ -120,7 +120,7 @@ Depending on your VirtualBox settings, your VM might feel slower now that you ha
 |2|2048|
 |4|4096|
 
-* You can also increase settings such as processors or video memory, depending on what hardware your laptop or desktop computer has installed. See if increasing the memory helps, and if your VM is still laggy, try increasing some of those other settings. Be sure to research what your specific computer has installed so you know your not overworking your host computer.
+* You can also increase settings such as processors or video memory, depending on what hardware your laptop or desktop computer has installed. See if increasing the memory helps, and if your VM is still laggy, try increasing some of those other settings. Be sure to research what your specific computer has installed so you know you're not overworking your host computer.
 
 ### 7. Using a Desktop Environment
 
