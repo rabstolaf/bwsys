@@ -102,7 +102,7 @@ By default, the Ubuntu server we've just installed can *only* be interacted with
 
 ---
 
-### 6. Increasing VM Performance
+## 6. Increasing VM Performance
 
 Depending on your VirtualBox settings, your VM might feel slower now that you have a desktop environment installed, as they tend to use a more system resources (memory, processing power). One way to increase the responsiveness of your VM is to allot it more RAM (Random Access Memory), as RAM is used to run programs. More memory means your computer can run more programs, faster.
 
@@ -122,7 +122,7 @@ Depending on your VirtualBox settings, your VM might feel slower now that you ha
 
 * You can also increase settings such as processors or video memory, depending on what hardware your laptop or desktop computer has installed. See if increasing the memory helps, and if your VM is still laggy, try increasing some of those other settings. Be sure to research what your specific computer has installed so you know you're not overworking your host computer.
 
-### 7. Using a Desktop Environment
+## 7. Using a Desktop Environment
 
 Depending on which desktop enviornment you installed, you'll have different utilities and programs available. All enviornments will have some way to type commands, usually in a program called a Terminal. In Mate, the program is called MATE Terminal, in the System Tools menu, accessed from the top left of your VM screen. You can pin this program to your Desktop by right clicking it.  
 
