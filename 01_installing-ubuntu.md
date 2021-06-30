@@ -142,6 +142,8 @@ Although you now have a way to graphically interact with your VM, you still can'
 * Reboot your VM, and you should now be able to drag files from your VM to your Host, and your clipboard (copy/paste) should be shared between both machines. 
 * To paste into a terminal, use <KBD>Ctrl</KBD><KBD>Shift</KBD><KBD>V</KBD>. You can also right click and select either copy or paste.
 * Now that Guest Additions is installed, you can also set the VM to automatically resize the display based on the size of the VM window. Find this setting under the View menu.
+* You can also eject the (virtual) Guest Additions CD with the `eject` command
+* `$ eject`
 
 
 * Restart your VM and proceed to the next section!
