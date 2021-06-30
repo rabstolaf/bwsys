@@ -28,6 +28,7 @@ Have fun!
 ## Glossary of Terms
 
 * **VM** &mdash; Virtual Machine
+* **Ubuntu** &mdash; a Linux operating system
 * **Cluster** &mdash; Network of computers working together
 * **server** &mdash; a computer that manages access to centralized resources and services in a network
 * **client** &mdash; a workstation that is capable of obtaining information and applications from a server
@@ -49,3 +50,6 @@ Have fun!
 * **Network Interface** &mdash; Point of connection between a computer and a network
 * **LVM** &mdash; Logical Volume Manager
 * **TFTP** &mdash; Trivial File Transfer Protocol
+* **VPN** &mdash; Virtual private network, allows one to connect to servers inside a protected network
+
+

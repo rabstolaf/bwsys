@@ -7,6 +7,8 @@ After that, there is a link to a website that can help you get familiar with the
 
 Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine (see README).
 
+Also, note that depending on how VirtualBox is configured on your computer, sometimes your mouse can become locked into your virtual machine, and you won't be able to move the mouse outside of it. Press the right <kbd>Ctrl</kbd> button to release the mouse if this happens and you need to use a program outside of the virtual machine.
+
 ## 1. Create a Virtual Machine (VM)
 
 * Open VirtualBox and click on *New* to create a new VM
@@ -36,28 +38,61 @@ In that case, partition it logically keeping enough space for `/` and `/home` di
 * Fill in the fields appropriately. You will need to remember your *username* and *password*.
 It is recommended to use your St. Olaf *username* but not your St. Olaf *password*.
 Hit *Done* and wait for installation to finish
-* If prompted, install the `OpenSSH Server`
+* If prompted, install the `OpenSSH Server` by pressing the the space button to check the box and enter to proceed.
 * If a screen pops up with a list of things to install, you may disregard it and select *Done*
 * Hit *Reboot Now* and press *Enter* when prompted to remove installation media
 * After reboot finishes, you should be able to login with your *username* and *password*!
 
 ---
 
+## 3. Command Line Basics
+
 The rest of the tutorial consists of typing a lot of commands which will be written in the following manner:
 
 `$ ls -lah`
 
-Some commands would require more permissions to run them, use `sudo` with the command in that case.
+Note that the $ is not part of the command you type, and that the command line in your virtual machine has also has a $ at the end of the line. The $ generally indicates that you're running commands without root privileges. When running commands as root, the command line will generally have a # symbol at the end of the command line. While some commands require you to become root, it's best to avoid using root unless necessary, as it becomes a lot easier to break important components of your system.   
+
+To run a command as root, preface your command with the command `sudo`. To see this, first try running this command:
+
+`$ apt update`
+
+You'll see some errors that include messages like "Permission denied". This sort of error message indicates that you might need root privileges to execute the command. Sometimes programs will include a message asking "Are you root?" in their error messages if you need to run them as root, but sometimes you'll only see a generic "Permission denied". One remedy to this problem is to use the `sudo` command to run a command as root. Try typing the same command as earlier, but with `sudo` in front:
+
+`$ sudo apt update`
+
+If this is the first time you're using `sudo` on this session, you'll be prompted to enter your password. Note that neither the letters you type nor asterisk will actually appear in the terminal. Press enter once you've typed in your password, and you should see the command execute sucessfully.
+
+One last trick: the following command executes your last run command, but as root. This can be helpful if you just typed a long command but forgot to put sudo in front. Try it like this:
+
+`$ apt upgrade`  
+*You'll see error messages here indicating your lack of permissions*  
+`$ sudo !!`  
+
+
 It is advised to not become `root` while going through this training, unless absolutely necessary.
 
 ---
 
-## 3. Update and Install Some Packages
+## 4. Update and Install Some Packages
 
-* `$ apt update` and `$ apt upgrade` &mdash; These two commands are used to update the versions of already installed packages on the machine
+* `$ apt update` and `$ apt upgrade` &mdash; These two commands are used to update the versions of already installed packages on the machine. Run them now, if you didn't earlier.
 * `$ apt install <package_name>` &mdash; used for installing new packages
 * **Install the following packages**: `w3m`, `iptables`, `openssh-client`, `wget`, `nano`, `info`, `man-db`, `manpages`, `friendly-recovery`, `tmux`, `grub2`, `traceroute`, `bash-completion`, `command-not-found`, `dnsutils`, `lshw`, `lsof`, `mtr`, `psmisc`, `tcpdump`, `apt-transport-https`, `update-manager-core`, `gcc`, `g++`, `libtool`, `gedit`, `emacs`, `ssh`, `sshpass`, `xorg`, `make`
 * If you are new to the Linux Command Line, you may find [this link](https://web.archive.org/web/20180104184520/http://linuxcommand.org/lc3_lts0010.php) useful to get familiar with the basic commands.
+
+---
+
+## 5. Installing a Desktop Environment
+
+By default, the Ubuntu server we've just installed can *only* be interacted with through the command line. It's important to be comfortable with typing commands and learning about a computer with just a command line, but it can be slightly intimidating at first. Installing a desktop enviroment can make your virtual machine look at bit more familiar, but we'll also need to install one to use a program to connect St. Olaf's network using a VPN. 
+
+* Begin by installing the tasksel utility
+* `$ sudo apt install tasksel`
+* There are a lot of different desktop environments you can install. [This link](https://phoenixnap.com/kb/how-to-install-a-gui-on-ubuntu) has a few listed with some pictures and descriptions.
+* If you're not sure which to install, Mate is a good balance between performance and aesthetics. Install it with this command, or replace the "ubuntu-mate-core" with a different one if you'd rather something else.
+* `sudo tasksel install ubuntu-mate-core`
+* The desktop environment will take a bit to install, and you'll also notice your VM will take a bit longer to boot up now.
 * `$ sudo shutdown now` and `$ sudo reboot now` are command line instructions to shutdown and restart your VM
 * <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F2</kbd> &mdash; Use this or any other key like <kbd>F3</kbd> or <kbd>F4</kbd> to open another terminal
 * Restart your VM and proceed to the next section!
