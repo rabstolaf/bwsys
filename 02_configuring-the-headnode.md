@@ -14,6 +14,19 @@ Lastly, we configure NAT and DHCP so that our golden node can get a proper ip ad
 
 Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before proceeding with this document.
 
+### Modifying configuration files
+
+In this section, and later in the training, we'll be modifying a lot of configuration files, which are generally text files (although many have .conf extensions) which list variables and their values. You can use a command line tool, like `nano` or `vim`, or a graphical text editor, like `gedit`. 
+
+If you're not already familiar with a command line text editing tool, it's probably wise to read about either [nano](https://linuxize.com/post/how-to-use-nano-text-editor/) or [vim](https://opensource.com/article/19/3/getting-started-vim), since there will inevitably be times where you're working with a computer that has no graphical interface, so you'll *have* to edit files via a command line tool. `nano` is slightly easier to pick up, but `vim` has a great deal of power, once you understand how to use it.
+
+Note that some of the files we'll be modifying will require `root` access. For example, to edit `/etc/dhcp/dhcpd.conf`, you could type something like one of the following, depending on which editor you wanted to use:  
+
+`$ sudo nano /etc/dhcp/dhcpd.conf`  
+`$ sudo gedit /etc/dhcp/dhcpd.conf`
+
+
+
 ## 1. Setting Up NTP
 
 > NTP is used for synchronizing clocks between computer systems.
@@ -24,8 +37,8 @@ Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before 
 * If you notice that your timezone is not set correctly, you have to fix it.
 	* The file `/etc/localtime` is a symlink to your timezone. 
 	* `$ rm /etc/localtime` &mdash; delete the file
-	* `$ ln -s /usr/share/zoneinfo/US/Central /etc/timezone` &mdash; create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.
-* `$ apt install ntp`
+	* `$ sudo ln -s /usr/share/zoneinfo/US/Central /etc/timezone` &mdash; create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.
+* `$ sudo apt install ntp`
 * We need to edit the `/etc/ntp.conf` file to make the machine access time from the St. Olaf time servers to enable faster time synchronization.
 	* Comment out all lines that access ubuntu time servers for the time
 	* Add `timehost.stolaf.edu` as a time server instead
