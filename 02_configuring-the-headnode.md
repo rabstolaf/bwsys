@@ -155,7 +155,7 @@ Be sure to use spaces and **not tabs** in the file.
 	* You can also start the program from a command line, with the following command:
 	* `$ gpclient`
 * Once you've launched the program, enter `pan.stolaf.edu`, and enter your St. Olaf username and password into the Google sign-in that appears
-* To test that you've connected, check your network interfaces and 
+* To test that you've connected, check your network interfaces and if your headnode can talk to St. Olaf servers:
 	* `$ ip ad` &mdash; you should see an interface named something like `tun0` with an address of something similar to `10.6.98.25` listed as one of your interfaces.
 	* `$ ping -c 2 ad.stolaf.edu` &mdash; This command will attempt to contact a server we'll need later. If you get a message saying something like `Name or service not found` or `100% packet loss`, your VPN is not properly configured.
 * While you'll have to relaunch the VPN program every time you reboot your VM, you should only have to sign in once. If you notice internet connectivity issues with your headnode or worker nodes later in the training, make sure that the VPN program is running and connected.
