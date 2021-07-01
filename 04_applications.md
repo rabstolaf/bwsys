@@ -49,7 +49,7 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
   * `sudo update-alternatives --install "/usr/bin/${prog}" "$prog" "/opt/openmpi/bin/${prog}" 1` &mdash; this command should run for every `prog` in the following list:
 `mpiexec` `ompi-clean` `orte-clean` `mpic++` `mpif77` `ompi_info` `orted` `mpicc` `mpif90` `ompi-server` `orte-info` `mpiCC` `mpifort` `opal_wrapper` `orterun` `mpicxx` `mpirun` `ortecc` `orte-server`
   * Change the permissions of the script file and execute it with the programs listed above as argument
-* You can test this step fully when setting up the Golden Node, but you should be able to at least run `$ mpirun` and recieve output saying that `mpirun could not find anything to do`
+* You can test this step fully when setting up the Golden Node, but you should be able to at least run `$ mpirun` and receive output saying that `mpirun could not find anything to do`
 
 ## 4. Netbooting
 

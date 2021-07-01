@@ -55,7 +55,7 @@ If they are, then you did it right!
 
 > This step modifies the `/etc/sudoers.tmp` file.
 > This is necessary to let people in a group be able to use `sudo` on your machine.
-> To learn more about this file and changing it, refer to [this link](https://www.garron.me/en/linux/visudo-command-sudoers-file-sudo-default-editor.html).
+> To learn more about this file and how to change it, refer to [this link](https://www.garron.me/en/linux/visudo-command-sudoers-file-sudo-default-editor.html).
 
 * `$ groupadd bw-sudo` &mdash; Create a new group called "bw-sudo"
 * `$ visudo` &mdash; this opens up the `/etc/sudoers.tmp` file
@@ -67,7 +67,7 @@ If they are, then you did it right!
 ## 3. Passwordless SSH
 
 > SSH helps set up a secure connection between two machines.
-> Passwordless SSH would not require you to type in your password everytime you try to establish the connection.
+> Passwordless SSH would not require you to type in your password every time you try to establish the connection.
 > Go to [this website](https://www.ssh.com/ssh/protocol/) to learn more about SSH.
 > [This link](https://blog.tinned-software.net/ssh-passwordless-login-with-ssh-key/) may be useful for learning about SSH Keys and Passwordless SSH.
 
@@ -80,7 +80,7 @@ If they are, then you did it right!
 ## 4. Adding hosts
 
 > This step modifies the `/etc/hosts` file and adds IP addresses corresponding to the worker nodes that we will use in setting up our cluster.
-> [This discussion](https://askubuntu.com/questions/183176/what-is-the-use-of-etc-hosts) gives a nice idea about the intents and purposes for editing this file.
+> [This discussion](https://askubuntu.com/questions/183176/what-is-the-use-of-etc-hosts) gives a nice idea about the intentions and purposes for editing this file.
 
 * We need to edit the `/etc/hosts` file to add the worker nodes in our cluster
   * Add a new line for every worker node you want to add.
@@ -93,7 +93,7 @@ If they are, then you did it right!
 ## 5. Configure Networking Interfaces
 
 > In this step, we will configure the networking interfaces on our machine.
-> One interface will receive DHCP from St. Olaf and the other (Internal Network) will be connected to our our cluster.
+> One interface will receive DHCP from St. Olaf and the other (Internal Network) will be connected to our cluster.
 > We will do this using `netplan`.
 > [This document](https://www.howtoforge.com/linux-basics-set-a-static-ip-on-ubuntu) explains how to do this.
 > Google networking terms and concepts you are unfamiliar with.
@@ -139,7 +139,7 @@ Be sure to use spaces and **not tabs** in the file.
 	* `$ sudo apt install openconnect`
 	* Ensure that you've downloaded the correct version of openconnect. We need to be using at least version 8, so run the following command and make sure that the version number is greater than or equal to 8.
 	* `$ openconnect --version`
-	* If the version is 7 or lower, ensure that you added the repository correctly and didn't recieve any error messages.
+	* If the version is 7 or lower, ensure that you added the repository correctly and didn't receive any error messages.
 * Install other dependencies:
 	* `$ sudo apt install qt5-default libqt5websockets5-dev qtwebengine5-dev qttools5-dev`
 * Build the program from source code:
@@ -156,7 +156,7 @@ Be sure to use spaces and **not tabs** in the file.
 	* `$ gpclient`
 * Once you've launched the program, enter `pan.stolaf.edu`, and enter your St. Olaf username and password into the Google sign-in that appears
 * To test that you've connected, check your network interfaces and 
-	* `$ ip ad` &mdash; you should see an interface named something like `tun0` with an address of something similiar to `10.6.98.25` listed as one of your interfaces.
+	* `$ ip ad` &mdash; you should see an interface named something like `tun0` with an address of something similar to `10.6.98.25` listed as one of your interfaces.
 	* `$ ping -c 2 ad.stolaf.edu` &mdash; This command will attempt to contact a server we'll need later. If you get a message saying something like `Name or service not found` or `100% packet loss`, your VPN is not properly configured.
 * While you'll have to relaunch the VPN program every time you reboot your VM, you should only have to sign in once. If you notice internet connectivity issues with your headnode or worker nodes later in the training, make sure that the VPN program is running and connected.
 
@@ -175,7 +175,7 @@ Be sure to use spaces and **not tabs** in the file.
   * The files you have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and maybe `/etc/nsswitch.conf`.
 These are the files that contain the LDAP configuration.
   * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
-  * Ask a Cluster Manager for bind password.
+  * Ask a Cluster Manager for the bind password.
   * At the end of both the files, put `TLS_REQCERT never`
   * Modify `/etc/nsswitch.conf` file and set the `hosts` line to `files mdns4_minimal [NOTFOUND=return] dns mdns4`
 
@@ -199,7 +199,7 @@ Be careful when you modify it
 * `$ iptables -t nat -L` &mdash; this will list out all present iptables rule.
 This should be clean.
 If not, run `$ iptables -t nat -F`.
-* `$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your St. Olaf network facing interface. To allow your worker nodes access to St. Olaf's network, this will be the the `tun0` interface.
+* `$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your St. Olaf network facing interface. To allow your worker nodes access to St. Olaf's network, this will be the `tun0` interface.
 This command will mask the IP addresses of your cluster so that the nodes can access the internet
 * List the rules again to see if the rule was added
 * `$ sudo apt install iptables-persistent` &mdash; this package will permanently save your iptable rules (which does not happen otherwise).

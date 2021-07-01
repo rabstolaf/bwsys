@@ -1,16 +1,18 @@
 # Golden Node Configuration
 
-After updating the repository and upgrading packages on your Golden Node, we will update the `/etc/hosts` file and enable passworldless ssh.
+After updating the repository and upgrading packages on your Golden Node, we will update the `/etc/hosts` file and enable passwordless ssh.
 Then we use NFS to mount our `/home` and `/opt` folders from our headnode onto the golden node.
 Next, we set the headnode as the NTP server for the headnode and install and configure LDAP.
 Finally, we redo the OpenMPI steps that we did for the headnode.
 
 ## 1. Update `/etc/hosts` file
 
-> This file is mainly for hostname resolving, include the same information about the headnode and worker addresses that you used when setting up the headnode host file. 
+> This file is for hostname resolving, so make this file identical to the headnode's host file.
 > Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
 
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
+* You could also use `scp` to copy the file from the headnode to the golden node: 
+* `$ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts`
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
 
 ## 2. Passwordless SSH
@@ -77,7 +79,7 @@ Do the same except the following:
 This is the end of the Cluster Manager Training!
 Congratulations for making it!
 Feel free to go through the training multiple times as that will give you a better understanding of how everything works.
-There will be serveral other documents with information about other stuff you can learn.
+There will be several other documents with information about other stuff you can learn.
 All of them will build off of this basic training.
 That means that you are mostly free to read through and work with those documents in any order you want.
 Best of luck!
