@@ -1,11 +1,10 @@
 # Bash Scripting Lesson
-This document will cover the basic features of bash scripting
-There times where I reference the following link, as it is very comprehensive
+This document will cover the basic features of bash scripting. Take a look at the following link, as it is very comprehensive:
 #### [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 
 ## Introduction
-Bash is a very common shell interface on linux machines. Bash scripts are often used to take make repetative tasks simple, or automate a process.
-Any line begining with a $ will be a command line command.
+Bash is a very common shell interface on Linux machines. Bash scripts are often used to make repetitive tasks simple, or automate a process.
+Any line beginning with a `$` will be a command line command.
 
 ## Basics
 To create your first script,
@@ -13,7 +12,7 @@ To create your first script,
 $ touch myscript.sh
 ```
 This will create an empty file named _myscript.sh_
-Notice the .sh file extension. This is not requrired but it is convention.
+Notice the .sh file extension. This is not required but it is a convention.
 
 Let's edit this file to create our first script.
 ```sh
@@ -51,15 +50,15 @@ Hello World!
 ```
 
 ## Variables
-Before we get into variables in scripting, lets try out variables on the command line first.
+Before we get into variables in scripting, let's try out variables on the command line first.
 ```sh
 $ A=apple
 $ echo $A
 apple
 ```
-These lines set A to the string apple, keep in mind that you canno't have any spaces.
+These lines set A to the string apple, keep in mind that you can't have any spaces.
 To read the variable, put a dollar sign in front of its name.
-Bash has many special variables with information about the enviroment, called enviroment variables, they can be accessed the same as variables you set manualy, for example,
+Bash has many special variables with information about the environment, called environment variables, they can be accessed the same as variables you set manually, for example:
 ```sh
 $ echo $HOME
 /home/user
@@ -70,15 +69,17 @@ There are also special variables that can be accessed in side the script itself
 | $0 | Name of script |
 | $1,$2,...,$9 | Script Arguments 1 - 9 |
 |  $# | Number of arguments |
+| $@ | An array of all arguments |
 | $USER | Name of user running the script |
 | $HOSTNAME | Machine hostname|
 | $RANDOM | Returns a random number  |
+
 
 More variables can be found in the [Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 
 These are some of the basic variables
 
-One more thing to watch out for is variable scope, much like in other programming languags. A variable created in the script will not be avalible on the command line afterward unless you expicitly say so. This is done using the _export_ command.
+One more thing to watch out for is variable scope, much like in other programming languages. A variable created in the script will not be available on the command line afterward unless you explicitly say so. This is done using the _export_ command.
 To test this, in a new script, try exporting a variable
 ```sh
 #!/bin/bash
@@ -163,7 +164,7 @@ In this section we will get into options for control structures in bash scriptin
 This example will take a few things we have been over so far and combine them
 ```sh
 #!/bin/bash
-if [$1 -qt 100 ]
+if [$1 -gt 100 ]
 then
     echo You entered a number larger than 100
 fi
@@ -185,7 +186,7 @@ There are many test cases you can put in the square brackets ( _[ ]_ ). Here are
 [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 You can see that both of the if statements end their scope with _fi_
 
-Else if and Else also can be acomplished by adding
+Else if and Else also can be accomplished by adding
 ```sh
 if [ condition ]
 then
@@ -238,7 +239,7 @@ do
     commands
 done
 ```
-Sample implamentation
+Sample implementation
 ```sh
 #!/bin/bash
 i=0
@@ -317,7 +318,7 @@ In this section, we will cover some of more advanced options available in bash s
 
 ### Functions <a name="functions"></a>
 
-function delcarations come in two different forms
+function declarations  come in two different forms
 ```sh
 func1 () {
     commands
@@ -361,7 +362,7 @@ $ ./functionReturn.sh
 This is a function
 3
 ```
-The value of the most recent funtion's return value is stored in the variable '?' and can be accessed with '$?'
+The value of the most recent function's return value is stored in the variable '?' and can be accessed with '$?'
 
 ### User Interface <a name="userinterface"></a>
 
@@ -369,7 +370,7 @@ So far the backend of the bash scripts are looking promising. However the front 
 
 #### tput
 The tput command is a very powerful tool for output formatting.
-It can get very complex fast so lets take it one step at a time and put them together at the end.
+It can get very complex fast so let's take it one step at a time and put them together at the end.
 Try entering this in your command line:
 ```sh
 $ tput cols
@@ -378,7 +379,7 @@ $ tput lines
 ```
 These commands will show you how many columns and rows your current terminal window contains. These numbers are useful for formatting what you want to display.
 
-In order to format a information display, it is useful to have a blank screen to work with.
+In order to format an information display, it is useful to have a blank screen to work with.
 ```sh
 $ tput clear
 ```
@@ -387,9 +388,9 @@ Next enter this command:
 ```sh
 $ tput cup 0 0
 ```
-the cup command will move your cursor to the specified row and column. In this case it should have returned your cursor to the top of the screen (0,0).
+The cup command will move your cursor to the specified row and column. In this case it should have returned your cursor to the top of the screen (0,0).
 
-You can also do text formating commands with tput for example,
+You can also do text formatting commands with tput for example,
 ```sh
 $ tput bold
 ```
@@ -440,16 +441,16 @@ This will execute the _id -u_ command before the _chown_ like so
 ```sh
 sudo chown 1000 /dir
 ```
-Backticks are usefull but can be picky if you wanted to have a backslash (\\) in your command because it will escape it. 
+Backticks are useful but can be picky if you want to have a backslash (\\) in your command because they will escape it. 
 There is a newer way of executing commands inside of commands that we have already seen used for variable values.
 ```sh
 #!/bin/bash
 
 sudo chown $(id -u) /dir
 ```
-This will acomplish the same thing as before.
+This will accomplish the same thing as before.
 
-### More usefull features <a name="format"></a>
+### More useful features <a name="format"></a>
 This section will focus on a few best practices for making your scripts more uniform and readable.
 
 #### Arguments
@@ -469,13 +470,13 @@ set -o errexit
 
 ...
 ```
-This is a very important line to have in longer, important scripts expecialy.
+This is a very important line to have in longer, important scripts especially.
 It makes sure that when there is an error in the script, it closes.
 If this is not set it could get out of control. 
 
 #### Startup Scripts
-You will find it useful as times to be able to run a script every time you start up your machine.
-These would be commands you want to run maybe to start services that you want on as soon as you boot the machine, without having to manualy start them.
+You will find it useful at times to be able to run a script every time you start up your machine.
+These would be commands you want to run, maybe to start services that you want on as soon as you boot the machine, without having to manually start them.
 To run a script on startup, place it, with execute privilege in the directory
 ```sh
 /etc/init.d/
@@ -485,7 +486,7 @@ To run a script on startup, place it, with execute privilege in the directory
 ### Other Types of Scripts <a name="otherscripts"></a>
 
 This lesson has focussed on bash scripting, however, these types of script files are not restrained to just bash.
-By changeing the shebang path, you can change what interpreter is used for the file. This means that if you put something like 
+By changing the shebang path, you can change what interpreter is used for the file. This means that if you put something like 
 ```sh
 #!/usr/bin/env python
 ```

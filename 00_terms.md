@@ -36,7 +36,7 @@ Have fun!
 * **DNS** &mdash; Domain Name System
 * **NAT** &mdash; Network Address Translation
 * **NFS** &mdash; Network File System
-* **LDAP** &mdash; Lighweight Directory Access Protocol
+* **LDAP** &mdash; Lightweight Directory Access Protocol
 * **NTP** &mdash; Network Time Protocol
 * **Shell Script** &mdash; A computer program designed to be run by the Unix shell
 * **SSH** &mdash; Secure SHell
