@@ -1,9 +1,9 @@
 # Golden Node Configuration
 
 After updating the repository and upgrading packages on your Golden Node, we will update the `/etc/hosts` file and enable passwordless ssh.
-Then we use NFS to mount our `/home` and `/opt` folders from our headnode onto the golden node.
+Then we use NFS to mount our `/home` and `/opt` folders from our headnode onto the Golden Node.
 Next, we set the headnode as the NTP server for the headnode and install and configure LDAP.
-Finally, we redo the OpenMPI steps that we did for the headnode.
+Finally, we configure Golden Node so that it can use OpenMPI.
 
 ## 1. Update `/etc/hosts` file
 
@@ -11,7 +11,7 @@ Finally, we redo the OpenMPI steps that we did for the headnode.
 > Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
 
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
-* You could also use `scp` to copy the file from the headnode to the golden node: 
+* You could also use `scp` to copy the file from the headnode to the Golden Node: 
 * `$ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts`
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
 
@@ -43,7 +43,7 @@ This will show you the directories available for mounting from your headnode
 <br/>`*headnode*:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
 <br/>`*headnode*:/opt 	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
 * `$ mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
-* You might have to log out and log back in to your golden node for this mounting to take effect
+* You might have to log out and log back in to your Golden Node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
 
 ## 4. NTP
@@ -66,7 +66,9 @@ Do the same except the following:
 
 * `$ apt install libnss-ldap libpam-ldap`
 * Follow through the instructions and do exactly what you did for the headnode
-* This essentially means that `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` should be the same as the ones in your headnode
+* This essentially means that `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` should be the same as the ones in your headnode.
+* As with the hosts file, you could use `scp` to copy the configuration files from the headnode:
+  * `$ sudo scp *user*@*headnode*:/etc/ldap.conf /etc/ldap.conf`&mdash; where \*user\* and \*headnode\* are the username and address of your headnode. Assuming your hosts file is setup, you should be able to type `headnode` literally. 
 * Test it the same way you tested for the headnode
 
 ## 6. OpenMPI
@@ -76,7 +78,7 @@ Do the same except the following:
 
 ***
 
-This is the end of the Cluster Manager Training!
+This is the end of the Remote Cluster Manager Training!
 Congratulations for making it!
 Feel free to go through the training multiple times as that will give you a better understanding of how everything works.
 There will be several other documents with information about other stuff you can learn.
