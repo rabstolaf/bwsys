@@ -6,7 +6,7 @@ First, we synchronize time on our machine using NTP.
 After that, we modify the `/etc/sudoers` file to allow `sudo` permissions for a newly created group.
 We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes.
 After that, we activate our second network interface and configure it to have a static ip address.
-We use NFS to publish our home directory from the headnode.
+We use NFS to publish our `/home` and `/opt` folders from the headnode.
 Then, we install and configure the GlobalProtect VPN, so we can access St. Olaf's servers from off-campus.
 Next, we configure our machine to access the St. Olaf LDAP server to login to our machine using our St.Olaf credentials.
 Lastly, we configure NAT and DHCP so that our golden node can get a proper ip address and connect to the internet.
@@ -121,7 +121,7 @@ Be sure to use spaces and **not tabs** in the file.
 * `$ apt install nfs-kernel-server` &mdash; this package controls the NFS mounting
 * Open the `/etc/exports` file
 * Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
-* Add the line `/opt	10.0.0.0/24(rw,sync)` &mdash; 
+* Add the line `/opt	10.0.0.0/24(rw,sync)`
 * Save and exit
 * `$ exportfs -a` &mdash; have changes to /etc/exports take effect immediately
 * `$ showmount -e` &mdash; this should show you the folder that you published
