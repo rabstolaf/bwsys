@@ -146,7 +146,7 @@ Be sure to use spaces and **not tabs** in the file.
 	* `$ git clone https://github.com/yuezk/GlobalProtect-openconnect.git` &mdash; download the source code
 	* `$ cd GlobalProtect-openconnect`
 	* `$ git submodule update --init`
-	* `$ qmake or qmake-qt5`
+	* `$ qmake`
 	* `$ qmake CONFIG+=release`
 	* `$ make` &mdash; note: this command will take a long time to run.
 	* `$ sudo make install`
