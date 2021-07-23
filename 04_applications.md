@@ -33,16 +33,30 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
 
 ## 3. OpenMPI
 
-> Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.
+> Now, this is where you actually get to use the cluster! Open MPI is a library that allows us to run job(s) (programs, written in C or C++) on multiple computers, in this case, on your cluster of Virtual Machines.
+> Open MPI is the open source version of Message Passing Interface (MPI). It is a standardized and portable message-passing implementation of MPI designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.
 > [This video](https://www.youtube.com/watch?v=D0-xSWBGNAw) gives a brief introduction on MPI and OpenMPI.
 
+> Installing Open MPI
+We will use `wget` to download the Open MPI. `wget` is a program that retrieves content from web pages. Here, we are retrieving a tarball from open-mpi.org.
 * `$ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz`
-* `$ tar -zxf openmpi-4.1.1.tar.gz` &mdash; extract it and go into the directory
+
+Next, we unzip the compressed archive file that we just downloaded. The file's extension or file type .tar.gz reflects two things:
+1. The `tar` command was used to collect multiple files which were combined into one archive file which is often referred to as a tarball. [The `tar` command](https://linux.die.net/man/1/tar) can also be used to send files over the internet. Take a look at this site to learn more. 
+2. The `gz` extension which is short for GNU Zip shows how the the archive file was compressed using the [`gzip` program](https://linux.die.net/man/1/gzip). File compression is the method computers use to make files smaller by reducing the number of bits (1's and 0's) used to store the information.
+
+
+In the following commmand, the -zxf option is a combination of two options. `-xf` tells `tar` to extract the files from the tarball and `-z` makes `tar` direct the tarball through gzip. 
+* `$ tar -zxf openmpi-4.1.1.tar.gz` &mdash; extract it and go into the directory. 
+
 * `$  ./configure --prefix=/usr/lib/openmpi-4.1.1` &mdash; this runs the `configure` script with the install location.
-This step will take some time.
+
+> This step will take some time.
+
 * `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`
 * `$ cd /usr/lib`
 * `$ ln -s openmpi-4.1.1 openmpi`
+
 * This step involves writing a script.
 Refer to [the scripting tutorial](03_scripting.md) to know more about how to do this.
   * `update-alternatives --install "/usr/bin/${prog}" "$prog" "/usr/lib/openmpi/bin/${prog}" 1` &mdash; this command should run for every `prog` in the following list:
