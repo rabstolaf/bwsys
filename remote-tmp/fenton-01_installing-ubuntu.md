@@ -18,7 +18,9 @@ Also, note that depending on how VirtualBox is configured on your computer, some
 * Click on the optical disk under *Controller: IDE* and then click on the tiny optical disk icon to the right under *Attributes* and select your **Ubuntu 18.04 Server** ISO file
 * Then go to *Network* (on the left pane) and attach *Adapter 1* to *Bridged Adapter*
   > This lets your VM access the internet. Refer to [this website](https://www.virtualbox.org/manual/ch06.html) to know more about this setting.
-  > If you're not on-campus and want to skip installing the GlobalProtect VPN on your VM, you can set *Adapter 1* to *NAT* and enable the VPN on your host machine. Then, simply disregard later instructions about installing and configuring GlobalProtect.
+<!-- removed globalprotect and copied to main document
+  > If you're not on-campus and want to skip installing the GlobalProtect VPN on your VM, you can set *Adapter 1* to *NAT* and enable the VPN on your host machine. Then, simply disregard later instructions about installing and configuring GlobalProtect. -->
+
 
 * Go to the *Adapter 2* tab and enable it. Attach it to *Internal Network* and give it some name.
 Click on the *Advanced* and set *Adapter Type* to "PCnet-FAST III" and *Promiscuous Mode* to "Allow All"
