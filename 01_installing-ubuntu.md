@@ -46,17 +46,30 @@ Hit *Done* and wait for installation to finish
 
 ## 3. Command Line Basics
 * The rest of the tutorial consists of typing a lot of commands which will be written in the following manner:
+
 $ ls -lah
-* Note that the $ is not part of the command you type, and that the command line in your virtual machine also has a $ at the end of the line. * The $ generally indicates that you're running commands without root privileges. When running commands as root, the command line will generally have a # symbol at the end of the command line. While some commands require you to become root, it's best to avoid using root unless necessary, as it becomes a lot easier to break important components of your system.
+
+* Note that the $ is not part of the command you type, and that the command line in your virtual machine also has a $ at the end of the line. 
+
+* The $ generally indicates that you're running commands without root privileges. When running commands as root, the command line will generally have a # symbol at the end of the command line. While some commands require you to become root, it's best to avoid using root unless necessary, as it becomes a lot easier to break important components of your system.
+
 * To run a command as root, preface your command with the command sudo. To see this, first try running this command:
 $ apt update
+
 * You'll see some errors that include messages like "Permission denied". This sort of error message indicates that you might need root privileges to execute the command. Sometimes programs will include a message asking "Are you root?" in their error messages if you need to run them as root, but sometimes you'll only see a generic "Permission denied". One remedy to this problem is to use the sudo command to run a command as root. Try typing the same command as earlier, but with sudo in front:
+
 $ sudo apt update
+
 * If this is the first time you're using sudo in this session, you'll be prompted to enter your password. Note that neither the letters you type nor asterisk will actually appear in the terminal. Press enter once you've typed in your password, and you should see the command execute successfully.
+
 * One last trick: the following command executes your last run command, but as root. This can be helpful if you just typed a long command but forgot to put sudo in front. Try it like this:
+
 $ apt upgrade
+
 * You'll see error messages here indicating your lack of permissions
+
 $ sudo !!
+
 * It is advised to not become root while going through this training, unless absolutely necessary.
 
 ## 4. Update and Install Some Packages
