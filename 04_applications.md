@@ -47,17 +47,16 @@ Next, we unzip the compressed archive file that we just downloaded. The file's e
 
 
 In the following commmand, the -zxf option is a combination of two options. `-xf` tells `tar` to extract the files from the tarball and `-z` makes `tar` direct the tarball through gzip. 
-* `$ tar -zxf openmpi-4.1.1.tar.gz` &mdash; extract it and go into the directory. 
+* `$ tar -zxf openmpi-4.1.1.tar.gz` &mdash; extract it and go into the directory.
+  * `tar` is a useful tool for wrapping and unwrapping various files and directories into and from (respectively) tarballs, which allow for easy compression and transfer of files. 
 
 * `$  ./configure --prefix=/usr/lib/openmpi-4.1.1` &mdash; this runs the `configure` script with the install location.
 
 > This step will take some time.
 
-The make commmand below is used to build the OpenMPI program. 
-
-[Here](https://www.ibm.com/docs/en/aix/7.2?topic=concepts-make-command) is a comprehensive document from IBM explaining the make command. Look at it if you would like. 
-
 * `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`
+  * `make` is a utility that serves for the compilation of large programs that have multiple prerequesites. With `sudo make all install` you run `make all` and `make install` together.
+  
 * `$ cd /usr/lib`
 * `$ ln -s openmpi-4.1.1 openmpi`
 
