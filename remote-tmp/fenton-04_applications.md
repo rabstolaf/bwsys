@@ -7,14 +7,14 @@ After that we install apt-cacher to create a local ubuntu mirror on our headnode
 Next we install and configure OpenMPI.
 Finally, we download the netbooting image for Ubuntu and configure our headnode to allow the golden node to netboot from it.
 
-## 1. Install etckeeper
+<!-- ## 1. Install etckeeper
 
 > `etckeeper` is a version control system for the `/etc` folder.
 > It automatically commits the changes you make to the `/etc` folder.
-
+-->
 * `$ sudo apt install etckeeper`
 
-## 2. Apt-Cacher
+## 1. Apt-Cacher
 
 > Apt-Cacher is a software to cache the applications in your headnode.
 > As a result, it acts like an ubuntu mirror for the other nodes.
@@ -31,7 +31,7 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
   * At the bottom, click `Start Import` and wait for it to finish
 * Done!
 
-## 3. OpenMPI
+## 2. OpenMPI
 
 > Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.
 > [This video](https://www.youtube.com/watch?v=D0-xSWBGNAw) gives a brief introduction on MPI and OpenMPI.
@@ -53,7 +53,7 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
   * Change the permissions of the script file and execute it with the programs listed above as argument
 * You can test this step fully when setting up the Golden Node, but you should be able to at least run `$ mpirun` and receive output saying that `mpirun could not find anything to do`
 
-## 4. Netbooting
+## 3. Netbooting
 
 > Netbooting will allow the Golden Node to boot using the network. The headnode will provide the installation file for the operating system.
 > [This link](https://www.howtogeek.com/57601/what-is-network-booting-pxe-and-how-can-you-use-it/) can help you understand this concept in greater detail.
