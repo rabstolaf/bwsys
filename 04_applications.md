@@ -53,6 +53,10 @@ In the following commmand, the -zxf option is a combination of two options. `-xf
 
 > This step will take some time.
 
+The make commmand below is used to build the OpenMPI program. 
+
+[Here](https://www.ibm.com/docs/en/aix/7.2?topic=concepts-make-command) is a comprehensive document from IBM explaining the make command. Look at it if you would like. 
+
 * `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`
 * `$ cd /usr/lib`
 * `$ ln -s openmpi-4.1.1 openmpi`
