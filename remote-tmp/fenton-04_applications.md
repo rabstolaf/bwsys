@@ -39,9 +39,11 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
 * `$ cd ~` &mdash; switch to your home directory, if you're not in it already
 * `$ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz`
 * `$ tar -zxf openmpi-4.1.1.tar.gz` &mdash; extract it and go into the directory
+  * `tar` is a useful tool for wrapping and unwrapping various files and directories into and from (respectively) tarballs, which allow for easy compression and transfer of files.
 * `$  ./configure --prefix=/opt/openmpi-4.1.1` &mdash; this runs the `configure` script with the install location.
 This step will take some time.
 * `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`
+  * `make` is a utility that serves for the compilation of large programs that have multiple prerequesites. With `sudo make all install` you run `make all` and `make install` together.
 * `$ cd /opt`
 * `$ ln -s openmpi-4.1.1 openmpi`
 * This step involves writing a script.
