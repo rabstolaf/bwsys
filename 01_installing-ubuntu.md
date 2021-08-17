@@ -7,6 +7,8 @@ After that, there is a link to a website that can help you get familiar with the
 
 Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine (see README).
 
+Also, note that depending on how VirtualBox is configured on your computer, sometimes your mouse can become locked into your virtual machine, and you won't be able to move the mouse outside of it. Press the right Ctrl button to release the mouse if this happens and you need to use a program outside of the virtual machine.
+
 ## 1. Create a Virtual Machine (VM)
 
 * Open VirtualBox and click on *New* to create a new VM
@@ -42,18 +44,36 @@ Hit *Done* and wait for installation to finish
 * Hit *Reboot Now* and press *Enter* when prompted to remove installation media
 * After reboot finishes, you should be able to login with your *username* and *password*!
 
----
+## 3. Command Line Basics
 
 The rest of the tutorial consists of typing a lot of commands which will be written in the following manner:
 
 `$ ls -lah`
 
-Some commands would require more permissions to run them, use `sudo` with the command in that case.
+Note that the `$` is not part of the command you type, and that the command line in your virtual machine also has a `$` at the end of the line. The `$` generally indicates that you're running commands without `root` privileges. When running commands as `root`, the command line will generally have a `#` symbol at the end of the command line. While some commands require you to become `root`, it's best to avoid using `root` unless necessary, as it becomes a lot easier to break important components of your system.   
+
+To run a command as `root`, preface your command with the command `sudo`. To see this, first try running this command:
+
+`$ apt update`
+
+You'll see some errors that include messages like "Permission denied". This sort of error message indicates that you might need `root` privileges to execute the command. Sometimes programs will include a message asking "Are you `root`?" in their error messages if you need to run them as `root`, but sometimes you'll only see a generic "Permission denied". One remedy to this problem is to use the `sudo` command to run a command as `root`. Try typing the same command as earlier, but with `sudo` in front:
+
+`$ sudo apt update`
+
+If this is the first time you're using `sudo` in this session, you'll be prompted to enter your password. Note that neither the letters you type nor asterisk will actually appear in the terminal. Press enter once you've typed in your password, and you should see the command execute successfully.
+
+One last trick: the following command executes your last run command, but as `root`. This can be helpful if you just typed a long command but forgot to put `sudo` in front. Try it like this:
+
+`$ apt upgrade`  
+*You'll see error messages here indicating your lack of permissions*  
+`$ sudo !!`  
+
+
 It is advised to not become `root` while going through this training, unless absolutely necessary.
 
 ---
 
-## 3. Update and Install Some Packages
+## 4. Update and Install Some Packages
 
 * `$ apt update` and `$ apt upgrade` &mdash; These two commands are used to update the versions of already installed packages on the machine
 * `$ apt install <package_name>` &mdash; used for installing new packages
