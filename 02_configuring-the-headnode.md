@@ -149,7 +149,7 @@ Be sure to use spaces and **not tabs** in the file.
 * `$ exportfs -a` &mdash; have changes to /etc/exports take effect immediately
 * `$ showmount -e` &mdash; this should show you the folder that you published
 
-##  This is only applicable if you are doing this training REMOTELY.  You will now configure your setting so as to use VPN now.
+##  This is only applicable if you are doing this training REMOTELY.  You will now configure your settings so as to use VPN now.
 
 * Activate your VPN.
 * Once its connected, go to the network settings of your head node(which is what you configuring)
