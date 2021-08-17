@@ -112,9 +112,9 @@ It's finally time to run our application. Run:
 
 <pre><code>python manage.py runserver 0.0.0.0:8000</pre></code>
 
-`0.0.0.0:8000` makes the app accessible to other computers. Without it, you would need to access it via `127.0.0.1:8000` from your VM only, and assuming that for this training you created a server, this would be no fun. If you don't know the VM's St. Olaf facing interface and its IPv4, use CONTROL+C and `ip ad` to find it. Then run the above command again. Now in, your computer, open up a browser and access the django app using `&#60;St. Olaf facing IP&#62;:8000`
+`0.0.0.0:8000` makes the app accessible to other computers. Without it, you would need to access it via `127.0.0.1:8000` from your VM only, and assuming that for this training you created a server, this would be no fun. If you don't know the VM's St. Olaf facing interface and its IPv4, use CONTROL+C and `ip ad` to find it. Then run the above command again. Now in, your computer, open up a browser and access the django app using `<St. Olaf facing IP>:8000`
 <br>
 
-Congratulations! You just created your very own Django app. Fun fact: `&#60;St. Olaf facing IP&#62;:8000/admin` takes you to the administration page where you can log in with your super user credentials.
+Congratulations! You just created your very own Django app. Fun fact: `<St. Olaf facing IP>:8000/admin ` takes you to the administration page where you can log in with your super user credentials.
 
 
