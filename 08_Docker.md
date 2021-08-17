@@ -9,20 +9,20 @@ Docker is a set of platform as a service products that use OS-level virtualizati
 A container is a “bag” of code, configuration, processes, networking, dependencies, and operating systems that is enough to execute an application
 ## 2. Installation
 * Remove old version of docker engine that was installed as default with Ubuntu 20.04 - LTS and 18.04 - LTS.
-'$ sudo apt-get remove docker docker-engine docker.io containerd runc'
+`$ apt-get remove docker docker-engine docker.io containerd runc`
 * Updating apt-get to be ready for installation. 
-'$ sudo apt-get update'
+`$ apt-get update`
 * Checking the following package apt-transport-https ca-certificates  curl  gnupg  lsb-release using the following command (replace <Package> with the name of the package):
-$ apt-cache show <Package>
+`$ apt-cache show <Package>`
 * Add docker keys for authentication and trust
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+`$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
 * Setting up a stable repository. The idea is to give the machine the latest release of general availability
-$ echo  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+`$ echo  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`
 * Finally install the latest version of docker-ce
-$ sudo apt-get update
-$ apt-get install docker-ce docker-ce-cli containerd.io
+`$ apt-get update`
+`$ apt-get install docker-ce docker-ce-cli containerd.io`
 * Running the hello-world container (build-in container to test installation)
-$ docker run hello-world
+`$ docker run hello-world`
 If the result includes a string “Hello from Docker!”, it means you have already successfully downloaded docker.
 
 ## 3. Docker workflow explanation
