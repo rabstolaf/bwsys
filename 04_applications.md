@@ -27,7 +27,8 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
   * `$ cp -laf /var/cache/apt/archives /var/cache/apt-cacher-ng/_import`
   * `$ chown apt-cacher-ng /var/cache/apt-cacher-ng/_import`
 * Import the repositories
-  * Replace "IP" with your headnode IP in this link and visit this link: `http://ip:3142/acng-report.html`
+  * Replace "IP" with your headnode IP that is connected to wifi in this link and visit this link: `http://ip:3142/acng-report.html`
+    * To find that use `ip ad` and find the IP that is **not** 127.0.0.1 **or** 10.0.0.254.
   * At the bottom, click `Start Import` and wait for it to finish
 * Done!
 
