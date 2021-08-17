@@ -7,14 +7,14 @@ After that we install apt-cacher to create a local ubuntu mirror on our headnode
 Next we install and configure OpenMPI.
 Finally, we download the netbooting image for Ubuntu and configure our headnode to allow the golden node to netboot from it.
 
-## 1. Install etckeeper
+<!-- ## 1. Install etckeeper
 
 > `etckeeper` is a version control system for the `/etc` folder.
 > It automatically commits the changes you make to the `/etc` folder.
 
 * `$ apt install etckeeper`
-
-## 2. Apt-Cacher
+-->
+## 1. Apt-Cacher
 
 > Apt-Cacher is a software to cache the applications in your headnode.
 > As a result, it acts like an ubuntu mirror for the other nodes.
@@ -31,7 +31,7 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
   * At the bottom, click `Start Import` and wait for it to finish
 * Done!
 
-## 3. OpenMPI
+## 2. OpenMPI
 
 > Now, this is where you actually get to use the cluster! Open MPI is a library that allows us to run job(s) (programs, written in C or C++) on multiple computers, in this case, on your cluster of Virtual Machines.
 > Open MPI is the open source version of Message Passing Interface (MPI). It is a standardized and portable message-passing implementation of MPI designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.
@@ -40,21 +40,20 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
 > Installing Open MPI
 We will use `wget` to download the Open MPI. `wget` is a program that retrieves content from web pages. Here, we are retrieving a tarball from open-mpi.org.
 * `$ wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz`
+  * `wget` is a tool for downloading files from online that aren't readily available in repositories (e.g. apt or git). That means that you need to know the URL to download from beforehand (download links can usually be copied by right-clicking and selecting copy-link. That is very useful when using ssh connections that allow for copying and pasting to and from a terminal connected to a different user).
+  * For more info on ssh view [this](https://www.youtube.com/watch?v=z7jVOenqFYk)
 
 Next, we unzip the compressed archive file that we just downloaded. The file's extension or file type .tar.gz reflects two things:
-1. The `tar` command was used to collect multiple files which were combined into one archive file which is often referred to as a tarball. [The `tar` command](https://linux.die.net/man/1/tar) can also be used to send files over the internet. Take a look at this site to learn more. 
+1. The `tar` command was used to collect multiple files which were combined into one archive file which is often referred to as a tarball, allowing for compression of files and more efficient data storage and transfer. [The `tar` command](https://linux.die.net/man/1/tar) can also be used to send files over the internet. Take a look at this site to learn more. 
 2. The `gz` extension which is short for GNU Zip shows how the the archive file was compressed using the [`gzip` program](https://linux.die.net/man/1/gzip). File compression is the method computers use to make files smaller by reducing the number of bits (1's and 0's) used to store the information.
 
 
-In the following commmand, the -zxf option is a combination of two options. `-xf` tells `tar` to extract the files from the tarball and `-z` makes `tar` direct the tarball through gzip. 
+In the following commmand, the -zxf option is a combination of two options. `-x` tells `tar` to extract the files from the tarball, `-f` is a flag representing that the next item in the command is the target (in our case the tarball) the `tar` command is to be carried out on and `-z` makes `tar` direct the tarball through gzip. 
 * `$ tar -zxf openmpi-4.1.1.tar.gz` &mdash; extract it and go into the directory.
-  * `tar` is a useful tool for wrapping and unwrapping various files and directories into and from (respectively) tarballs, which allow for easy compression and transfer of files. 
-
 * `$  ./configure --prefix=/usr/lib/openmpi-4.1.1` &mdash; this runs the `configure` script with the install location.
-
 > This step will take some time.
 
-* `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`
+* `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`, or you'll need to spend double the time on the command.
   * `make` is a utility that serves for the compilation of large programs that have multiple prerequesites. With `sudo make all install` you run `make all` and `make install` together.
   
 * `$ cd /usr/lib`
@@ -67,7 +66,7 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
   * Change the permissions of the script file and execute it with the programs listed above as argument
 * You can test this step when setting up the Golden Node
 
-## 4. Netbooting
+## 3. Netbooting
 
 > Netbooting will allow the Golden Node to boot using the network. The headnode will provide the installation file for the operating system.
 > [This link](https://www.howtogeek.com/57601/what-is-network-booting-pxe-and-how-can-you-use-it/) can help you understand this concept in greater detail.
