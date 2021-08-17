@@ -20,12 +20,12 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
 > As a result, it acts like an ubuntu mirror for the other nodes.
 > Here is a [link](https://www.unix-ag.uni-kl.de/~bloch/acng/html/index.html) to the `apt-cacher-ng` user manual.
 
-* `$ apt install apt-cacher-ng`
+* `$ sudo apt install apt-cacher-ng`
 * `$ echo 'Acquire::http { Proxy "http://localhost:3142"; };' | sudo tee /etc/apt/apt.conf.d/01proxy` &mdash; this sets port 3142 of your headnode as the proxy
-* `$ apt update` &mdash; update your repository before caching
+* `$ sudo apt update` &mdash; update your repository before caching
 * Import the apt cache
-  * `$ cp -laf /var/cache/apt/archives /var/cache/apt-cacher-ng/_import`
-  * `$ chown apt-cacher-ng /var/cache/apt-cacher-ng/_import`
+  * `$ sudo cp -laf /var/cache/apt/archives /var/cache/apt-cacher-ng/_import`
+  * `$ sudo chown apt-cacher-ng /var/cache/apt-cacher-ng/_import`
 * Import the repositories
   * Replace "IP" with your headnode IP that is connected to wifi in this link and visit this link: `http://ip:3142/acng-report.html`
     * To find that use `ip ad` and find the IP that is **not** 127.0.0.1 **or** 10.0.0.254.
