@@ -9,9 +9,9 @@ Docker is a set of platform as a service products that use OS-level virtualizati
 A container is a “bag” of code, configuration, processes, networking, dependencies, and operating systems that is enough to execute an application
 ## 2. Installation
 * Remove old version of docker engine that was installed as default with Ubuntu 20.04 - LTS and 18.04 - LTS.
-$ sudo apt-get remove docker docker-engine docker.io containerd runc
+'$ sudo apt-get remove docker docker-engine docker.io containerd runc'
 * Updating apt-get to be ready for installation. 
-$ sudo apt-get update
+'$ sudo apt-get update'
 * Checking the following package apt-transport-https ca-certificates  curl  gnupg  lsb-release using the following command (replace <Package> with the name of the package):
 $ apt-cache show <Package>
 * Add docker keys for authentication and trust
