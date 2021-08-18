@@ -8,7 +8,7 @@ This will involve letting your Golden Node netboot from the headnode.
 
 ## 1. Making the Virtual Machine
 
-> These are the instructions for creating your Golden Node on another Virtual Machine.
+> These are the instructions for creating your Golden Node.
 
 * Create another virtual machine on VirtualBox by clicking on "New".
 * Refer to the [first document](01_installing-ubuntu.md) for configurations and on how to do this.
