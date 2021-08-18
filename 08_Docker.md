@@ -36,6 +36,17 @@ If the result includes a string “Hello from Docker!”, it means you have alre
 ## 3. Docker workflow explanation
 Typically, a life cycle of a container start when you initialize it using the command `docker run`. After everything get setting up, the container status changing to the running status. Then the container will try to finish the task that was specified in either the image or the command line. When finishing executing the computation or request, the container then will be terminated and going to stopped container. In this status, you cannot access the container anymore. You either need to regenerate another container with the same configuration or commit the current status of the container. By committing the container, we create an image that catch the latest status of our desired container. This is the end of the life cycle of a container.
 ### a. Starting container
+To initialize a container, we will use `$ docker run` command. The information below will help you have a glance at this command.
+docker run [OPTION1] [CONTAINER_IMAGE_NAME:VERSION] [OPTION2]
+The following command is going to execute Container image with the version specified using the option provided in OPTION2 with special flags being called by OPTION1
+Some of the common and important OPTION1:
+-ti : terminal interactive
+--rm: remove the container after exit application
+-name: for naming the container. If you do not specify a name, docker will give it a random name
+-d : detached, leave the container running in the background
+-p: public port in and out. For instance -p 34567:34567 means we publish our port 34567 to connect to port 34567
+For more information, enter the following command:
+		docker run --help
 ### b. Running container
 ### c. Stopped container
 ### d. Commited Container (images/ status)
