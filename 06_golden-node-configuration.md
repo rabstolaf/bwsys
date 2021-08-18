@@ -20,6 +20,8 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 * $ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts
 <br/>Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
+  * $ ssh localhost should log you back into your machine
+  * $ ssh <worker_node> should give you a no route to host error
 
 ## 2. Passwordless SSH
 
@@ -78,14 +80,16 @@ Do the same except the following:
 <br/>Or:
 * You could use `scp` to copy the configuration files from the headnode:
   * `$ sudo scp *user*@*headnode*:/etc/ldap.conf /etc/ldap.conf`&mdash; where \*user\* and \*headnode\* are the username and address of your headnode. Assuming your hosts file is setup, you should be able to type `headnode` literally. 
-  * Remember, you would have to run the command above for each `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf`! 
+  * Remember, you would have to run the scp command for each `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf`!
 <br/>Then:
-* Test it the same way you tested for the headnode
+* Test it the same way you tested for the headnode (
+Logout of your VM and try to log back in using your St. Olaf username and password.
+If it works, then you did it right!)
 
 ## 6. OpenMPI
 
 * Using the mounted `/opt` folder, the golden node can access all the files needed to run OpenMPI via NFS. So, all you have to do is run the same script you wrote earlier to link the binaries in `/opt/openmpi/bin/` to your local `/usr/bin/`
-* Ex.`$ ./mpi_script.sh`
+* `$ ./mpi_script.sh`
 
 ***
 
