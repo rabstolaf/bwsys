@@ -11,8 +11,9 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 ## 1. Update `/etc/hosts` file
 
 > This file is mainly for hostname resolving, mapping a hostname to a specific IP address, so make this identical to the headnode's file.
-> Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.>
-<br/>Either:
+> Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
+>
+Either:
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
 <br/>Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
