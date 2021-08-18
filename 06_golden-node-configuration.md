@@ -12,12 +12,13 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 
 > This file is mainly for hostname resolving, mapping a hostname to a specific IP address, so make this identical to the headnode's file.
 > Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
-<br/>Either
+<br/>
+<br/>Either:
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
-<br/>Or
+<br/>Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
 * $ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts
-<br/>Then
+<br/>Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
 
 ## 2. Passwordless SSH
@@ -71,14 +72,14 @@ Do the same except the following:
 > So the configuration process is the same as well.
 
 * `$ apt install libnss-ldap libpam-ldap`
-<br/>Either
+<br/>Either:
 * Follow through the instructions and do exactly what you did for the headnode
 * This essentially means that `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` should be the same as the ones in your headnode
-<br/>Or 
+<br/>Or:
 * You could use `scp` to copy the configuration files from the headnode:
   * `$ sudo scp *user*@*headnode*:/etc/ldap.conf /etc/ldap.conf`&mdash; where \*user\* and \*headnode\* are the username and address of your headnode. Assuming your hosts file is setup, you should be able to type `headnode` literally. 
   * Remember, you would have to run the command above for each `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf`! 
-<br/>Then
+<br/>Then:
 * Test it the same way you tested for the headnode
 
 ## 6. OpenMPI
