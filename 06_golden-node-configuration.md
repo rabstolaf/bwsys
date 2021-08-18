@@ -12,14 +12,14 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 
 > This file is mainly for hostname resolving, mapping a hostname to a specific IP address, so make this identical to the headnode's file.
 > Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
->
+<br/>
 Either:
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
->
+<br/>
 Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
 * $ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts
->
+<br/>
 Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
 
