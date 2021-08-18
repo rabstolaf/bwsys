@@ -21,7 +21,7 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 <br/>Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
   * $ ssh localhost should log you back into your machine
-  * $ ssh <worker_node> should give you a no route to host error
+  * $ ssh <worker_node> should require a password to login
 
 ## 2. Passwordless SSH
 
