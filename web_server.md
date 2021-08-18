@@ -16,7 +16,7 @@ PostgreSQL is a robust database that can be used as the database for Django. Dja
 
 <br><br>
 
-## Making the required installations
+## 1. Making the required installations
 In order to get started things need to install the required packages. Run:
 
 <pre><code>sudo apt update
@@ -33,7 +33,7 @@ Now that the required installations are done, we will start configurations.
 
 <br><br>
 
-## Setting up the Database
+## 2. Setting up the Database
 Unfortunately, just installing the database package isn't enough. In this section, we will create a database and configure it.
 Enter the shell for configuring PostgreSQL through the `postgres` user, using:
 
@@ -55,7 +55,7 @@ Also take note of the database name the user and the password, as those will be 
 
 <br><br>
 
-## Setting up and Launching Django 
+## 3. Setting up and Launching Django 
 Create a directory to house your project and enter it (by now this should be easy). From now on the tutorial will assume that you will be in this directory at all times.
 To create a django project run:
 
