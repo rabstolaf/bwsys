@@ -12,7 +12,7 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 
 > This file is mainly for hostname resolving, mapping a hostname to a specific IP address, so make this identical to the headnode's file.
 > Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
-Lets go
+>
 <br/>Either:
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
 <br/>Or:
