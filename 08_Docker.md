@@ -94,17 +94,17 @@ Then start editing it. These are the 5 most common command syntax:
 
 Always start the Dockerfile with 
 
-FROM <BASED_IMAGE>:<VERSION>
+	FROM <BASED_IMAGE>:<VERSION>
 
 Replace the <BASED_IMAGE> and <VERSION> with your own based image. For example: FROM ubuntu:latest  means that I want to start from ubuntu image with the latest version
 
-RUN <COMMAND> : execute the command COMMAND and save that to an intermediate container image then using that intermediate image to start the next steps of building our container image. Finally remove the intermediate image.
+	RUN <COMMAND> : execute the command COMMAND and save that to an intermediate container image then using that intermediate image to start the next steps of building our container image. Finally remove the intermediate image.
 
-COPY <CONTAINER_DESIRED_DIR> <HOST_DIR> to copy a directory from host to container image
+	COPY <CONTAINER_DESIRED_DIR> <HOST_DIR> to copy a directory from host to container image
 
-WORKDIR <DIRECTORY> to change the directory that will be used for the rest of the building process
+	WORKDIR <DIRECTORY> to change the directory that will be used for the rest of the building process
 
-CMD (only 1 per Dockerfile).
+	CMD (only 1 per Dockerfile).
 
 Syntax: CMD “COMMAND1” “COMMAND2” …
 
