@@ -61,12 +61,19 @@ For more information, enter the following command:
 The container will try to execute the command that was specified in the either the container image or on the command line. This call the running container. However, usually it only took less than 10 seconds for every containers to finish executing and terminating. You can type `$ docker ps` for more information about the status of the container.
 However, if we want to keep a container "alive" (running). We need to use detach and attach mode of a container. Let take a look at the below step.
 If you enter, for instance:
+
 	docker run -d -ti ubuntu:latest
+
 And then, type:
+
 	docker ps -l	              (ps stands for processing status, -l means you want to see the last container that was run )
+
 If you look at the STATUS column, you will see something like this “UP 3 seconds” which means that the container is still running. To test this hypothesis, you can run the same docker ps command above again, the time that it ran will change again.
+
 To access (or attach) the running container, enter the following command: 
+
 		docker attach NAME_OF_CONTAINER/ID
+		
 Press CTRL + D to exit.
 ### c. Stopped container
 ### d. Commited Container (images/ status)
