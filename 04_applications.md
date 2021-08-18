@@ -51,7 +51,7 @@ Next, we unzip the compressed archive file that we just downloaded. The file's e
 
 In the following commmand, the -zxf option is a combination of two options. `-x` tells `tar` to extract the files from the tarball, `-f` is a flag representing that the next item in the command is the target (in our case the tarball) the `tar` command is to be carried out on and `-z` makes `tar` direct the tarball through gzip. 
 * `$ tar -zxf openmpi-4.1.1.tar.gz` &mdash; extract it and go into the directory.
-* `$  ./configure --prefix=/usr/lib/openmpi-4.1.1` &mdash; this runs the `configure` script with the install location.
+* `$ sudo ./configure --prefix=/usr/lib/openmpi-4.1.1` &mdash; this runs the `configure` script with the install location.
 > This step will take some time.
 
 * `$ sudo make all install` &mdash; this will take a long time, be sure to use `sudo`, or you'll need to spend double the time on the command.
