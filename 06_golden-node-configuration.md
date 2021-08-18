@@ -15,10 +15,12 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 >
 Either:
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
-<br/>Or:
+>
+Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
 * $ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts
-<br/>Then:
+>
+Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
 
 ## 2. Passwordless SSH
