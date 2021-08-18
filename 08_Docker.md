@@ -62,11 +62,11 @@ The container will try to execute the command that was specified in the either t
 However, if we want to keep a container "alive" (running). We need to use detach and attach mode of a container. Let take a look at the below step.
 If you enter, for instance:
 
-	docker run -d -ti ubuntu:latest
+		docker run -d -ti ubuntu:latest
 
 And then, type:
 
-	docker ps -l	              (ps stands for processing status, -l means you want to see the last container that was run )
+		docker ps -l	              (ps stands for processing status, -l means you want to see the last container that was run )
 
 If you look at the STATUS column, you will see something like this “UP 3 seconds” which means that the container is still running. To test this hypothesis, you can run the same docker ps command above again, the time that it ran will change again.
 
@@ -76,7 +76,15 @@ To access (or attach) the running container, enter the following command:
 		
 Press CTRL + D to exit.
 ### c. Stopped container
+After finish executing the request, the container will go to stopped status. At this point, you cannot access the container anymore. 
 ### d. Commited Container (images/ status)
+In case, you want to save the progress you have made with the container, we can create an image based on a stopped container (commiting the image to the registry).
+
+Whenever you modify something inside the image after the docker run command and exit, the change will still be there, however if you run it again, you will not see that change anymore since the previous change was put inside a stopped image. To make those changes visible and editable. We need to commit the change into a new container image by running the following command.
+
+		docker commit NAME_OF_CONTAINER/ID NEW_CONTAINER_IMAGE_NAME
+
+This will allow you to use docker run on the new image and see your changes.
 
 ## 4. Dockerfile basic concept
 
