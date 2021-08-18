@@ -1,19 +1,18 @@
 # Golden Node Setup
 
-This document is for setting up your Golden Node.
-This will be a worker node with ideal configuration.
-This node will be cloned to create all new worker nodes.
+This document is for setting up your Golden Node. The Golden Node is the worker node with ideal "worker node" configuration.
+This node is useful for creating other worker. The Golden Node can be cloned to create new worker nodes. 
 
-In this document, we will go through the steps of getting Ubuntu 18.04 Server running on this Golden Node.
+In this document, we will go through the steps of getting Ubuntu 18.04 Server running on this Golden Node. 
 This will involve letting your Golden Node netboot from the headnode.
 
 ## 1. Making the Virtual Machine
 
 > These are the instructions for creating your Golden Node on another Virtual Machine.
 
-* Create another virtual machine
-* Refer to the [first document](01_installing-ubuntu.md) for configurations and on how to do this
-* There is one change for this VM
+* Create another virtual machine on VirtualBox by clicking on "New".
+* Refer to the [first document](01_installing-ubuntu.md) for configurations and on how to do this.
+* Do the following for the Golden Node networking configuration: 
   * Under *Network*, enable only one *Adapter*
   * Connect it to *Internal Network* and give it the same name and advanced configuration as the *Internal Network* on your headnode VM
   * Take a note of the *MAC Address* of this VM
@@ -22,9 +21,9 @@ This will involve letting your Golden Node netboot from the headnode.
 
 > This will enable your headnode to get an IP Address from your headnode and netboot from it.
 
-* Go to your headnode and open the `/etc/dhcp/dhcpd.conf` file
-* Set the MAC Address of the first host to the MAC Address of the Golden Node VM
-* Save and Exit and restart the `isc-dhcp-server`
+* Go to your headnode and edit the `/etc/dhcp/dhcpd.conf` file. 
+* Set the MAC Address of the first host to the MAC Address of the Golden Node VM. Remember the MAC address can be found under *Setings>Network>Adapter1>Advanced>MAC Address*
+* Save and Exit and restart the `isc-dhcp-server` by running the command: `sudo systemctl restart isc-dhcp-server`
 
 ## 3. Boot the Golden Node
 
