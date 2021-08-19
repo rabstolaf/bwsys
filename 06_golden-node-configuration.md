@@ -1,12 +1,12 @@
 # Golden Node Configuration
 
 After updating the repository and upgrading packages on your Golden Node, we will:
--update the `/etc/hosts` file 
--enable passworldless ssh
--Use NFS to mount our `/home` and `/opt` folders from our headnode onto the golden node
--Set the headnode as the NTP server for the headnode
--Install and configure LDAP
--Configure Golden Node through the mounted `/opt` folder to use OpenMPI
+* update the `/etc/hosts` file 
+* enable passworldless ssh
+* Use NFS to mount our `/home` and `/opt` folders from our headnode onto the golden node
+* Set the headnode as the NTP server for the headnode
+* Install and configure LDAP
+* Configure Golden Node through the mounted `/opt` folder to use OpenMPI
 
 ## 1. Update `/etc/hosts` file
 
