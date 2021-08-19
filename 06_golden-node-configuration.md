@@ -53,7 +53,7 @@ This will show you the directories available for mounting from your headnode
 * `$ mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
 * You might have to log out and log back in to your golden node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
-* You will utilize your mounted `/opt` directory later with OpenMPI configuration.
+* You will utilize your mounted `/opt` directory later with OpenMPI configuration
 
 ## 4. NTP
 
@@ -92,7 +92,7 @@ If it works, then you did it right!)
 * `$ ./mpi_script.sh`
 
 ***
-
+* Should we put this part somewhere else? -> Depends how we are implementing the other parts and if this page is the last page.
 This is the end of the Cluster Manager Training!
 Congratulations for making it!
 Feel free to go through the training multiple times as that will give you a better understanding of how everything works.
