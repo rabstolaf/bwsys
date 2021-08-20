@@ -145,9 +145,10 @@ Be sure to use spaces and **not tabs** in the file.
 * `$ sudo apt install nfs-kernel-server` &mdash; this package controls the NFS mounting
 * Open the `/etc/exports` file
 * Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
+* Also add `/opt	10.0.0.0/24(rw,sync)` &mdash;
 * Save and exit
-* `$ exportfs -a` &mdash; have changes to /etc/exports take effect immediately
-* `$ showmount -e` &mdash; this should show you the folder that you published
+* `$ sudo exportfs -a` &mdash; have changes to /etc/exports take effect immediately
+* `$ sudo showmount -e` &mdash; this should show you the folder that you published
 
 ##  This is only applicable if you are doing this training REMOTELY.  You will now configure your settings so as to use VPN now.
 
