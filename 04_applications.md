@@ -14,6 +14,7 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
 
 * `$ apt install etckeeper`
 -->
+
 ## 1. Apt-Cacher
 
 > Apt-Cacher is a software to cache the applications in your headnode.
@@ -90,6 +91,6 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
 
 This concludes what we have to do on the headnode (for now)! Now we move on to another physical machine (or another virtual machine) that will be our Golden Node!
 
-[**PREVIOUS: Important Terms**](03_scripting.md). 
+[**PREVIOUS: Scripting basics**](03_scripting.md). 
 
-[**NEXT: Configuring the Head Node**](05_golden-node-setup.md)
+[**NEXT: Golden Node Setup**](05_golden-node-setup.md)
