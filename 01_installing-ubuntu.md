@@ -1,15 +1,14 @@
 # Installing Ubuntu
+Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine (see README).
 
 This is the first training document.
 This will take you through the steps for creating a virtual machine and configuring it properly.
 Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine. 
 The Server is a version of the operating system that comes with just a terminal/command line interface (CLI). 
-I does not have a Graphical User Interface (GUI) where you can use the mouse and click on things. 
+It does not have a Graphical User Interface (GUI) where you can use the mouse and click on things. 
 After that, there is a link to a website that can help you get familiar with the Linux Command Line environment.
 
-Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine (see README).
-
-Also, note that depending on how VirtualBox is configured on your computer, sometimes your mouse can become locked into your virtual machine, and you won't be able to move the mouse outside of it. Press the right Ctrl button to release the mouse if this happens and you need to use a program outside of the virtual machine.
+Also, note that depending on how VirtualBox is configured on your computer, sometimes your mouse can become locked on your virtual machine, and you won't be able to move the mouse outside of it. Press the right Ctrl button to release the mouse if this happens and you need to use a program outside of the virtual machine.
 
 ## 1. Create a Virtual Machine (VM)
 
@@ -29,7 +28,6 @@ Click on the *Advanced* and set *Adapter Type* to "PCnet-FAST III" and *Promiscu
 ## 2. Installing Ubuntu 18.04 Server
 
 * Start your VM, it should load up the installer
-
 * Note: Use the space bar for selecting.
 
 * Choose your language and keyboard layout and choose *Install Ubuntu*
@@ -80,8 +78,8 @@ It is advised to not become `root` while going through this training, unless abs
 
 ## 4. Update and Install Some Packages
 
-* `$ apt update` and `$ apt upgrade` &mdash; These two commands are used to update the versions of already installed packages on the machine
-* `$ apt install <package_name>` &mdash; used for installing new packages
+* `$ sudo apt update` and `$ sudo apt upgrade` &mdash; These two commands are used to update the versions of already installed packages on the machine
+* `$ sudo apt install <package_name>` &mdash; used for installing new packages
 * **Install the following packages**: `w3m`, `iptables`, `openssh-client`, `wget`, `nano`, `info`, `man-db`, `manpages`, `friendly-recovery`, `tmux`, `grub2`, `traceroute`, `bash-completion`, `command-not-found`, `dnsutils`, `lshw`, `lsof`, `mtr`, `psmisc`, `tcpdump`, `apt-transport-https`, `update-manager-core`, `gcc`, `g++`, `libtool`, `gedit`, `emacs`, `ssh`, `sshpass`, `xorg`, `make`
 * If you are new to the Linux Command Line, you may find [this link](https://web.archive.org/web/20180104184520/http://linuxcommand.org/lc3_lts0010.php) useful to get familiar with the basic commands.
 * `$ sudo shutdown now` and `$ sudo reboot now` are command line instructions to shutdown and restart your VM
