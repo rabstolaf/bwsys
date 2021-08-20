@@ -115,6 +115,6 @@ Or CMD [OPTION]
 
 
 
-[**PREVIOUS: Important Terms**](00_terms.md). 
+[**PREVIOUS: Creating More Nodes**](07_creating-more-nodes.md). 
 
-[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
+[**NEXT: Introduction to Kubernetes**](09_Kubernetes.md)
