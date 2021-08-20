@@ -1,6 +1,5 @@
 
 
+[**PREVIOUS: Introduction to Docker**](08_Docker.md). 
 
-[**PREVIOUS: Important Terms**](00_terms.md). 
-
-[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
+[**NEXT: Introduction to Djando**](10_web-server.md)
