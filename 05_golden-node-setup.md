@@ -26,7 +26,7 @@ This will involve letting your Golden Node netboot from the headnode.
 
 > This will enable your headnode to get an IP Address from your headnode and netboot from it.
 
-* Go to your headnode and edit the `/etc/dhcp/dhcpd.conf` file. Refer to the dhcpd [config file on this repository]("config_files") to see how this is done. 
+* Go to your headnode and edit the `/etc/dhcp/dhcpd.conf` file. Refer to the dhcpd [config file on this repository](config_files) to see how this is done. 
 * Set the MAC Address of the first host to the MAC Address of the Golden Node VM. Remember the MAC address can be found under *Setings>Network>Adapter1>Advanced>MAC Address*
 * Save and Exit and restart the `isc-dhcp-server` by running the command: `sudo systemctl restart isc-dhcp-server`
 
