@@ -52,3 +52,8 @@ Hit *Done* and wait for installation to finish
 * If a screen pops up with a list of things to install, you may disregard it and select *Done*
 * Hit *Reboot Now* and press *Enter* when prompted to remove installation media
 * After reboot finishes, you should be able to login with your *username* and *password*!
+  
+
+[**PREVIOUS: Important Terms**](00_terms.md). 
+
+[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
