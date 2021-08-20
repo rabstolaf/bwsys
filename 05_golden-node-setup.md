@@ -56,4 +56,4 @@ Hit *Done* and wait for installation to finish
 
 [**PREVIOUS: Applications**](04_applications.md). 
 
-[**NEXT: Configuring the Head Node**](06_golden-node-configuration.md)
+[**NEXT: Golden Node Configuration**](06_golden-node-configuration.md)
