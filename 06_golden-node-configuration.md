@@ -102,6 +102,6 @@ That means that you are mostly free to read through and work with those document
 Best of luck!  
   
 
-[**PREVIOUS: Important Terms**](00_terms.md). 
+[**PREVIOUS: Golden Node Setup**](05_golden-node-setup.md)
 
-[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
+[**NEXT: Creating More Nodes**](07_creating-more-nodes.md)
