@@ -10,3 +10,6 @@ Do the following steps:
 * Download [**Ubuntu 18.04 Server**](https://releases.ubuntu.com/18.04.5/ubuntu-18.04.5-live-server-amd64.iso) ISO file
 
 Then, start with [00_terms.md](https://stogit.cs.stolaf.edu/bw/training/training-documents/-/blob/master/00_terms.md)
+
+
+* [**Go to the beginning of the training**](00_terms.md)
