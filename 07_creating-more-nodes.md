@@ -22,3 +22,8 @@ With the Headnode and Golden Node properly configured, all that remains is to cl
 * Just like when configuring the Golden Node, you'll need to update the `/etc/dhcp/dhpcd.conf` file in the Headnode so its DHCP server knows which IP to assign the newly-created node. This is the same process as when editing the file for the Golden Node, just make sure to update the hostname and IP address so that they match the hostfile.
 
 That's there is to cloning a node! You can repeat this process multiple times to create a bigger cluster, but you'll eventually be limited by how many computing resources your host computer can provide.
+
+
+[**PREVIOUS: Important Terms**](00_terms.md). 
+
+[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
