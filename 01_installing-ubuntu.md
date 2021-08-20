@@ -87,3 +87,7 @@ It is advised to not become `root` while going through this training, unless abs
 * `$ sudo shutdown now` and `$ sudo reboot now` are command line instructions to shutdown and restart your VM
 * <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F2</kbd> &mdash; Use this or any other key like <kbd>F3</kbd> or <kbd>F4</kbd> to open another terminal
 * Restart your VM and proceed to the next section!
+  
+
+
+[**PREVIOUS: Installing Ubuntu**](01_installing-ubuntu.md)                          [**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
