@@ -10,13 +10,13 @@ A container is a “bag” of code, configuration, processes, networking, depend
 ## 2. Installation
 * Remove old version of docker engine that was installed as default with Ubuntu 20.04 - LTS and 18.04 - LTS.
 
-`$ apt-get remove docker docker-engine docker.io containerd runc`
+`$ sudo apt-get remove docker docker-engine docker.io containerd runc`
 * Updating apt-get to be ready for installation. 
 
-`$ apt-get update`
+`$ sudo apt-get update`
 * Checking the following package apt-transport-https ca-certificates  curl  gnupg  lsb-release using the following command (replace <Package> with the name of the package):
 
-`$ apt-cache show <Package>`
+`$ sudo apt-cache show <Package>`
 * Add docker keys for authentication and trust
 
 `$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
@@ -25,12 +25,12 @@ A container is a “bag” of code, configuration, processes, networking, depend
 `$ echo  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null`
 * Finally install the latest version of docker-ce
 
-`$ apt-get update`
+`$ sudo apt-get update`
 
-`$ apt-get install docker-ce docker-ce-cli containerd.io`
+`$ sudo apt-get install docker-ce docker-ce-cli containerd.io`
 * Running the hello-world container (build-in container to test installation)
 
-`$ docker run hello-world`
+`$ (sudo) docker run hello-world`
 If the result includes a string “Hello from Docker!”, it means you have already successfully downloaded docker.
 
 ## 3. Docker workflow explanation
@@ -38,7 +38,7 @@ Typically, a life cycle of a container start when you initialize it using the co
 ### a. Starting container
 To initialize a container, we will use `$ docker run` command. The information below will help you have a glance at this command.
 
-docker run [OPTION1] [CONTAINER_IMAGE_NAME:VERSION] [OPTION2]
+		(sudo) docker run [OPTION1] [CONTAINER_IMAGE_NAME:VERSION] [OPTION2]
 
 The following command is going to execute Container image with the version specified using the option provided in OPTION2 with special flags being called by OPTION1
 
@@ -56,23 +56,23 @@ Some of the common and important OPTION1:
 
 For more information, enter the following command:
 
-		docker run --help
+		(sudo) docker run --help
 ### b. Running container
 The container will try to execute the command that was specified in the either the container image or on the command line. This call the running container. However, usually it only took less than 10 seconds for every containers to finish executing and terminating. You can type `$ docker ps` for more information about the status of the container.
 However, if we want to keep a container "alive" (running). We need to use detach and attach mode of a container. Let take a look at the below step.
 If you enter, for instance:
 
-		docker run -d -ti ubuntu:latest
+		(sudo) docker run -d -ti ubuntu:latest
 
 And then, type:
 
-		docker ps -l	              (ps stands for processing status, -l means you want to see the last container that was run )
+		(sudo) docker ps -l	              (ps stands for processing status, -l means you want to see the last container that was run )
 
 If you look at the STATUS column, you will see something like this “UP 3 seconds” which means that the container is still running. To test this hypothesis, you can run the same docker ps command above again, the time that it ran will change again.
 
 To access (or attach) the running container, enter the following command: 
 
-		docker attach NAME_OF_CONTAINER/ID
+		(sudo) docker attach NAME_OF_CONTAINER/ID
 		
 Press CTRL + D to exit.
 ### c. Stopped container
@@ -82,7 +82,7 @@ In case, you want to save the progress you have made with the container, we can 
 
 Whenever you modify something inside the image after the docker run command and exit, the change will still be there, however if you run it again, you will not see that change anymore since the previous change was put inside a stopped image. To make those changes visible and editable. We need to commit the change into a new container image by running the following command.
 
-		docker commit NAME_OF_CONTAINER/ID NEW_CONTAINER_IMAGE_NAME
+		(sudo) docker commit NAME_OF_CONTAINER/ID NEW_CONTAINER_IMAGE_NAME
 
 This will allow you to use docker run on the new image and see your changes.
 
