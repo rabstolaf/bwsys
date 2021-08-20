@@ -501,6 +501,6 @@ $ ./myscript.py
 and it will find the interpreter on its own. 
 
 
-[**PREVIOUS: Important Terms**](00_terms.md). 
+[**PREVIOUS: Configuring the Head Node**](02_configuring-the-headnode.md). 
 
-[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
+[**NEXT: Applications**](04_applications.md)
