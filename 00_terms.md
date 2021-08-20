@@ -52,5 +52,5 @@ Have fun!
 
 
 
-[**NEXT**](01_installing-ubuntu.md)
+[**NEXT: Installing Ubuntu**](01_installing-ubuntu.md)
 
