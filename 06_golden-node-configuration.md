@@ -17,11 +17,11 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
 <br/>Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
-* $ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts
+* $ `sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts`
 <br/>Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
   * $ ssh localhost should log you back into your machine
-  * $ ssh <worker_node> should require a password to login
+  * $ ssh <headnode> should require a password to login
 
 ## 2. Passwordless SSH
 
@@ -43,14 +43,14 @@ Use it the appropriate number of times to get back to your Golden Node. The comm
 
 > In our headnode, we had used the `/etc/exports` file to publish and make our `/home` directory and `/opt` directory available for mounting. We will now mount it on the Golden Node
 
-* `$ apt install nfs-kernel-server`
-* `$ showmount -e *headnode*` &mdash; where *headnode* is the name of your headnode.
+* `$ sudo apt install nfs-kernel-server`
+* `$ sudo showmount -e *headnode*` &mdash; where *headnode* is the name of your headnode.
 This will show you the directories available for mounting from your headnode
 * Open `/etc/fstab`
 * Add the following lines:
-<br/>`*headnode*:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
-<br/>`*headnode*:/opt	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
-* `$ mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
+<br/>`sudo *headnode*:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
+<br/>`sudo *headnode*:/opt	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
+* `$ sudo mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
 * You might have to log out and log back in to your golden node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
 * You will utilize your mounted `/opt` directory later with OpenMPI configuration
@@ -59,13 +59,13 @@ This will show you the directories available for mounting from your headnode
 
 > The Golden Node will only synchronize its time with the headnode.
 
-* `$ apt install ntp`
+* `$ sudo apt install ntp`
 * Open the `/etc/ntp.conf` file
 * Recall what you did with the file for your headnode.
 Do the same except the following:
   * Instead of `server timehost.stolaf.edu` write `server *headnode*`
   * No need to add the lines about restricting access
-* `$ systemctl start ntp`
+* `$ sudo systemctl start ntp`
 * Use `ntpq -p` to check if its working
 
 ## 5. LDAP
@@ -73,7 +73,7 @@ Do the same except the following:
 > The purpose of LDAP here is the same.
 > So the configuration process is the same as well.
 
-* `$ apt install libnss-ldap libpam-ldap`
+* `$ sudo apt install libnss-ldap libpam-ldap`
 <br/>Either:
 * Follow through the instructions and do exactly what you did for the headnode
 * This essentially means that `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` should be the same as the ones in your headnode
