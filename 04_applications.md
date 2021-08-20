@@ -84,3 +84,7 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
 * `$ sudo chmod 755 /var/lib/tftpboot/ubuntu-installer/amd64/*` &mdash; to let other machines access the installer
 
 This concludes what we have to do on the headnode (for now)! Now we move on to another physical machine (or another virtual machine) that will be our Golden Node!
+
+[**PREVIOUS: Important Terms**](00_terms.md). 
+
+[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
