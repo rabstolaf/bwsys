@@ -65,7 +65,12 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
   * `sudo update-alternatives --install "/usr/bin/${prog}" "$prog" "/usr/lib/openmpi/bin/${prog}" 1` &mdash; this command should run for every `prog` in the following list:
 `ompi-clean` `ompi_info` `ompi-server` `opal_wrapper` `orted` `orterun` `ortecc` `orte-clean` `mpic++` `mpicc` `mpiCC` `mpicxx` `mpiexec` `mpif77` `mpirun`
   * Change the permissions of the script file and execute it with the programs listed above as argument
-* You can test this step when setting up the Golden Node
+
+* We are now going to copy the openmpi files to the /opt directory which we made accessible to the worker nodes.
+* `$ sudo mkdir -p /opt/openmpi-4.1.1/bin`  - This creates the /opt/openmpi-4.1.1/bin directory
+* `$ sudo cp -r /usr/lib/openmpi-4.1.1/bin /opt/openmpi-4.1.1`  - This copies the files over
+
+* You can test this step on the Golden Node after setting up NFS. You should have the same files in /opt/openmpi-4.1.1/bin that are on the head node on the worker node as well.
 
 ## 3. Netbooting
 
