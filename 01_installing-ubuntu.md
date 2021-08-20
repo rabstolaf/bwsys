@@ -2,7 +2,9 @@
 
 This is the first training document.
 This will take you through the steps for creating a virtual machine and configuring it properly.
-Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine.
+Then it will guide you through the process of installing Ubuntu 18.04 Server on that virtual machine. 
+The Server is a version of the operating system that comes with just a terminal/command line interface (CLI). 
+I does not have a Graphical User Interface (GUI) where you can use the mouse and click on things. 
 After that, there is a link to a website that can help you get familiar with the Linux Command Line environment.
 
 Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine (see README).
@@ -27,6 +29,9 @@ Click on the *Advanced* and set *Adapter Type* to "PCnet-FAST III" and *Promiscu
 ## 2. Installing Ubuntu 18.04 Server
 
 * Start your VM, it should load up the installer
+
+* Note: Use the space bar for selecting.
+
 * Choose your language and keyboard layout and choose *Install Ubuntu*
 * The next screen shows your network interface along with your IPv4 and IPv6 configurations, along with the protocol it will use to set the IP addresses. Hit *Done*
 * Leave the proxy address field blank
