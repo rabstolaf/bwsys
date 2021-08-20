@@ -195,4 +195,6 @@ Save the `ipv4` rules and not the `ipv6` rules.
 * `$ sudo systemctl status isc-dhcp-server` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
 * If the `systemctl status` command shows that your DHCP server is not running, you can use `$ dhcpd -t -cf /etc/dhcp/dhcpd.conf` to check your configuration file for errors
 
+[**PREVIOUS: Important Terms**](00_terms.md). 
 
+[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
