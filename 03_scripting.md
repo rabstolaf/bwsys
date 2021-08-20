@@ -499,3 +499,8 @@ to execute the script, you will simply execute it like we did a bash script
 $ ./myscript.py
 ```
 and it will find the interpreter on its own. 
+
+
+[**PREVIOUS: Important Terms**](00_terms.md). 
+
+[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
