@@ -54,6 +54,6 @@ Hit *Done* and wait for installation to finish
 * After reboot finishes, you should be able to login with your *username* and *password*!
   
 
-[**PREVIOUS: Important Terms**](00_terms.md). 
+[**PREVIOUS: Applications**](04_applications.md). 
 
-[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
+[**NEXT: Configuring the Head Node**](06_golden-node-configuration.md)
