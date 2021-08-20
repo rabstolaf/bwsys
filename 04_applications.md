@@ -90,6 +90,6 @@ Refer to [the scripting tutorial](03_scripting.md) to know more about how to do 
 
 This concludes what we have to do on the headnode (for now)! Now we move on to another physical machine (or another virtual machine) that will be our Golden Node!
 
-[**PREVIOUS: Important Terms**](00_terms.md). 
+[**PREVIOUS: Important Terms**](03_scripting.md). 
 
-[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
+[**NEXT: Configuring the Head Node**](05_golden-node-setup.md)
