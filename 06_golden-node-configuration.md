@@ -99,4 +99,9 @@ Feel free to go through the training multiple times as that will give you a bett
 There will be serveral other documents with information about other stuff you can learn.
 All of them will build off of this basic training.
 That means that you are mostly free to read through and work with those documents in any order you want.
-Best of luck!
+Best of luck!  
+  
+
+[**PREVIOUS: Important Terms**](00_terms.md). 
+
+[**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
