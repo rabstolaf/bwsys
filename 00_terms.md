@@ -49,3 +49,6 @@ Have fun!
 * **Network Interface** &mdash; Point of connection between a computer and a network
 * **LVM** &mdash; Logical Volume Manager
 * **TFTP** &mdash; Trivial File Transfer Protocol
+
+
+[**NEXT**](01_installing-ubuntu.md)
