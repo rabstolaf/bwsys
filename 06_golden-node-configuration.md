@@ -17,11 +17,11 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
 <br/>Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
-* $ `sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts`
+* `$ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts`
 <br/>Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
-  * $ ssh localhost should log you back into your machine
-  * $ ssh <headnode> should require a password to login
+  * `$ ssh <localhost>` should log you back into your machine
+  * `$ ssh <headnode>` should require a password to login
 
 ## 2. Passwordless SSH
 
@@ -32,10 +32,10 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 Do not change the default folder.
 Do not create a passphrase.
 * `$ cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys` &mdash; to be able to SSH into yourself
-* `$ ssh-copy-id *headnode*` &mdash; where *headnode* is the name of your headnode
-* `$ ssh *headnode*` &mdash; this should let you SSH into your heanode without asking for a password
-* Now that you are on your headnode, run: `$ ssh-copy-id *golden*` where *golden* is the name of your Golden Node.
-* `$ ssh *golden*` &mdash; this should let you ssh into your golden node without asking for a password
+* `$ ssh-copy-id <headnode>` &mdash; where *headnode* is the name of your headnode
+* `$ ssh <headnode>` &mdash; this should let you SSH into your heanode without asking for a password
+* Now that you are on your headnode, run: `$ ssh-copy-id <golden>` where `golden` is the name of your Golden Node.
+* `$ ssh <golden>` &mdash; this should let you ssh into your golden node without asking for a password
 * `$ exit` or <kbd>Ctrl</kbd>+<kbd>D</kbd> &mdash; this allows you to close an SSH session.
 Use it the appropriate number of times to get back to your Golden Node. The command `who` may help
 
@@ -53,6 +53,7 @@ This will show you the directories available for mounting from your headnode
 * `$ sudo mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
 * You might have to log out and log back in to your golden node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
+* Home contains all of the user directories. To have a syncronized user directory amongst all of our machines `/home` should generally be mounted and accessable amongst all machines in a cluster.
 * You will utilize your mounted `/opt` directory later with OpenMPI configuration
 
 ## 4. NTP
