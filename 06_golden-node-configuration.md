@@ -53,7 +53,7 @@ This will show you the directories available for mounting from your headnode
 * `$ sudo mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
 * You might have to log out and log back in to your golden node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
-* Home contains all of the user directories. To have a syncronized user directory amongst all of our machines `/home` should generally be mounted and accessable amongst all machines in a cluster.
+* `/home` contains all of the user directories. To have a syncronized user directory amongst all of our machines `/home` should generally be mounted and accessable amongst all machines in a cluster.
 * You will utilize your mounted `/opt` directory later with OpenMPI configuration
 
 ## 4. NTP
@@ -88,7 +88,7 @@ Logout of your VM and try to log back in using your St. Olaf username and passwo
 If it works, then you did it right!)
 
 ## 6. OpenMPI
-
+* Through our OpenMPI configuration in our headnode, the nessessary configuration files should all be in `/opt/openmpi/bin/`.
 * Using the mounted `/opt` folder, the golden node can access all the files needed to run OpenMPI via NFS. So, all you have to do is run the same script you wrote earlier to link the binaries in `/opt/openmpi/bin/` to your local `/usr/bin/`
 * `$ ./mpi_script.sh`
 
