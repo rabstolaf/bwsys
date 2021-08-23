@@ -73,6 +73,7 @@ In case, there is 1 or more nodes status are notReady. Use this command to explo
                 kubectl describe node <the node name>
 
 Feel free to type down the error on google to figure out how to fix it or contact one of our cluster manager.
+
 [**PREVIOUS: Introduction to Docker**](08_Docker.md). 
 
 [**NEXT: Introduction to Django**](10_web-server.md)
