@@ -25,12 +25,23 @@ Using ansible to execute kubernetes-setup.yaml
                 ansible-pull -U https://stogit.cs.stolaf.edu/bw/training/training-documents.git/
 ### Cluster initialize
 To initialize a Kubernestes cluster, we will use kubeadm. The command syntax is as follow:
+
                 sudo kubeadm init [options]
 For the options part, we have the two most used command:
+
                 --control-plane-endpoint=<IP-address>: this will make the IP address specify with the flag be the communication point between the headnode of kubernetes cluster and the kubernetes worker nodes
                 --pod-network-cidr=<IP-net>: this will make the Kubernetes cluster understand the pod networking cidr (if needed)
 
 The next step is to make the cluster being executable by the Kubernetes headnode.
+Next we create a directory by running:
+
+                mkdir -p $HOME/.kube
+Then we populate it with files that allow us to run kubectl commands without sudo on the headnode:
+
+                sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+Then we make that directory accessible:
+
+                sudo chown $(id -u):$(id -g) $HOME/.kube/config
 After initialization, we now need a pod networking so that pod inside our Kubernetes cluster can communicate with each other. The three most famous pod networking services are Flannel, Weaves, and Calico. In this training, there will be 2 commands to initialize weave networking and calico since these two are being used at St. Olaf College right now.  
 
 [**PREVIOUS: Introduction to Docker**](08_Docker.md). 
