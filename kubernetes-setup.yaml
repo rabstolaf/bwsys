@@ -25,7 +25,7 @@
 
 - name: Add repository
   apt_repository:
-    repo: "deb https://apt.kubernetes.io/ kubernetes-{{ ansible_distribution_release }} main"
+    repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
     filename: 'kubernetes'
     state: present
 
