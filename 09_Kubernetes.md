@@ -15,11 +15,17 @@ Many more definitions will be available on the official website of Kubernestes.
 ## Kubernetes Cluster setup
 ### Installation of kubectl, kubeadm, and kubelet
 Install ansible
+
                 sudo apt install ansible
+
 Install python3
+
                 sudo apt install python3
+
 Update the python default version to be 3.x
+
                 sudo update-alternatives --install /lib/bin/python python /lib/bin/python3.x 1 (you need to replace x with an appropriate number)
+                
 Using ansible to execute kubernetes-setup.yaml
 
                 ansible-pull -U https://stogit.cs.stolaf.edu/bw/training/training-documents.git/
