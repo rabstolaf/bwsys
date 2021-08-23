@@ -17,7 +17,7 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
 
 ## 1. Apt-Cacher
 
-> Apt-Cacher is a software to cache the applications in your headnode.
+> Apt-Cacher is a software to cache the applications in your headnode. A cache is a piece of hardware or software that is used for storing data (in our case our apt installations), so that it can be used and served much faster in the future.
 > As a result, it acts like an ubuntu mirror for the other nodes.
 > Here is a [link](https://www.unix-ag.uni-kl.de/~bloch/acng/html/index.html) to the `apt-cacher-ng` user manual.
 
@@ -28,7 +28,7 @@ Finally, we download the netbooting image for Ubuntu and configure our headnode 
   * `$ sudo cp -laf /var/cache/apt/archives /var/cache/apt-cacher-ng/_import`
   * `$ sudo chown apt-cacher-ng /var/cache/apt-cacher-ng/_import`
 * Import the repositories
-  * Replace "IP" with your headnode IP that is connected to wifi in this link and visit this link: `http://ip:3142/acng-report.html`
+  * Replace "IP" with your headnode **IP that is connected to wifi** in this link and visit this link: `http://ip:3142/acng-report.html`
     * To find that use `ip ad` and find the IP that is **neither** 127.0.0.1 **nor** 10.0.0.254.
   * At the bottom, click `Start Import` and wait for it to finish
 * Done!
@@ -61,10 +61,14 @@ In the following commmand, the -zxf option is a combination of two options. `-x`
 * `$ cd /usr/lib`
 * `$ sudo ln -s openmpi-4.1.1 openmpi`
 
-* This step involves writing a script and a for-loop.
+* This step involves writing a script and a for-loop. We want to provide alternatives to the default installations of openmpi, by using the ones located in the `/usr/lib/openmpi/bin`. To list all of them, we can put them in a file by using this command:
+  * `ls /usr/lib/openmpi/bin > ~/openmpi-install.txt`
+  This lists all the available installations in the folder and writes them in a file called `openmpi-install.txt` in your home directory.
+
 Refer to [the scripting tutorial](03_scripting.md) to know more about how to do this.
   * `sudo update-alternatives --install "/usr/bin/${prog}" "$prog" "/usr/lib/openmpi/bin/${prog}" 1` &mdash; this command should run for every `prog` in the following list:
-`ompi-clean` `ompi_info` `ompi-server` `opal_wrapper` `orted` `orterun` `ortecc` `orte-clean` `mpic++` `mpicc` `mpiCC` `mpicxx` `mpiexec` `mpif77` `mpirun`
+`mpic++` `mpicc` `mpiCC` `mpicxx` `mpiexec` `mpif77` `mpif90` `mpifort` `mpirun` `ompi-clean` `ompi_info` `ompi-server` `opal-wrapper` `ortecc` `orte-clean` `orted` `orte-info` `orte-run` `orte-server`
+  * Those variables should be visible in the `~/openmpi-install.txt` folder you created.
   * Change the permissions of the script file and execute it with the programs listed above as argument
 
 * We are now going to copy the openmpi files to the /opt directory which we made accessible to the worker nodes.
