@@ -21,7 +21,8 @@ Install python3
 Update the python default version to be 3.x
                 sudo update-alternatives --install /lib/bin/python python /lib/bin/python3.x 1 (you need to replace x with an appropriate number)
 Using ansible to execute kubernetes-setup.yaml
-                ansible-pull -U https://stogit.cs.stolaf.edu/bw/training/training-documents.git/kubernetes-setup.yaml
+
+                ansible-pull -U https://stogit.cs.stolaf.edu/bw/training/training-documents.git/
 ### Cluster initialize
 To initialize a Kubernestes cluster, we will use kubeadm. The command syntax is as follow:
                 sudo kubeadm init [options]
