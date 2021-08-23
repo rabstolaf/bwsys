@@ -14,20 +14,23 @@ Many more definitions will be available on the official website of Kubernestes.
 
 ## Kubernetes Cluster setup
 ### Installation of kubectl, kubeadm, and kubelet
-Install the stable release version of Kubernetes (1.18.3) with the command
+Install ansible
+                sudo apt install ansible
+Install python3
+                sudo apt install python3
+Update the python default version to be 3.x
+                sudo update-alternatives --install /lib/bin/python python /lib/bin/python3.x 1 (you need to replace x with an appropriate number)
+Using ansible to execute kubernetes-setup.yaml
+                ansible-pull -U https://stogit.cs.stolaf.edu/bw/training/training-documents.git/kubernetes-setup.yaml
+### Cluster initialize
+To initialize a Kubernestes cluster, we will use kubeadm. The command syntax is as follow:
+                sudo kubeadm init [options]
+For the options part, we have the two most used command:
+                --control-plane-endpoint=<IP-address>: this will make the IP address specify with the flag be the communication point between the headnode of kubernetes cluster and the kubernetes worker nodes
+                --pod-network-cidr=<IP-net>: this will make the Kubernetes cluster understand the pod networking cidr (if needed)
 
-                curl -LO https://dl.k8s.io/release/v1.18.3/bin/linux/amd64/kubectl
-Install kubectl
-
-                sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-Give you the access to execute kubectl as non-root
-
-                chmod +x kubectl
-                mkdir -p ~/.local/bin/kubectl
-                mv ./kubectl ~/.local/bin/kubectl
-                # and then add ~/.local/bin/kubectl to $PATH
-
-To learn more about other option for installation, go check this website: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+The next step is to make the cluster being executable by the Kubernetes headnode.
+After initialization, we now need a pod networking so that pod inside our Kubernetes cluster can communicate with each other. The three most famous pod networking services are Flannel, Weaves, and Calico. In this training, there will be 2 commands to initialize weave networking and calico since these two are being used at St. Olaf College right now.  
 
 [**PREVIOUS: Introduction to Docker**](08_Docker.md). 
 
