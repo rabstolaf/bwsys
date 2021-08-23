@@ -13,7 +13,7 @@ In general, Kubernestes is the tool to manage our containers.
 Many more definitions will be available on the official website of Kubernestes.
 
 ## Kubernetes Cluster setup
-### Installation of kubectl, kubeadm, and kubelet
+### Installation of kubectl, kubeadm, and kubelet (2 lines explain kubectl, kubeadm, kubelet)
 Install ansible
 
                 sudo apt install ansible
