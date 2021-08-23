@@ -18,6 +18,7 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 <br/>Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
 * `$ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts`
+* scp (secure copy protocol) is used to securely transfer files between two hosts.
 <br/>Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
   * `$ ssh <localhost>` should log you back into your machine
