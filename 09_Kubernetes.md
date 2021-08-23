@@ -14,8 +14,15 @@ Many more definitions will be available on the official website of Kubernestes.
 
 ## Kubernetes Cluster setup
 ### Installation of kubectl, kubeadm, and kubelet
-Install Kubernetes prerequisites including apt-transport-https, curl, and gnupg2
-        sudo apt install apt-transport-https curl gnupg2
+Install the stable release version of Kubernetes (1.18.3) with the command
+                curl -LO https://dl.k8s.io/release/v1.18.3/bin/linux/amd64/kubectl
+Install kubectl
+                sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+Give you the access to execute kubectl as non-root
+                chmod +x kubectl
+                mkdir -p ~/.local/bin/kubectl
+                mv ./kubectl ~/.local/bin/kubectl
+                # and then add ~/.local/bin/kubectl to $PATH
 
 [**PREVIOUS: Introduction to Docker**](08_Docker.md). 
 
