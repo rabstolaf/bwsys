@@ -1,0 +1,51 @@
+- name: Gathering package facts
+  package_facts:
+    manager: auto
+  when: ansible_facts.packages is not defined
+
+- name: Check for previous installation
+  debug:
+    msg: "Found: {{ ansible_facts.packages['kubelet'] }}"
+  when: "'kubelet' in ansible_facts.packages"
+
+- name: Install prerequisites
+  apt:
+    name:
+    - 'apt-transport-https'
+    - 'curl'
+    - 'gnupg2'
+    state: present
+  when: "'kubelet' not in ansible_facts.packages"
+  register: Kube
+
+- name: Add gpg key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Add repository
+  apt_repository:
+    repo: "deb https://apt.kubernetes.io/ kubernetes-{{ ansible_distribution_release }} main"
+    filename: 'kubernetes'
+    state: present
+
+- name: Install packages
+  apt:
+    pkg:
+    - kubelet={{ kube_version }}-00
+    - kubectl={{ kube_version }}-00
+    - kubeadm={{ kube_version }}-00
+    - kubernetes-cni
+    state: present
+  when: Kube.changed and kube_version is defined
+
+- name: Disable swap
+  shell: swapoff -a
+
+- name: Disable swap on restart
+  replace:
+    path: /etc/fstab
+    regexp: '^(\s*)([^#\n]+\s+)(\w+\s+)swap(\s+.*)$'
+    replace: '#\1\2\3swap\4'
+    backup: yes
+
