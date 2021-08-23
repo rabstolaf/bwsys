@@ -42,7 +42,14 @@ Then we populate it with files that allow us to run kubectl commands without sud
 Then we make that directory accessible:
 
                 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-After initialization, we now need a pod networking so that pod inside our Kubernetes cluster can communicate with each other. The three most famous pod networking services are Flannel, Weaves, and Calico. In this training, there will be 2 commands to initialize weave networking and calico since these two are being used at St. Olaf College right now.  
+After initialization, we now need a pod networking so that pod inside our Kubernetes cluster can communicate with each other. The three most famous pod networking services are Flannel, Weaves, and Calico. In this training, there will be 2 commands to initialize weave networking and calico since these two are being used at St. Olaf College right now. We only use one at a time 
+For weaves
+
+                kubectl create -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
+For calico
+                kubectl create -f https://docs.projectcalico.org/v3.19/manifests/calico.yaml
+
 
 [**PREVIOUS: Introduction to Docker**](08_Docker.md). 
 
