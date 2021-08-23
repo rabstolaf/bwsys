@@ -28,6 +28,7 @@ Give you the access to execute kubectl as non-root
                 # and then add ~/.local/bin/kubectl to $PATH
 
 To learn more about other option for installation, go check this website: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
 [**PREVIOUS: Introduction to Docker**](08_Docker.md). 
 
 [**NEXT: Introduction to Django**](10_web-server.md)
