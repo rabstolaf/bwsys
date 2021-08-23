@@ -17,7 +17,7 @@ After updating the repository and upgrading packages on your Golden Node, we wil
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
 <br/>Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
-* `$ sudo scp *user*@*headnode address*:/etc/hosts /etc/hosts`
+* `$ sudo scp <user>@<headnode address>:/etc/hosts /etc/hosts`
 * scp (secure copy protocol) is used to securely transfer files between two hosts.
 <br/>Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
@@ -45,12 +45,12 @@ Use it the appropriate number of times to get back to your Golden Node. The comm
 > In our headnode, we had used the `/etc/exports` file to publish and make our `/home` directory and `/opt` directory available for mounting. We will now mount it on the Golden Node
 
 * `$ sudo apt install nfs-kernel-server`
-* `$ sudo showmount -e *headnode*` &mdash; where *headnode* is the name of your headnode.
+* `$ sudo showmount -e <headnode>` &mdash; where *headnode* is the name of your headnode.
 This will show you the directories available for mounting from your headnode
 * Open `/etc/fstab`
 * Add the following lines:
-<br/>`sudo *headnode*:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
-<br/>`sudo *headnode*:/opt	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
+<br/>`sudo <headnode>:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
+<br/>`sudo <headnode>:/opt	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
 * `$ sudo mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
 * You might have to log out and log back in to your golden node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
@@ -81,7 +81,7 @@ Do the same except the following:
 * This essentially means that `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` should be the same as the ones in your headnode
 <br/>Or:
 * You could use `scp` to copy the configuration files from the headnode:
-  * `$ sudo scp *user*@*headnode*:/etc/ldap.conf /etc/ldap.conf`&mdash; where \*user\* and \*headnode\* are the username and address of your headnode. Assuming your hosts file is setup, you should be able to type `headnode` literally. 
+  * `$ sudo scp <user>@<headnode>:/etc/ldap.conf /etc/ldap.conf`&mdash; where \*user\* and \*headnode\* are the username and address of your headnode. Assuming your hosts file is setup, you should be able to type `headnode` literally. 
   * Remember, you would have to run the scp command for each `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf`!
 <br/>Then:
 * Test it the same way you tested for the headnode (
