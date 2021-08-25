@@ -1,3 +1,5 @@
+[**PREVIOUS: Golden Node Setup**](05_golden-node-setup.md)
+
 # Golden Node Configuration
 
 After updating the repository and upgrading packages on your Golden Node, we will:
@@ -103,7 +105,5 @@ All of them will build off of this basic training.
 That means that you are mostly free to read through and work with those documents in any order you want.
 Best of luck!  
   
-
-[**PREVIOUS: Golden Node Setup**](05_golden-node-setup.md)
 
 [**NEXT: Creating More Nodes**](07_creating-more-nodes.md)
