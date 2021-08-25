@@ -1,3 +1,5 @@
+[**PREVIOUS: Installing Ubuntu**](01_installing-ubuntu.md) 
+
 # Configuring the Head Node
 
 This is the second training document.
@@ -195,7 +197,5 @@ Save the `ipv4` rules and not the `ipv6` rules.
 * `$ sudo systemctl start isc-dhcp-server`
 * `$ sudo systemctl status isc-dhcp-server` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
 * If the `systemctl status` command shows that your DHCP server is not running, you can use `$ dhcpd -t -cf /etc/dhcp/dhcpd.conf` to check your configuration file for errors
-
-[**PREVIOUS: Installing Ubuntu**](01_installing-ubuntu.md). 
 
 [**NEXT: Basic Scripting**](03_scripting.md)
