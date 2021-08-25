@@ -30,6 +30,10 @@ Update apt package index, install kubelet, kubeadm and kubectl, and pin their ve
 
                 sudo apt-get update
                 sudo apt-get install -y kubelet kubeadm kubectl
+
+Disable the swap when starting up
+                sudo swapoff -a
+                sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ### Cluster initialize
 To initialize a Kubernestes cluster, we will use kubeadm. The command syntax is as follow:
 
