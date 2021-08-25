@@ -1,3 +1,5 @@
+[**PREVIOUS: Configuring the Head Node**](02_configuring-the-headnode.md) 
+
 # Bash Scripting Lesson
 This document will cover the basic features of bash scripting
 There times where I reference the following link, as it is very comprehensive
@@ -499,8 +501,5 @@ to execute the script, you will simply execute it like we did a bash script
 $ ./myscript.py
 ```
 and it will find the interpreter on its own. 
-
-
-[**PREVIOUS: Configuring the Head Node**](02_configuring-the-headnode.md). 
 
 [**NEXT: Applications**](04_applications.md)
