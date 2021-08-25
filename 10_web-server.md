@@ -119,4 +119,4 @@ It's finally time to run our application. Run:
 Congratulations! You just created your very own Django app. Fun fact: `<St. Olaf facing IP>:8000/admin ` takes you to the administration page where you can log in with your super user credentials.
 
 
-[**Beginning: README**](README.md)
+[**NEXT: README**](README.md)
