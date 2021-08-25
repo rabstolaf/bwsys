@@ -92,7 +92,7 @@ If it works, then you did it right!)
 
 ## 6. OpenMPI
 * Through our OpenMPI configuration in our headnode, the nessessary configuration files should all be in `/opt/openmpi/bin/`.
-* Using the mounted `/opt` folder, the golden node can access all the files needed to run OpenMPI via NFS. So, all you have to do is run the same script you wrote earlier to link the binaries in `/opt/openmpi/bin/` to your local `/usr/bin/`
+* Using the mounted `/opt` folder, the golden node can access all the files needed to run OpenMPI via NFS. So, all you have to do is run the same script you wrote earlier to link the binaries in `/opt/openmpi/bin/` to your local `/usr/bin/` (ALl of configuration files should be in `/opt/openmpi/bin/`)
 * `$ ./mpi_script.sh`
 
 ***
