@@ -16,21 +16,20 @@ Many more definitions will be available on the official website of Kubernestes.
 
 ## Kubernetes Cluster setup
 ### Installation of kubectl, kubeadm, and kubelet (2 lines explain kubectl, kubeadm, kubelet)
-Install ansible
+Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
-                sudo apt install ansible
+                sudo apt-get update
+                sudo apt-get install -y apt-transport-https ca-certificates curl
+Download the Google Cloud public signing key:
 
-Install python3
+                sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+Add the Kubernetes apt repository:
 
-                sudo apt install python3
+                echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 
-Update the python default version to be 3.x
-
-                sudo update-alternatives --install /lib/bin/python python /lib/bin/python3.x 1 (you need to replace x with an appropriate number)
-                
-Using ansible to execute kubernetes-setup.yaml
-
-                ansible-pull -U https://stogit.cs.stolaf.edu/bw/training/training-documents.git/
+                sudo apt-get update
+                sudo apt-get install -y kubelet kubeadm kubectl
 ### Cluster initialize
 To initialize a Kubernestes cluster, we will use kubeadm. The command syntax is as follow:
 
