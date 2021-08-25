@@ -1,3 +1,5 @@
+[**PREVIOUS: Golden Node Configuration**](06_golden-node-configuration.md)
+
 # Creating More Nodes
 
 With the Headnode and Golden Node properly configured, all that remains is to clone your Golden Node to create worker nodes, which will allow you to learn on a more realistic cluster setup.
@@ -23,7 +25,5 @@ With the Headnode and Golden Node properly configured, all that remains is to cl
 
 That's there is to cloning a node! You can repeat this process multiple times to create a bigger cluster, but you'll eventually be limited by how many computing resources your host computer can provide.
 
-
-[**PREVIOUS: Golden Node Configuration**](06_golden-node-configuration.md)
 
 [**NEXT: Introduction to Docker**](08_Docker.md)
