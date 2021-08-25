@@ -15,7 +15,7 @@ In general, Kubernestes is the tool to manage our containers.
 Many more definitions will be available on the official website of Kubernestes.
 
 ## Kubernetes Cluster setup
-### Installation of kubectl, kubeadm, and kubelet (2 lines explain kubectl, kubeadm, kubelet)
+### Installation of kubectl, kubeadm, and kubelet
 The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs. Kubeadm is a tool built to provide kubeadm init and kubeadm join as best-practice "fast paths" for creating Kubernetes clusters. kubeadm performs the actions necessary to get a minimum viable cluster up and running. The kubelet is the primary "node agent" that runs on each node.
 
 Update the apt package index and install packages needed to use the Kubernetes apt repository:
