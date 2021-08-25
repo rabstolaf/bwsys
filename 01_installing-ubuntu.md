@@ -1,4 +1,4 @@
-[**PREVIOUS: Important Terms**](00_terms.md). 
+[**PREVIOUS: Important Terms**](00_terms.md) 
 
 # Installing Ubuntu
 Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine (see README).
