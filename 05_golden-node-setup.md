@@ -1,3 +1,5 @@
+[**PREVIOUS: Applications**](04_applications.md)
+
 # Golden Node Setup
 
 This document is for setting up your Golden Node. The Golden Node is the worker node with ideal "worker node" configuration.
@@ -53,7 +55,5 @@ Hit *Done* and wait for installation to finish
 * Hit *Reboot Now* and press *Enter* when prompted to remove installation media
 * After reboot finishes, you should be able to login with your *username* and *password*!
   
-
-[**PREVIOUS: Applications**](04_applications.md). 
 
 [**NEXT: Golden Node Configuration**](06_golden-node-configuration.md)
