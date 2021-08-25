@@ -1,6 +1,6 @@
 [**PREVIOUS: Introduction to Docker**](08_Docker.md) 
 
-# Kubernetes Walk Through
+# Kubernetes Walkthrough
 ## Introduction to Kubernestes
 Previously, we have learnt about Docker. In this chapter, we will learn about how containers are organized in a system.
 ### What is Kubernestes ?
@@ -37,7 +37,7 @@ Disable the swap when starting up
 
                 sudo swapoff -a
                 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-### Cluster initialize
+### Cluster initialization
 To initialize a Kubernestes cluster, we will use kubeadm. The command syntax is as follow:
 
                 sudo kubeadm init [options]
