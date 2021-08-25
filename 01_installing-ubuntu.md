@@ -1,3 +1,5 @@
+[**PREVIOUS: Important Terms**](00_terms.md). 
+
 # Installing Ubuntu
 Before you start this training, make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine (see README).
 
@@ -87,6 +89,4 @@ It is advised to not become `root` while going through this training, unless abs
 * Restart your VM and proceed to the next section!  
   
   
-[**PREVIOUS: Important Terms**](00_terms.md). 
-
 [**NEXT: Configuring the Head Node**](02_configuring-the-headnode.md)
