@@ -67,11 +67,18 @@ On the terminal, type in:
 
 This command `ls` will list items in the current directory.
 
-Note that the `$` is not part of the command you type. 
-The command line in your virtual machine also has a `$` at the end of the line. 
-The `$` generally indicates that you're running commands without `root` privileges. That means you have restricted access and authority to do things on the Virtual Machine. 
-Running commands as root means you have unlimited privileges on the virtual machine.
-To run a command as `root`, preface your command with the command `sudo`. 
+Note that the `$` is not part of the command you type.  
+
+The command line in your virtual machine also has a `$` at the end of the line.  
+
+The `$` generally indicates that you're running commands without `root` privileges.  
+
+That means you have restricted access and authority to do things on the Virtual Machine.  
+
+Running commands as root means you have unlimited privileges on the virtual machine.  
+
+To run a command as `root`, preface your command with the command `sudo`.  
+
 While some commands require you to become `root`, it's best to avoid using `root` unless necessary, as it becomes a lot easier to break important components of your system.   
 
 Now, on the terminal, type the following and press Enter:
