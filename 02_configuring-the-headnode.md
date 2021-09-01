@@ -60,8 +60,8 @@ These are the files that contain the LDAP configuration.
 
 * `$ date` &mdash; this command will show you the date and time
 * If you notice that your timezone is not set correctly, you have to fix it.
-* `$ rm /etc/localtime` &mdash; will delete the file.
-* `$ sudo ln -s /usr/share/zoneinfo/US/Central /etc/timezone` &mdash; will create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.This should/will fix your timezone.
+* `$ sudo rm /etc/localtime` &mdash; will delete the file.
+* `$ sudo ln -s /usr/share/zoneinfo/US/Central /etc/localtime` &mdash; will create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.This should/will fix your timezone.
 
 * `$ sudo apt install ntp`
 * We need to edit the `/etc/ntp.conf` file to make the machine access time from the St. Olaf time servers to enable faster time synchronization.
@@ -86,7 +86,7 @@ If they are, then you did it right!
 * `$ sudo visudo` &mdash; this opens up the `/etc/sudoers.tmp` file
   * Add the line `%bw-sudo ALL=(ALL:ALL) ALL` in the appropriate place
   * Save and exit as you would for `nano` editor
-* `$ usermod -aG bw-sudo <username>` &mdash; this adds yourself to the group bw-sudo
+* `$ sudo usermod -aG bw-sudo <username>` &mdash; this adds yourself to the group bw-sudo
 * Log out and log back in for the `usermod` to take effect
 
 ## 4. Passwordless SSH
@@ -133,7 +133,7 @@ Be sure to use spaces and **not tabs** in the file.
 * Set `dhcp4` to `no`
 * **Do not set any gateway**
 * Save and exit
-* `$ netplan --debug apply` &mdash; This puts the configuration into effect
+* `$ sudo netplan --debug apply` &mdash; This puts the configuration into effect
 * Check that the interface is configured using `$ ip ad`
 * Make sure you still have internet by using `ping` command
 
@@ -169,10 +169,10 @@ Be careful when you modify it
 * Uncomment the line `net.ipv4.ip_forward=1`
 * Save and exit
 * Test it: `$ sysctl -p` should display the changes you made
-* `$ iptables -t nat -L` &mdash; this will list out all present iptables rule.
+* `$ sudod iptables -t nat -L` &mdash; this will list out all present iptables rule.
 This should be clean.
-If not, run `$ iptables -t nat -F`.
-* `$ iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your St. Olaf network facing interface. This allow your worker nodes access to St. Olaf's network, this will be the `tun0` interface.
+If not, run `$ sudo iptables -t nat -F`.
+* `$ sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your St. Olaf network facing interface. This allow your worker nodes access to St. Olaf's network, this will be the `tun0` interface.
 This command will mask the IP addresses of your cluster so that the nodes can access the internet
 * List the rules again to see if the rule was added
 * `$ sudo apt install iptables-persistent` &mdash; this package will permanently save your iptable rules (which does not happen otherwise).
