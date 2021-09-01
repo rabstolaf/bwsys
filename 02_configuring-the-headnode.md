@@ -7,7 +7,7 @@ After that, we modify the `/etc/sudoers` file to allow `sudo` permissions i.e al
 We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes (which are VMs that you will create later).
 After that, we activate our second network interface and configure it to have a static ip address.
 We use NFS to publish our `/home` and `/opt` folders from the headnode.
-Then, we install and configure the GlobalProtect VPN, so we can access St. Olaf's servers from off-campus.
+Then, we install and configure a VPN, so we can access St. Olaf's servers from off-campus. This step is only necessary if one is doing the training remotely.
 Next, we configure our machine to access the St. Olaf LDAP server to login to our machine using our St.Olaf credentials.
 Lastly, we configure NAT(Network Address Translation) and DHCP(Dynamic Host Configuration Protocol) so that, later, our workers nodes can get proper IP addresses and connect to the internet.
 
