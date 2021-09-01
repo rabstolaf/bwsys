@@ -62,6 +62,7 @@ These are the files that contain the LDAP configuration.
 * If you notice that your timezone is not set correctly, you have to fix it.
 * `$ rm /etc/localtime` &mdash; will delete the file.
 * `$ sudo ln -s /usr/share/zoneinfo/US/Central /etc/timezone` &mdash; will create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.This should/will fix your timezone.
+
 * `$ sudo apt install ntp`
 * We need to edit the `/etc/ntp.conf` file to make the machine access time from the St. Olaf time servers to enable faster time synchronization.
   * Comment out all lines that access ubuntu time servers for the time
