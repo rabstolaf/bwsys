@@ -2,16 +2,14 @@
 
 # Configuring the Head Node
 
-This is the second training document.
-
-First, we synchronize time on our machine using NTP.
-After that, we modify the `/etc/sudoers` file to allow `sudo` permissions for a newly created group.
-We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes.
+First, we synchronize time on our virtual machine (VM) using NTP.
+After that, we modify the `/etc/sudoers` file to allow `sudo` permissions i.e allow certain users and groups access to resources on the MV that are otherwise inaccessible.
+We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes (which are VMs that you will create later).
 After that, we activate our second network interface and configure it to have a static ip address.
 We use NFS to publish our `/home` and `/opt` folders from the headnode.
 Then, we install and configure the GlobalProtect VPN, so we can access St. Olaf's servers from off-campus.
 Next, we configure our machine to access the St. Olaf LDAP server to login to our machine using our St.Olaf credentials.
-Lastly, we configure NAT and DHCP so that our golden node can get a proper ip address and connect to the internet.
+Lastly, we configure NAT(Network Address Translation) and DHCP(Dynamic Host Configuration Protocol) so that, later, our workers nodes can get proper IP addresses and connect to the internet.
 
 
 Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before proceeding with this document.
