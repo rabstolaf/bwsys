@@ -2,29 +2,29 @@
 
 # Configuring the Head Node
 
-First, we synchronize time on our virtual machine (VM) using NTP.
-After that, we modify the `/etc/sudoers` file to allow `sudo` permissions i.e allow certain users and groups access to resources on the MV that are otherwise inaccessible.
-We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes (which are VMs that you will create later).
-After that, we activate our second network interface and configure it to have a static ip address.
-We use NFS to publish our `/home` and `/opt` folders from the headnode.
-Then, we install and configure a VPN, so we can access St. Olaf's servers from off-campus. This step is only necessary if one is doing the training remotely.
-Next, we configure our machine to access the St. Olaf LDAP server to login to our machine using our St.Olaf credentials.
-Lastly, we configure NAT(Network Address Translation) and DHCP(Dynamic Host Configuration Protocol) so that, later, our workers nodes can get proper IP addresses and connect to the internet.
-
+<!-- Cutdown these sequences -->
+* Next, we configure our machine to access the St. Olaf LDAP server to login to our machine using our St.Olaf credentials.
+* Next we configure NTP to synchronize time on our VMs.
+* After that, we modify the `/etc/sudoers` file to allow `sudo` permissions i.e allow certain users and groups access to resources on the MV that are otherwise inaccessible.
+* We create a SHA key to enable passwordless ssh on our machine and change the hosts file to add our worker nodes (which are VMs that you will create later).
+* After that, we activate our second network interface and configure it to have a static ip address.
+* We use NFS to publish our `/home` and `/opt` folders from the headnode.
+* Lastly, we configure NAT(Network Address Translation) and DHCP(Dynamic Host Configuration Protocol) so that, later, our workers nodes can get proper IP addresses and connect to the internet.
+<!-- End of cut down -->
 
 Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before proceeding with this document.
 
 ### Modifying configuration files
 
-In this section, and later in the training, we'll be modifying a lot of configuration files, which are generally text files (although many have .conf extensions) which list variables and their values. You can use a command line tool, like `nano` or `vim`, or a graphical text editor, like `gedit`. 
-
-If you're not already familiar with a command line text editing tool, it's probably wise to read about either [nano](https://linuxize.com/post/how-to-use-nano-text-editor/) or [vim](https://opensource.com/article/19/3/getting-started-vim), since there will inevitably be times where you're working with a computer that has no graphical interface, so you'll *have* to edit files via a command line tool. `nano` is slightly easier to pick up, but `vim` has a great deal of power, once you understand how to use it.
-
-Note that some of the files we'll be modifying will require `root` access. For example, to edit `/etc/dhcp/dhcpd.conf`, you could type something like one of the following, depending on which editor you wanted to use:  
+A lot of times in Cluster Management, you'll need to edit configuration files. This is usually done through text editors. An example modifying a file with a text editor is this:
 
 `$ sudo nano /etc/dhcp/dhcpd.conf`  
-`$ sudo gedit /etc/dhcp/dhcpd.conf`
 
+where `nano` is the text editor called to open the file `/etc/dhcp/dhcpd.conf`.
+
+Commonly used text editors include:
+* nano (Easier to handle) ([more info here](https://linuxize.com/post/how-to-use-nano-text-editor/))
+* vim (More powerful, but harder to understand) ([more info here](https://opensource.com/article/19/3/getting-started-vim))
 
 
 ## 1. Configuring LDAP
@@ -54,7 +54,7 @@ These are the files that contain the LDAP configuration.
 
 ## 2. Setting Up NTP
 
-> NTP is used for synchronizing clocks between computer systems.
+> NTP is used for synchronizing clocks/time between computer systems.
 > [Here](http://www.ntp.org/ntpfaq/NTP-s-def.htm) is a comprehensive documentation on NTP.
 > [This video](https://www.youtube.com/watch?v=EkQPkQb2D3g) gives a concise explanation on this topic.
 
