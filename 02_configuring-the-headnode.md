@@ -124,7 +124,21 @@ If they are, then you did it right!
 > Google networking terms and concepts you are unfamiliar with.
 
 * `$ ip ad` &mdash; this lists out all the interfaces you have and their configurations (should show 3)
-* Edit the `/etc/netplan/<file>.yaml` &mdash; <file> is the name of the `.yaml` file present in that folder.
+* The following interfaces are ** lo **, which stands for loopback, and **enp0s3**, which is the interface connecting to wifi/St. Olaf network. 
+* Each interface has an IP address (e.g. enp0s3 has an IP address of 10.42.240.251)
+
+<pre> <code>
+1: lo: &#60;LOOPBACK,UP,LOWER_UP&#62; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+3: enp0s3: &#60;BROADCAST,MULTICAST,UP,LOWER_UP&#62; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:6d:b1:5e brd ff:ff:ff:ff:ff:ff
+    inet 10.42.240.251/16 brd 10.42.255.255 scope global dynamic enp0s3
+       valid_lft 86163sec preferred_lft 86163sec
+</code> </pre>
+
+* Edit the `/etc/netplan/<file>.yaml` &mdash; is the name of the `.yaml` file present in that folder.
 Be sure to use spaces and **not tabs** in the file.
 (Tabs are invalid in yaml files)
 * Add the not-configured interface under `ethernets` (Use website as template)
@@ -169,7 +183,7 @@ Be careful when you modify it
 * Uncomment the line `net.ipv4.ip_forward=1`
 * Save and exit
 * Test it: `$ sysctl -p` should display the changes you made
-* `$ sudod iptables -t nat -L` &mdash; this will list out all present iptables rule.
+* `$ sudo iptables -t nat -L` &mdash; this will list out all present iptables rule.
 This should be clean.
 If not, run `$ sudo iptables -t nat -F`.
 * `$ sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your St. Olaf network facing interface. This allow your worker nodes access to St. Olaf's network, this will be the `tun0` interface.
