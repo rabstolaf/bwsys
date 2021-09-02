@@ -51,12 +51,14 @@ $ ls -lah
 
 * Note that the $ is not part of the command you type, and that the command line in your virtual machine also has a $ at the end of the line. 
 
-* The $ generally indicates that you're running commands without root privileges. When running commands as root, the command line will generally have a # symbol at the end of the command line. While some commands require you to become root, it's best to avoid using root unless necessary, as it becomes a lot easier to break important components of your system.
+* The $ generally indicates that you're running commands without root privileges. While some commands require root priviledges it's best to avoid using them, as this increases risk of damaging important system components. <!-- When running commands as the root user , the command line will generally have a # symbol at the end of the command line.-->
 
 * To run a command as root, preface your command with the command sudo. To see this, first try running this command:
 $ apt update
 
-* You'll see some errors that include messages like "Permission denied". This sort of error message indicates that you might need root privileges to execute the command. Sometimes programs will include a message asking "Are you root?" in their error messages if you need to run them as root, but sometimes you'll only see a generic "Permission denied". One remedy to this problem is to use the sudo command to run a command as root. Try typing the same command as earlier, but with sudo in front:
+* Usually if sudo isn't used, a command will usually let the user know if they need root priviledges via error messages. While the most usual one is "Permission denied" there are a few instances of other messages in the error message, such as "Is the user running as root?".
+
+* In this case, insert sudo at the start of the command, like this:
 
 $ sudo apt update
 
