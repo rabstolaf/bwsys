@@ -35,37 +35,36 @@ Commonly used text editors include:
 
 * `$ sudo apt install libpam-ldap`
   * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu` (**Two `/` not Three `/`**)
-  * The distinguished name of the search base (base dn) is `ou=stoUsers,dc=ad,dc=stolaf,dc=edu`
+  * The base dn is `ou=stoUsers,dc=ad,dc=stolaf,dc=edu`
   * LDAP Version is 3
   * **Do not** make local root database admin
   * LDAP Database **does not** require login
   * The files you have to modify for this step include `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and maybe `/etc/nsswitch.conf`.
 These are the files that contain the LDAP configuration.
-  * The bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
+  * In `/etc/ldap.conf`, the bind dn is `cn=csmanaged,ou=LDAPBindAccounts,dc=ad,dc=stolaf,dc=edu`
   * Ask a Cluster Manager for bind password.
-  * At the end of both the files, put `TLS_REQCERT never`
+  * At the end of the files `/etc/ldap.conf` and `/etc/ldap/ldap.conf`, put `TLS_REQCERT never`
   * Modify `/etc/nsswitch.conf` file and set the `hosts` line to `files mdns4_minimal [NOTFOUND=return] dns mdns4`
 
 * It is time to test LDAP.
   Logout of your VM and try to log back in using your St. Olaf *username* and *password*.
   If it works, then you did it right!
 * **Note:** If your *username* on your VM is different than your St. Olaf *username*, then you need to create a user first.
-  Run the following command before testing: `useradd -m -s /bin/bash <stolaf-username>`
+  Run the following command before testing: `sudo useradd -m -s /bin/bash <stolaf-username>`
 
 ## 2. Setting Up NTP
 
-> NTP is used for synchronizing clocks/time between computer systems.
+> NTP is used for synchronizing clocks between computer systems.
 > [Here](http://www.ntp.org/ntpfaq/NTP-s-def.htm) is a comprehensive documentation on NTP.
 > [This video](https://www.youtube.com/watch?v=EkQPkQb2D3g) gives a concise explanation on this topic.
 
 * `$ date` &mdash; this command will show you the date and time
-* If you notice that your timezone is not set correctly, you have to fix it.
 * `$ sudo rm /etc/localtime` &mdash; will delete the file.
 * `$ sudo ln -s /usr/share/zoneinfo/US/Central /etc/localtime` &mdash; will create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.This should/will fix your timezone.
 
 * `$ sudo apt install ntp`
 * We need to edit the `/etc/ntp.conf` file to make the machine access time from the St. Olaf time servers to enable faster time synchronization.
-  * Comment out all lines that access ubuntu time servers for the time
+  * Comment out all lines that access ubuntu time servers for the time.
   * Add `timehost.stolaf.edu` as a time server instead
   * Add the line `restrict 10.0.0.0 mask 255.255.255.0 nomodify notrap` in the appropriate place
 
@@ -87,7 +86,9 @@ If they are, then you did it right!
   * Add the line `%bw-sudo ALL=(ALL:ALL) ALL` in the appropriate place
   * Save and exit as you would for `nano` editor
 * `$ sudo usermod -aG bw-sudo <username>` &mdash; this adds yourself to the group bw-sudo
-* Log out and log back in for the `usermod` to take effect
+* Log out and log back in for the `usermod` to take effect. To test this, use:
+  `$ groups <username>`
+* Your user should be in the group bw-sudo.
 
 ## 4. Passwordless SSH
 
@@ -104,13 +105,17 @@ If they are, then you did it right!
 
 ## 5. Adding hosts
 
-> This step modifies the `/etc/hosts` file and adds IP addresses corresponding to the worker nodes that we will use in setting up our cluster.
+> This step modifies the `/etc/hosts` file and adds IP addresses corresponding to the worker nodes that we will use in setting up our cluster. This allows the computer to recognize the IPs by the host name that you give them. For instance, the line:
+
+<pre> <code> 10.0.0.254   worker01 </code></pre>
+
+recognizes the name `worker01` as the IP `10.0.0.254`.
 > [This discussion](https://askubuntu.com/questions/183176/what-is-the-use-of-etc-hosts) gives a nice idea about the intents and purposes for editing this file.
 
 * We need to edit the `/etc/hosts` file to add the worker nodes in our cluster
   * Add a new line for every worker node you want to add.
     For example: `10.0.0.1  worker01`
-  * Add a line to set the headnode IP to `10.0.0.254`
+  * Add a line to set the headnode IP to `10.0.0.254`, in the format of the line above.
 * We can test this step:
   * `$ ssh localhost` should log you back into your machine
   * `$ ssh <worker_node>` should give you a `no route to host` error
@@ -154,7 +159,7 @@ Be sure to use spaces and **not tabs** in the file.
 ## 7. Setting up NFS
 
 > We will use NFS to mount our `/home` and `/opt` folders on the headnode onto the `/home` and `/opt` folders on our worker nodes through the network. 
-> NFS allows us to share files between computers, saving space. Additionally, we'll be installing some software to the `/opt` folder, which means we'll only have to install the program on the headnode, but the worker nodes will be able to access and use the software.
+> NFS allows us to share files between computers, saving space, and synchronizing the contents of the folders being shared. Additionally, we'll be installing some software to the `/opt` folder, which means we'll only have to install the program on the headnode, but the worker nodes will be able to access and use the software.
 > [This video](https://www.youtube.com/watch?v=wpg4WgNXoV8&t=1254s) describes how to do this.
 
 * `$ sudo apt install nfs-kernel-server` &mdash; this package controls the NFS mounting
@@ -172,7 +177,7 @@ Be sure to use spaces and **not tabs** in the file.
 * Change the 1st interface from bridged Ethernet to NAT.
 
 
-## 8. Configure NAT
+## 8. Configuring NAT
 
 > NAT will allow the worker nodes to get access to the internet.
 > It will translate and forward packets through the headnode so that they reach the correct worker nodes.
@@ -182,11 +187,11 @@ Be sure to use spaces and **not tabs** in the file.
 Be careful when you modify it
 * Uncomment the line `net.ipv4.ip_forward=1`
 * Save and exit
-* Test it: `$ sysctl -p` should display the changes you made
+* Test it: `$ sudo sysctl -p` should display the changes you made
 * `$ sudo iptables -t nat -L` &mdash; this will list out all present iptables rule.
 This should be clean.
-If not, run `$ sudo iptables -t nat -F`.
-* `$ sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your St. Olaf network facing interface. This allow your worker nodes access to St. Olaf's network, this will be the `tun0` interface.
+If not, run `$ sudo iptables -t nat -F`, and then `$ sudo iptables -t nat -L` again to verify it is empty now.
+* `$ sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your WiFi/St. Olaf network facing interface. This allow your worker nodes access to St. Olaf's network, this will be the `tun0` interface.
 This command will mask the IP addresses of your cluster so that the nodes can access the internet
 * List the rules again to see if the rule was added
 * `$ sudo apt install iptables-persistent` &mdash; this package will permanently save your iptable rules (which does not happen otherwise).
@@ -206,9 +211,11 @@ Save the `ipv4` rules and not the `ipv6` rules.
 * Save and exit
 * Open the `/etc/default/isc-dhcp-server` file
 * Enable DHCP only on your cluster facing interface (look at the comments in the file to get a hint on how to do this)
+  * Uncomment the line: `DHCPDv4_CONF=/etc/dhcp/dhcpd.conf`
+  * Change the line `INTERFACES=""` to `INTERFACES="<interface>"`, where &#60;interface&#62; is the cluster-facing interface (**NOT** the Wifi-facing one)
 * Save and exit
 * `$ sudo systemctl start isc-dhcp-server`
-* `$ sudo systemctl status isc-dhcp-server` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
-* If the `systemctl status` command shows that your DHCP server is not running, you can use `$ dhcpd -t -cf /etc/dhcp/dhcpd.conf` to check your configuration file for errors
+* `$ systemctl status isc-dhcp-server` &mdash; use this to check if there were any errors and if the server is listening on the correct interface
+* If the `systemctl status` command shows that your DHCP server is `failed`, you can use `$ dhcpd -t -cf /etc/dhcp/dhcpd.conf` to check your configuration file for errors
 
 [**NEXT: Basic Scripting**](03_scripting.md)
