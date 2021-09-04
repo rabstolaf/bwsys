@@ -10,42 +10,42 @@ The[Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html) a
 * Any line begining with a $ will be a command line command.
 
 ## Basics
-To create your first script,
+* To create your first script, use 
 ```sh
 $ touch myscript.sh
 ```
-This will create an empty file named _myscript.sh_
-Notice the .sh file extension. This is not requrired but it is convention.
+* This will create an empty file named _myscript.sh_
+* Notice the .sh file extension. This is not required but it is convention.
 
-Let's edit this file to create our first script.
+* Now let's edit this file to create our first script using;
 ```sh
 $ nano myscript.sh
 ```
-Here we will write the script
+* Here we will write the script
 ```sh
 #!/bin/bash
 # A simple bash script
 echo Hello World!
 ```
-The first line will be repeated through all bash scripts. The first two characters (#!) are known as the Shebang. They set the path to the interpreter, in our case, the bash shell.
+* The first line will be repeated through all bash scripts. The first two characters (#!) are known as the Shebang. They set the path to the interpreter, in our case, the bash shell.
 
-Pound symbols are used to denote a comment in bash scripting
+* Pound symbols(#) are used to denote a comment in bash scripting
 
-The third line is the command we will execute. Notice that you can also type this command in the terminal and you will get the same result.
+* The third line is the command that is executed. Notice that you can also type this command in the terminal and you will get the same result.
 
-Lets run this script. From the command line, run the program
+* Lets run this script. From the command line, run the program
 ```sh
 $ ./myscript.sh
 ```
-This should have returned
+* This should have returned
 ```sh
 bash: ./myscript.sh: Permission denied
 ```
-This is because by default, files are not executable, a simple fix.
+* This is because by default, files are not executable. To fix this, use the command below.
 ```sh
 $ chmod u+x myscript.sh
 ```
-This will add (+) execute (x) permission to the user (u)
+* This will add (+) execute (x) permission to the user (u)
 When you run the program this time, you should get an output.
 ```sh
 $ ./myscript.sh
@@ -53,20 +53,20 @@ Hello World!
 ```
 
 ## Variables
-Before we get into variables in scripting, lets try out variables on the command line first.
+*  Before we get into variables in scripting, lets try out variables on the command line first.
 ```sh
 $ A=apple
 $ echo $A
 apple
 ```
-These lines set A to the string apple, keep in mind that you canno't have any spaces.
-To read the variable, put a dollar sign in front of its name.
-Bash has many special variables with information about the enviroment, called enviroment variables, they can be accessed the same as variables you set manualy, for example,
+* These lines set A to the string apple, keep in mind that you can't have any spaces.
+* To read the variable, put a dollar sign in front of its name.
+* Bash has many special variables with information about the enviroment, called enviroment variables, they can be accessed the same as variables you set manualy, for example,
 ```sh
 $ echo $HOME
 /home/user
 ```
-There are also special variables that can be accessed in side the script itself
+* There are also special variables that can be accessed in side the script itself
 | Variable | Value |
 | ------ | ------ |
 | $0 | Name of script |
@@ -76,12 +76,12 @@ There are also special variables that can be accessed in side the script itself
 | $HOSTNAME | Machine hostname|
 | $RANDOM | Returns a random number  |
 
-More variables can be found in the [Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
+* More variables can be found in the [Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 
-These are some of the basic variables
+* These are some of the basic variables.
 
-One more thing to watch out for is variable scope, much like in other programming languags. A variable created in the script will not be avalible on the command line afterward unless you expicitly say so. This is done using the _export_ command.
-To test this, in a new script, try exporting a variable
+* One more thing to watch out for is variable scope, much like in other programming languags. A variable created in the script will not be avalible on the command line afterward unless you expicitly say so. This is done using the _export_ command.
+* To test this, in a new script, try exporting a variable
 ```sh
 #!/bin/bash
 var1=foo
@@ -89,23 +89,23 @@ var2=bar
 
 export var1
 ```
-After you run this program, try to find out what the variables are set to on the command line.
+* After you run this program, try to find out what the variables are set to on the command line.
 ```sh
 $ echo var1
 
 $ echo var2
 ```
 
-You can also save the output of a command directly into a variable
+* You can also save the output of a command directly into a variable
 ```sh
 #!/bin/bash
 var=$(ls)
 echo $var
 ```
-This saves the return from ls into our variable for later use.
+* This saves the return from ls into our variable for later use.
 ## Arithmetic Expressions
 #### Let
-the _let_ command allows you to compute simple arithmetic expressions
+* The _let_ command allows you to compute simple arithmetic expressions
 
 ```sh
 #!/bin/bash
@@ -120,7 +120,7 @@ let a++
 echo $a # 3
 ```
 #### Expr
-This is similar to _let_ except, it prints the result instead of saving it to a variable
+* This is similar to _let_ except, it prints the result instead of saving it to a variable
 ```sh
 #!/bin/bash
 
@@ -136,7 +136,7 @@ $ ./exprExample.sh
 ```
 #### Double parentheses
 $(( expression ))
-This mechanism allows you to easily manipulate the value of a variable, similar to the let command.
+* This mechanism allows you to easily manipulate the value of a variable, similar to the let command.
 ```sh
 #!/bin/bash
 
@@ -150,7 +150,7 @@ echo $var # 2
 echo $var # 3
 ```
 ## Input
-In bash scripting you can also get input from the user
+* In bash scripting you can also get input from the user
 ```sh
 #!/bin/bash
 echo Please enter some input:
@@ -159,10 +159,10 @@ echo you entered $var
 ```
 
 ## Control structures
-In this section we will get into options for control structures in bash scripting
+* In this section we will get into options for control structures in bash scripting
 ### If statements
 
-This example will take a few things we have been over so far and combine them
+* This example will take a few things we have been over so far and combine them
 ```sh
 #!/bin/bash
 if [$1 -qt 100 ]
@@ -176,7 +176,7 @@ then
 fi
 
 ```
-There are many test cases you can put in the square brackets ( _[ ]_ ). Here are a few examples
+* There are many test cases you can put in the square brackets ( _[ ]_ ). Here are a few examples
 
 | Operator | Test |
 | ------ | ------ |
@@ -185,9 +185,9 @@ There are many test cases you can put in the square brackets ( _[ ]_ ). Here are
 | -d DIR | Directory exists |
 | -e FILE| File exists |
 [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
-You can see that both of the if statements end their scope with _fi_
+* You can see that both of the if statements end their scope with _fi_
 
-Else if and Else also can be acomplished by adding
+* Else if and Else also can be acomplished by adding
 ```sh
 if [ condition ]
 then
@@ -220,20 +220,20 @@ case $1 in
         ;;
 esac
 ```
-This simple case statement uses the first command line argument as its conditional.
-If _$1_ is equal to the string start, it will echo starting
+* This simple case statement uses the first command line argument as its conditional.
+* If _$1_ is equal to the string start, it will echo starting
 ```sh
 $ ./caseExample.sh start
 starting
 ```
-If the variable is not set to one of our options, the ' _*_ ' option will handle anything.
+* If the variable is not set to one of our options, the ' _*_ ' option will handle anything.
 ```sh
 $ ./caseEcample.sh test
 command not found
 ```
 
 ### While statements
-While statement structure.
+* While statement structure.
 ```sh
 while [ a test ]
 do
@@ -251,7 +251,7 @@ do
 done
 echo Done
 ```
-This will print
+* This will print
 ```sh
 $ ./whileExample.sh
 1
@@ -267,9 +267,9 @@ $ ./whileExample.sh
 Done
 ```
 ### Until
-This is the opposite of a _while_ loop. In an Until loop, it executes the do section until the test becomes true.
+* This is the opposite of a _while_ loop. In an Until loop, it executes the do section until the test becomes true.
 ### For statements
-For loops in Bash scripting are similar to how they are written in python
+* For loops in Bash scripting are similar to how they are written in python
 ```sh
 for VAR in LIST
 do
@@ -298,9 +298,9 @@ $ ./forExample.sh
 Done
 ```
 ### Break
-The break keyword leaves the loop immediately
+* The break keyword leaves the loop immediately
 ### Continue
-The continue keyword will skip the rest of that iteration of the loop and move on to the next one
+* The continue keyword will skip the rest of that iteration of the loop and move on to the next one
 
 
 
@@ -315,11 +315,11 @@ The continue keyword will skip the rest of that iteration of the loop and move o
 
 
 ### Introduction <a name="intro"></a>
-In this section, we will cover some of more advanced options available in bash scripting. You can pick and choose which of these lessons you complete.
+* In this section, we will cover some of more advanced options available in bash scripting. You can pick and choose which of these lessons you complete.
 
 ### Functions <a name="functions"></a>
 
-function delcarations come in two different forms
+* function delcarations come in two different forms
 ```sh
 func1 () {
     commands
@@ -329,7 +329,7 @@ function func2 {
     commands
 }
 ```
-Functions in bash scripting act in some ways like new processes. Because of this, if you want to pass arguments to a bash function, you need to use the _$1_ ... _$n_ variables
+* Functions in bash scripting act in some ways like new processes. Because of this, if you want to pass arguments to a bash function, you need to use the _$1_ ... _$n_ variables
 
 ```sh
 #!/bin/bash
@@ -346,7 +346,7 @@ $ ./funcExample.sh
 foo
 bar
 ```
-You can also use return values
+* You can also use return values
 ```sh
 #!/bin/bash
 
@@ -363,45 +363,45 @@ $ ./functionReturn.sh
 This is a function
 3
 ```
-The value of the most recent funtion's return value is stored in the variable '?' and can be accessed with '$?'
+* The value of the most recent funtion's return value is stored in the variable '?' and can be accessed with '$?'
 
 ### User Interface <a name="userinterface"></a>
 
-So far the backend of the bash scripts are looking promising. However the front end user interface is lacking
+* So far the backend of the bash scripts are looking promising. However the front end user interface is lacking
 
 #### tput
-The tput command is a very powerful tool for output formatting.
-It can get very complex fast so lets take it one step at a time and put them together at the end.
-Try entering this in your command line:
+* The tput command is a very powerful tool for output formatting.
+* It can get very complex fast so lets take it one step at a time and put them together at the end.
+* Try entering this in your command line:
 ```sh
 $ tput cols
 
 $ tput lines
 ```
-These commands will show you how many columns and rows your current terminal window contains. These numbers are useful for formatting what you want to display.
+* These commands will show you how many columns and rows your current terminal window contains. These numbers are useful for formatting what you want to display.
 
-In order to format a information display, it is useful to have a blank screen to work with.
+* In order to format a information display, it is useful to have a blank screen to work with.
 ```sh
 $ tput clear
 ```
 
-Next enter this command:
+* Next enter this command:
 ```sh
 $ tput cup 0 0
 ```
-the cup command will move your cursor to the specified row and column. In this case it should have returned your cursor to the top of the screen (0,0).
+* The cup command will move your cursor to the specified row and column. In this case it should have returned your cursor to the top of the screen (0,0).
 
-You can also do text formating commands with tput for example,
+* You can also do text formating commands with tput for example,
 ```sh
 $ tput bold
 ```
-will make make your output bold
+* Will make make your output bold
 If you want to reset your text formating, use the command
 ```sh
 $ tput sgr0
 ```
 
-Here is an commented example script using these commands
+* Here is an commented example script using these commands
 ```sh
 #!/bin/bash
 # Print message in center of terminal
@@ -419,44 +419,44 @@ echo $@ # Time to print the text
 tput sgr0 # Reset formatting to defaults
 tput cup $( tput lines ) 0 # put the cursor at the bottom of the screen
 ```
-This script will take the command line arguments and print them in the center of the terminal window.
-Try it out! Run this script, resize your window and run it again.
+* This script will take the command line arguments and print them in the center of the terminal window.
+* Try it out! Run this script, resize your window and run it again.
 
-To find out more about the tput command, use the _man_ command
+* To find out more about the tput command, use the _man_ command
 ```sh
 $ man tput
 ```
 
 ### The Backtick <a name="backtick"></a>
-The backtick ( \` ) can easily be confused for a single quotation mark ( ' ).
-The key is located above the 'tab' key on your keyboard.
-It may look like a quotation mark but has a very different meaning in bash scripting.
-Everything that is within two backticks will be executed before the main command.
-For example...
+* The backtick ( \` ) can easily be confused for a single quotation mark ( ' ).
+* The key is located above the 'tab' key on your keyboard.
+* It may look like a quotation mark but has a very different meaning in bash scripting.
+* Everything that is within two backticks will be executed before the main command.
+* For example...
 ```sh
 #!/bin/bash
 
 sudo chown `id -u` /dir
 ```
-This will execute the _id -u_ command before the _chown_ like so
+* This will execute the _id -u_ command before the _chown_ like so
 ```sh
 sudo chown 1000 /dir
 ```
-Backticks are usefull but can be picky if you wanted to have a backslash (\\) in your command because it will escape it. 
-There is a newer way of executing commands inside of commands that we have already seen used for variable values.
+* Backticks are usefull but can be picky if you wanted to have a backslash (\\) in your command because it will escape it. 
+* There is a newer way of executing commands inside of commands that we have already seen used for variable values.
 ```sh
 #!/bin/bash
 
 sudo chown $(id -u) /dir
 ```
-This will acomplish the same thing as before.
+* This will acomplish the same thing as before.
 
 ### More usefull features <a name="format"></a>
-This section will focus on a few best practices for making your scripts more uniform and readable.
+* This section will focus on a few best practices for making your scripts more uniform and readable.
 
 #### Arguments
-While using the shorthand of an argument is convenient in the terminal,
-Using the long option of an argument means that it is more readable for the future.
+* While using the shorthand of an argument is convenient in the terminal,
+* Using the long option of an argument means that it is more readable for the future.
 ```sh
 $ ls --recursive
 vs
@@ -471,14 +471,14 @@ set -o errexit
 
 ...
 ```
-This is a very important line to have in longer, important scripts expecialy.
-It makes sure that when there is an error in the script, it closes.
-If this is not set it could get out of control. 
+* This is a very important line to have in longer, important scripts expecialy.
+* It makes sure that when there is an error in the script, it closes.
+* If this is not set it could get out of control. 
 
 #### Startup Scripts
-You will find it useful as times to be able to run a script every time you start up your machine.
-These would be commands you want to run maybe to start services that you want on as soon as you boot the machine, without having to manualy start them.
-To run a script on startup, place it, with execute privilege in the directory
+* You will find it useful as times to be able to run a script every time you start up your machine.
+* These would be commands you want to run maybe to start services that you want on as soon as you boot the machine, without having to manualy start them.
+* To run a script on startup, place it, with execute privilege in the directory
 ```sh
 /etc/init.d/
 ```
@@ -486,20 +486,20 @@ To run a script on startup, place it, with execute privilege in the directory
 
 ### Other Types of Scripts <a name="otherscripts"></a>
 
-This lesson has focussed on bash scripting, however, these types of script files are not restrained to just bash.
-By changeing the shebang path, you can change what interpreter is used for the file. This means that if you put something like 
+* This lesson has focussed on bash scripting, however, these types of script files are not restrained to just bash.
+* By changeing the shebang path, you can change what interpreter is used for the file. This means that if you put something like 
 ```sh
 #!/usr/bin/env python
 ```
-It will use your python interpreter instead of bash.
-Therefore you won't have to write
+* It will use your python interpreter instead of bash.
+* Therefore you won't have to write
 ```sh
 $ python myscript.py
 ```
-to execute the script, you will simply execute it like we did a bash script
+* To execute the script, you will simply execute it like we did a bash script
 ```sh
 $ ./myscript.py
 ```
-and it will find the interpreter on its own. 
+* And it will find the interpreter on its own. 
 
 [**NEXT: Applications**](04_applications.md)
