@@ -2,8 +2,8 @@
 
 # Bash Scripting Lesson
 This document will cover the basic features of bash scripting.
-There times where I reference the following link, as it is very comprehensive
-#### [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
+This link [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html) also gives a comprehensive of various commands that can be useful.
+
 
 ## Introduction
 Bash is a very common shell interface on linux machines. Bash scripts are often used to take make repetative tasks simple, or automate a process.
