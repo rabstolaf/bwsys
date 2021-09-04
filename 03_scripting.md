@@ -369,7 +369,7 @@ This is a function
 
 * So far the backend of the bash scripts are looking promising. However the front end user interface is lacking
 
-#### tput
+#### Tput
 * The tput command is a very powerful tool for output formatting.
 * It can get very complex fast so lets take it one step at a time and put them together at the end.
 * Try entering this in your command line:
