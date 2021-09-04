@@ -1,7 +1,7 @@
 [**PREVIOUS: Configuring the Head Node**](02_configuring-the-headnode.md) 
 
 # Bash Scripting Lesson
-This document will cover the basic features of bash scripting
+This document will cover the basic features of bash scripting.
 There times where I reference the following link, as it is very comprehensive
 #### [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 
