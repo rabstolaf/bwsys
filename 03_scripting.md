@@ -2,12 +2,11 @@
 
 # Bash Scripting Lesson
 This document will cover the basic features of bash scripting.
-The[Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html) also gives a comprehensive of various commands that can be useful.
+The [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html) also gives a comprehensive of various commands that can be useful.
 
 
 ## Introduction
-* Bash is a very common shell interface on linux machines. Bash scripts are often used to take make repetative tasks simple, or automate processes.
-* Any line begining with a $ will be a command line command.
+* Bash is a very common shell interface on linux machines. Bash scripts are often used to take make repetitive tasks simple, or automate processes.
 
 ## Basics
 * To create your first script, use 
@@ -22,6 +21,7 @@ $ touch myscript.sh
 $ nano myscript.sh
 ```
 * Here we will write the script
+
 ```sh
 #!/bin/bash
 # A simple bash script
@@ -29,7 +29,7 @@ echo Hello World!
 ```
 * The first line will be repeated through all bash scripts. The first two characters (#!) are known as the Shebang. They set the path to the interpreter, in our case, the bash shell.
 
-* Pound symbols(#) are used to denote a comment in bash scripting
+* Pound symbols(#) are used to denote a comment in bash scripting.
 
 * The third line is the command that is executed. Notice that you can also type this command in the terminal and you will get the same result.
 
@@ -41,12 +41,14 @@ $ ./myscript.sh
 ```sh
 bash: ./myscript.sh: Permission denied
 ```
-* This is because by default, files are not executable. To fix this, use the command below.
+* This is because by default, files are not executable. 
+
+* To fix this, use the command below.
 ```sh
 $ chmod u+x myscript.sh
 ```
 * This will add (+) execute (x) permission to the user (u)
-When you run the program this time, you should get an output.
+* When you run the program this time, you should get an output.
 ```sh
 $ ./myscript.sh
 Hello World!
@@ -61,12 +63,12 @@ apple
 ```
 * These lines set A to the string apple, keep in mind that you can't have any spaces.
 * To read the variable, put a dollar sign in front of its name.
-* Bash has many special variables with information about the enviroment, called enviroment variables, they can be accessed the same as variables you set manualy, for example,
+* Bash has many special variables with information about the environment, called environment variables, they can be accessed the same way as variables set manually, for example,
 ```sh
 $ echo $HOME
 /home/user
 ```
-* There are also special variables that can be accessed in side the script itself
+* There are also special variables that can be accessed inside the script itself.
 | Variable | Value |
 | ------ | ------ |
 | $0 | Name of script |
@@ -78,10 +80,8 @@ $ echo $HOME
 
 * More variables can be found in the [Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
 
-* These are some of the basic variables.
-
-* One more thing to watch out for is variable scope, much like in other programming languags. A variable created in the script will not be avalible on the command line afterward unless you expicitly say so. This is done using the _export_ command.
-* To test this, in a new script, try exporting a variable
+* One more thing to watch out for is variable scope, much like in other programming languages. A variable created in the script will not be avalible on the command line afterward unless you expicitly say so. This is done using the _export_ command.
+* To test this, in a new script, try exporting a variable.
 ```sh
 #!/bin/bash
 var1=foo
@@ -96,7 +96,7 @@ $ echo var1
 $ echo var2
 ```
 
-* You can also save the output of a command directly into a variable
+* You can also save the output of a command directly into a variable.
 ```sh
 #!/bin/bash
 var=$(ls)
@@ -105,12 +105,12 @@ echo $var
 * This saves the return from ls into our variable for later use.
 ## Arithmetic Expressions
 #### Let
-* The _let_ command allows you to compute simple arithmetic expressions
+* The _let_ command allows you to compute simple arithmetic expressions.
 
 ```sh
 #!/bin/bash
 
-let a=1+1
+let a = 1 + 1
 echo $a # 2
 
 let "a = 1 + 1"
@@ -120,15 +120,15 @@ let a++
 echo $a # 3
 ```
 #### Expr
-* This is similar to _let_ except, it prints the result instead of saving it to a variable
+* This is similar to _let_ except, it prints the result instead of saving it to a variable.
 ```sh
 #!/bin/bash
 
-expr 3+4
+expr 3 + 4
 
 expr 15 % 2
 ```
-When we run this, we get
+* When we run this, we get
 ```sh
 $ ./exprExample.sh
 7
@@ -140,10 +140,10 @@ $(( expression ))
 ```sh
 #!/bin/bash
 
-var=$(( 2+5 ))
+var=$(( 2 + 5 ))
 echo $var # 7
 
-var=$((1+1)) # spacing does not matter in this format
+var=$((1 + 1)) # spacing does not matter in this format
 echo $var # 2
 
 (( var++ ))
@@ -159,13 +159,13 @@ echo you entered $var
 ```
 
 ## Control structures
-* In this section we will get into options for control structures in bash scripting
+* In this section we will get into options for control structures in bash scripting.
 ### If statements
 
 * This example will take a few things we have been over so far and combine them
 ```sh
 #!/bin/bash
-if [$1 -qt 100 ]
+if [$1 - qt 100]
 then
     echo You entered a number larger than 100
 fi
@@ -176,7 +176,7 @@ then
 fi
 
 ```
-* There are many test cases you can put in the square brackets ( _[ ]_ ). Here are a few examples
+* There are many test cases you can put in the square brackets ( _[ ]_ ). Here are a few examples.
 
 | Operator | Test |
 | ------ | ------ |
@@ -184,10 +184,10 @@ fi
 | -z STR | String length is zero |
 | -d DIR | Directory exists |
 | -e FILE| File exists |
-[Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html)
+* For more information go to [Bash Reference Manual](https://tiswww.case.edu/php/chet/bash/bashref.html).
 * You can see that both of the if statements end their scope with _fi_
 
-* Else if and Else also can be acomplished by adding
+* In between _if_ and _fi_ , we can also add elif and else. The following line is an example of how to use it.
 ```sh
 if [ condition ]
 then
@@ -199,12 +199,13 @@ else
     commands
 fi
 ```
-in between _if_ and _fi_
 
 ### Case statements
+* This simple case statement uses the first command line argument as its conditions.
+* If _$1_ is equal to the string start, it will echo starting.
+
 ```sh
 #!/bin/bash
-
 case $1 in
     start)
         echo starting
@@ -220,13 +221,13 @@ case $1 in
         ;;
 esac
 ```
-* This simple case statement uses the first command line argument as its conditional.
-* If _$1_ is equal to the string start, it will echo starting
+
+* Make the file executable and then try to run the script. 
 ```sh
 $ ./caseExample.sh start
 starting
 ```
-* If the variable is not set to one of our options, the ' _*_ ' option will handle anything.
+* If the variable is not set to one of our options, the ' _*_ ' option will handle everything.
 ```sh
 $ ./caseEcample.sh test
 command not found
@@ -240,18 +241,18 @@ do
     commands
 done
 ```
-Sample implamentation
+Sample implementation
 ```sh
 #!/bin/bash
-i=0
-while[i -le 10]
+i = 0
+while[i - le 10]
 do
     echo $i
     ((i++))
 done
 echo Done
 ```
-* This will print
+* This will print. Make this executable before running the command. 
 ```sh
 $ ./whileExample.sh
 1
@@ -269,7 +270,7 @@ Done
 ### Until
 * This is the opposite of a _while_ loop. In an Until loop, it executes the do section until the test becomes true.
 ### For statements
-* For loops in Bash scripting are similar to how they are written in python
+* For-loops in Bash scripting are similar to how they are written in python.
 ```sh
 for VAR in LIST
 do
@@ -286,7 +287,7 @@ do
 done
 echo Done
 ```
-
+* Make this executable before running the command. 
 ```sh
 $ ./forExample.sh
 0
@@ -298,11 +299,9 @@ $ ./forExample.sh
 Done
 ```
 ### Break
-* The break keyword leaves the loop immediately
+* The break keyword leaves the loop immediately.
 ### Continue
-* The continue keyword will skip the rest of that iteration of the loop and move on to the next one
-
-
+* The continue keyword will skip the rest of that iteration of the loop and move on to the next one.
 
 
 ## More advanced Bash Scripting
@@ -315,11 +314,11 @@ Done
 
 
 ### Introduction <a name="intro"></a>
-* In this section, we will cover some of more advanced options available in bash scripting. You can pick and choose which of these lessons you complete.
+* In this section, we will cover some of the more advanced options available in bash scripting. You can pick and choose which of these lessons you complete.
 
 ### Functions <a name="functions"></a>
 
-* function delcarations come in two different forms
+* function declarations come in two different forms
 ```sh
 func1 () {
     commands
@@ -329,7 +328,7 @@ function func2 {
     commands
 }
 ```
-* Functions in bash scripting act in some ways like new processes. Because of this, if you want to pass arguments to a bash function, you need to use the _$1_ ... _$n_ variables
+* Functions in bash scripting act in some ways like new processes. Because of this, if you want to pass arguments to a bash function, you need to use the _$1_ ... _$n_ variables.
 
 ```sh
 #!/bin/bash
@@ -341,6 +340,7 @@ print_a_thing () {
 print_a_thing foo
 print_a_thing bar
 ```
+* Make this executable before running the command. 
 ```sh
 $ ./funcExample.sh
 foo
@@ -358,6 +358,7 @@ just_a_function () {
 just_a_function
 echo The function returned $?
 ```
+* Make this executable before running the command. 
 ```sh
 $ ./functionReturn.sh
 This is a function
@@ -367,11 +368,11 @@ This is a function
 
 ### User Interface <a name="userinterface"></a>
 
-* So far the backend of the bash scripts are looking promising. However the front end user interface is lacking
+* So far the backend of the bash scripts are looking promising. However, the front end user interface is lacking.
 
 #### Tput
 * The tput command is a very powerful tool for output formatting.
-* It can get very complex fast so lets take it one step at a time and put them together at the end.
+* It can get very complex and fast so lets take it one step at a time and put them together at the end.
 * Try entering this in your command line:
 ```sh
 $ tput cols
@@ -396,12 +397,12 @@ $ tput cup 0 0
 $ tput bold
 ```
 * Will make make your output bold
-If you want to reset your text formating, use the command
+* If you want to reset your text formating, use the command
 ```sh
 $ tput sgr0
 ```
 
-* Here is an commented example script using these commands
+* Here is a commented example script using these commands.
 ```sh
 #!/bin/bash
 # Print message in center of terminal
@@ -471,23 +472,22 @@ set -o errexit
 
 ...
 ```
-* This is a very important line to have in longer, important scripts expecialy.
+* This is a very important line to have in longer and important scripts.
 * It makes sure that when there is an error in the script, it closes.
 * If this is not set it could get out of control. 
 
 #### Startup Scripts
 * You will find it useful as times to be able to run a script every time you start up your machine.
-* These would be commands you want to run maybe to start services that you want on as soon as you boot the machine, without having to manualy start them.
-* To run a script on startup, place it, with execute privilege in the directory
+* These would be commands you want to run, maybe start services that you want on as soon as you boot the machine, without having to manually start the command.
+* To run a script on startup, place it, with executable privilege in the directory.
 ```sh
 /etc/init.d/
 ```
 
-
 ### Other Types of Scripts <a name="otherscripts"></a>
 
-* This lesson has focussed on bash scripting, however, these types of script files are not restrained to just bash.
-* By changeing the shebang path, you can change what interpreter is used for the file. This means that if you put something like 
+* This lesson has focussed on bash scripting. However, these types of script files are not restrained to just bash.
+* By changing the (#!) shebang path, you can change what interpreter is used for the file. This means that if you put something like 
 ```sh
 #!/usr/bin/env python
 ```
