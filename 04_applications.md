@@ -72,7 +72,7 @@ In the following commmand, the `-zxf` option is a combination of two options. `-
 
 * You can test this step on the Golden Node after setting up NFS. You should have the same files in /opt/openmpi-4.1.1/bin that are on the head node on the worker node as well.
 
-## 3. Netbooting
+## 2. Netbooting
 > Netbooting will allow the Golden Node to boot using the network. The headnode will provide the installation file for the operating system.
 > [This link](https://www.howtogeek.com/57601/what-is-network-booting-pxe-and-how-can-you-use-it/) can help you understand this concept in greater detail.
 
