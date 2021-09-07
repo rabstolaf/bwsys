@@ -5,39 +5,17 @@
 This document contains some applications that you should have on your headnode.
 They will be useful in keeping a record of configuration changes and running parallel computing processes in your cluster.
 <!-- * First, we install apt-cacher to create a local ubuntu mirror on our headnode. -->
-* First, we install and configure OpenMPI.
-* Finally, we download the netbooting image for Ubuntu and configure our headnode to allow the golden node to netboot from it.
+* First, we install `etckeeper`. 
+* After that, we configure OpenMPI.
 
-<!-- ## 1. Install etckeeper
+## 1. Install etckeeper
 
 > `etckeeper` is a version control system for the `/etc` folder.
 > It automatically commits the changes you make to the `/etc` folder.
 
-* `$ apt install etckeeper`
+* `$ sudo apt install etckeeper`
 
-
-## 1. Apt-Cacher
-
-> Apt-Cacher (pronounced: *apt casher* ) is a software to cache the applications in your headnode. 
-> A cache is a piece of software that is used for storing data (in our case our apt installations), so that it can be used and served much faster in the future.
-> As a result, it acts like an ubuntu mirror for the other nodes.
-> Here is a [link](https://www.unix-ag.uni-kl.de/~bloch/acng/html/index.html) to the `apt-cacher-ng` user manual.
-
-* `$ sudo apt install apt-cacher-ng`
-* `$ echo 'Acquire::http { Proxy "http://localhost:3142"; };' | sudo tee /etc/apt/apt.conf.d/01proxy` &mdash; this sets port 3142 of your headnode as the proxy
-  * A proxy is a machine that acts as a filter and a firewall to provide shared network connections and cache data to speed up common requests.
-* `$ sudo apt update` &mdash; update your repository before caching
-* Import the apt cache
-  * `$ sudo cp -laf /var/cache/apt/archives /var/cache/apt-cacher-ng/_import`
-  * `$ sudo chown apt-cacher-ng /var/cache/apt-cacher-ng/_import`
-* Import the repositories
-  * Replace "IP" with your headnode **IP that is connected to wifi** in this link and visit this link: `http://ip:3142/acng-report.html`
-    * To find that use `ip ad` and find the IP that is **neither** 127.0.0.1 **nor** 10.0.0.254.
-  * At the bottom, click `Start Import` and wait for it to finish
-* Done!
--->
-
-## 1. OpenMPI
+## 2. OpenMPI
 > Now, this is where you actually get to use the cluster! Open MPI is a library that allows us to run job(s) (programs, written in C or C++) on multiple computers, in this case, on your cluster of Virtual Machines.
 > Open MPI is the open source version of Message Passing Interface (MPI). It is a standardized and portable message-passing implementation of MPI designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.
 > [This video](https://www.youtube.com/watch?v=D0-xSWBGNAw) gives a brief introduction on MPI and OpenMPI.
@@ -71,21 +49,6 @@ In the following commmand, the `-zxf` option is a combination of two options. `-
 * `$ sudo cp -r /usr/lib/openmpi-4.1.1/bin /opt/openmpi-4.1.1`  - This copies the files over
 
 * You can test this step on the Golden Node after setting up NFS. You should have the same files in /opt/openmpi-4.1.1/bin that are on the head node on the worker node as well.
-
-## 2. Netbooting
-> Netbooting will allow the Golden Node to boot using the network. The headnode will provide the installation file for the operating system.
-> [This link](https://www.howtogeek.com/57601/what-is-network-booting-pxe-and-how-can-you-use-it/) can help you understand this concept in greater detail.
-
-* `$ sudo apt install syslinux tftpd-hpa` &mdash; install the necessary packages
-* `$ wget http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/current/images/netboot/netboot.tar.gz` &mdash; this is the netboot installer for Ubuntu 18.04
-* `$ sudo tar -xzf netboot.tar.gz -C /var/lib/tftpboot/` &mdash; unpack the tar to this location
-* Add the following lines to `/var/lib/tftpboot/pxelinux.cfg/default` to control netbooting:
-<br/>`ONTIMEOUT localboot`
-<br/>`LABEL localboot`
-<br/>`MENU LABEL Boot From Hard Disk`
-<br/>`LOCALBOOT  0`
-* Save and exit
-* `$ sudo chmod 755 /var/lib/tftpboot/ubuntu-installer/amd64/*` &mdash; to let other machines access the installer
 
 This concludes what we have to do on the headnode (for now)! Now we move on to another physical machine (or another virtual machine) that will be our Golden Node!
 
