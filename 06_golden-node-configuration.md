@@ -2,50 +2,55 @@
 
 # Golden Node Configuration
 
-After updating the repository and upgrading packages on your Golden Node, we will:
-* update the `/etc/hosts` file 
-* enable passworldless ssh
-* Use NFS to mount our `/home` and `/opt` folders from our headnode onto the golden node
-* Set the headnode as the NTP server for the headnode
-* Install and configure LDAP
-* Configure Golden Node through the mounted `/opt` folder to use OpenMPI
+* To update the list of package sources and to update the existing packages, run: `sudo apt update` and `sudo apt upgrade`
+* To install essential packages, run: `sudo apt install w3m iptables openssh-client wget nano info man-db manpages friendly-recovery tmux grub2 traceroute bash-completion command-not-found dnsutils lshw lsof mtr psmisc tcpdump apt-transport-https update-manager-core gcc g++ libtool gedit emacs ssh sshpass xorg make`
+
+* The following sections will show how to:
+  * Update the `/etc/hosts` file 
+  * Enable passworldless ssh
+  * Use NFS to mount our `/home` and `/opt` folders from our headnode onto the golden node
+  * Set the headnode as the NTP server for the golden node
+  * Install and configure LDAP
+  * Configure Golden Node through the mounted `/opt` folder to use OpenMPI
 
 ## 1. Update `/etc/hosts` file
 
-> This file is mainly for hostname resolving, mapping a hostname to a specific IP address, so make this identical to the headnode's file.
+> This file is mainly for hostname resolving - mapping a hostname to a specific IP address - so make this identical to the headnode's file.
 > Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
 >
-<br/>Either:
+<br/>
+Either:
 * Go back and take a look at the `/etc/hosts` file in your headnode and make this file identical to that one
-<br/>Or:
+<br/>
+Or:
 *  Use scp to copy the file from the headnode to the Golden Node:
 * `$ sudo scp <user>@<headnode address>:/etc/hosts /etc/hosts`
 * scp (secure copy protocol) is used to securely transfer files between two hosts.
-<br/>Then:
+<br/>
+Then:
 * Test using the same testing process (ssh) as mentioned in the [second document](02_configuring-the-headnode.md)
   * `$ ssh <localhost>` should log you back into your machine
   * `$ ssh <headnode>` should require a password to login
 
 ## 2. Passwordless SSH
 
-> This will enable you to SSH into your headnode from your Golden Node and vice-versa without a password.
-> Refer to the [second document](02_configuring-the-headnode.md) for information on SSH.
+> This will enable you to SSH into your headnode from your Golden Node and vice versa without a password.
 
 * `$ ssh-keygen -t rsa -b 4096` &mdash; this generates an SSH Key on your Golden Node.
 Do not change the default folder.
 Do not create a passphrase.
-* `$ cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys` &mdash; to be able to SSH into yourself
+* `$ cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys` &mdash; to be able to SSH into your golden node
 * `$ ssh-copy-id <headnode>` &mdash; where *headnode* is the name of your headnode
 * `$ ssh <headnode>` &mdash; this should let you SSH into your heanode without asking for a password
 * Now that you are on your headnode, run: `$ ssh-copy-id <golden>` where `golden` is the name of your Golden Node.
 * `$ ssh <golden>` &mdash; this should let you ssh into your golden node without asking for a password
 * `$ exit` or <kbd>Ctrl</kbd>+<kbd>D</kbd> &mdash; this allows you to close an SSH session.
-Use it the appropriate number of times to get back to your Golden Node. The command `who` may help
+Use it the appropriate number of times to get back to your Golden Node.
 
 ## 3. NFS
 
 > In our headnode, we had used the `/etc/exports` file to publish and make our `/home` directory and `/opt` directory available for mounting. We will now mount it on the Golden Node
-
+The following will be done on the golden node
 * `$ sudo apt install nfs-kernel-server`
 * `$ sudo showmount -e <headnode>` &mdash; where *headnode* is the name of your headnode.
 This will show you the directories available for mounting from your headnode
@@ -56,8 +61,8 @@ This will show you the directories available for mounting from your headnode
 * `$ sudo mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
 * You might have to log out and log back in to your golden node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
-* `/home` contains all of the user directories. To have a syncronized user directory amongst all of our machines `/home` should generally be mounted and accessable amongst all machines in a cluster.
-* You will utilize your mounted `/opt` directory later with OpenMPI configuration
+* `/home` contains all of the user directories. To have a syncronized user directory amongst all of our machines, `/home` should generally be mounted and accessable amongst all the machines in a cluster.
+* You will utilize your mounted `/opt` directory later with OpenMPI configuration.
 
 ## 4. NTP
 
@@ -68,9 +73,10 @@ This will show you the directories available for mounting from your headnode
 * Recall what you did with the file for your headnode.
 Do the same except the following:
   * Instead of `server timehost.stolaf.edu` write `server *headnode*`
-  * No need to add the lines about restricting access
-* `$ sudo systemctl start ntp`
-* Use `ntpq -p` to check if its working
+  * There is no need to add the lines about restricting access
+* To start the ntp service, run: `$ sudo systemctl start ntp`
+* Use `ntpq -p` to check if it is working.
+* If it is working, it should show one of the entries containing the string 'ola'.
 
 ## 5. LDAP
 
@@ -78,7 +84,8 @@ Do the same except the following:
 > So the configuration process is the same as well.
 
 * `$ sudo apt install libnss-ldap libpam-ldap`
-<br/>Either:
+<br/>
+Either:
 * Follow through the instructions and do exactly what you did for the headnode
 * This essentially means that `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` should be the same as the ones in your headnode
 <br/>Or:
