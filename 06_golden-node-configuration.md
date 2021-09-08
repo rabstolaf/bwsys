@@ -107,14 +107,14 @@ If it works, then you did it right!
   * Change the permissions of the script file and execute it (Look at the Basics section in [03_scripting](03_scripting.md) for more info)
 
 ***
-* Should we put this part somewhere else? -> Depends how we are implementing the other parts and if this page is the last page.
-This is the end of the Cluster Manager Training!
-Congratulations for making it!
-Feel free to go through the training multiple times as that will give you a better understanding of how everything works.
-There will be serveral other documents with information about other stuff you can learn.
-All of them will build off of this basic training.
-That means that you are mostly free to read through and work with those documents in any order you want.
-Best of luck!  
+
+### This is the end of the Cluster Manager Training.
+### Congratulations for making it!
+> Feel free to go through the training multiple times as that will give you a better understanding of how everything works.
+> There will be serveral other documents with information about other stuff you can learn.
+> All of them will build off of this basic training.
+> That means that you are mostly free to read through and work with those documents in any order you want.
+###  Best of luck!  
   
 
 [**NEXT: Creating More Nodes**](07_creating-more-nodes.md)
