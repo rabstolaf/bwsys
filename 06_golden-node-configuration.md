@@ -80,27 +80,31 @@ Do the same except the following:
 
 ## 5. LDAP
 
-> The purpose of LDAP here is the same.
+> The purpose of LDAP here is the same as mentioned before  when you set up the headnode.
 > So the configuration process is the same as well.
 
-* `$ sudo apt install libnss-ldap libpam-ldap`
-<br/>
-Either:
-* Follow through the instructions and do exactly what you did for the headnode
-* This essentially means that `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` should be the same as the ones in your headnode
-<br/>Or:
-* You could use `scp` to copy the configuration files from the headnode:
-  * `$ sudo scp <user>@<headnode>:/etc/ldap.conf /etc/ldap.conf`&mdash; where \*user\* and \*headnode\* are the username and address of your headnode. Assuming your hosts file is setup, you should be able to type `headnode` literally. 
-  * Remember, you would have to run the scp command for each `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf`!
+* Run: `$ sudo apt install libnss-ldap libpam-ldap`
+* Remember on the headnode, you configured `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` when you set up ldap. We need the same configuration files on the golden node. So instead of re-editing those files on the golden node, we can just copy them over from the headnode using the `scp` command. 
+* The `scp` command allows secure copying of all kinds of files between machines. Here is a [tutorial](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/) if you want to read more about `scp`.
+* Use`scp` to copy the configuration files from the headnode:
+  * Run: `$ sudo scp <user>@<headnode>:/etc/ldap.conf /etc/ldap.conf`&mdash; where \*user\* and \*headnode\* are the username and address of your headnode. Assuming your hosts file is setup, you should be able to type `headnode` literally. 
+  * Remember, you would have to run the scp command for each of these files: `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf`!
 <br/>Then:
-* Test it the same way you tested for the headnode (
+* Test it the same way you tested for the headnode: 
 Logout of your VM and try to log back in using your St. Olaf username and password.
-If it works, then you did it right!)
+If it works, then you did it right!
 
 ## 6. OpenMPI
-* Through our OpenMPI configuration in our headnode, the nessessary configuration files should all be in `/opt/openmpi/bin/`.
-* Using the mounted `/opt` folder, the golden node can access all the files needed to run OpenMPI via NFS. So, all you have to do is run the same script you wrote earlier to link the binaries in `/opt/openmpi/bin/` to your local `/usr/bin/` (ALl of configuration files should be in `/opt/openmpi/bin/`)
-* `$ ./mpi_script.sh`
+* Through our OpenMPI configuration in our headnode, the necessary configuration files should all be in `/opt/openmpi-4.1.1/bin/`.
+
+* Using the mounted `/opt` folder, the golden node can access all the files needed to run OpenMPI via NFS. So, all you have to do is run the same script you wrote earlier to link the binaries in `/opt/openmpi-4.1.1/bin/` to your local `/usr/bin/` (ALl of configuration files should be in `/opt/openmpi-4.1.1/bin/`)
+
+* We want to provide alternatives to the default installations of openmpi, by using the ones located in the `/usr/lib/openmpi-4.1.1/bin`. To list all of them, run:
+  * `ls /opt/openmpi-4.1.1/bin`
+  * The output should be: `aggregate_profile.pl  mpic++  mpicc  mpiCC  mpicxx  mpiexec  mpif77  mpif90  mpifort  mpirun  ompi-clean  ompi_info  ompi-server  opal_wrapper  ortecc  orte-clean  orted  orte-info  orterun  orte-server  profile2mat.pl`
+* For this, we need a for-loop in a bash script to run the following command repeatedly (`$prog` is a variable that represents each of the programs listed above): 
+  * `sudo update-alternatives --install "/usr/bin/${prog}" "$prog" "/opt/openmpi-4.1.1/bin/`${prog}" 1` &mdash; this command should run for every `$prog` in the following list (Look at the For Statements section in [03_scripting](03_scripting.md) for more info)
+  * Change the permissions of the script file and execute it (Look at the Basics section in [03_scripting](03_scripting.md) for more info)
 
 ***
 * Should we put this part somewhere else? -> Depends how we are implementing the other parts and if this page is the last page.
