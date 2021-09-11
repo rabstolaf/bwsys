@@ -1,5 +1,7 @@
 # Welcome!
 
+Before you begin, take a quick look at [this README](resources/command_line_tips.md). A README file is a file that describes and explains the contents of a repository such as this one that contains the training documents.  
+
 ## Intro
 
 This training will take you through setting up a cluster (a network of computers) on your own personal laptop.
