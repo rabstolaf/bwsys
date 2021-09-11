@@ -4,8 +4,8 @@
 
 This training will take you through setting up a cluster (a network of computers) on your own personal laptop.
 This document will give you an overview of what you will do in the training as well as a glossary of terms you should familiarize yourself with before moving on with the training.
-The rest of the documents should be followed in order till document 5, after which the training branches off into specializations and you may choose what exactly you want to do. (or do all of them!)
-Throughout the training, **Google** will be your best friend but do not hesitate to ask Trainers for help in case you need any sort of help.
+The rest of the documents should be followed in order till document 7, after which the training branches off into specializations and you may choose what exactly you want to do. (or do all of them!)
+Throughout the training, you can **Google** things you do not understand but do not hesitate to ask Trainers for help in case you need any sort of help.  
 Have fun!
 
 ## Goals
