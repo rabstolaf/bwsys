@@ -11,7 +11,7 @@ With the Headnode and Golden Node properly configured, all that remains is to cl
 * Make sure that a new MAC address is generated.
 * Create a full clone &mdash; we'll have to change the hostname, and a linked clone would cause any changes made in the new VM to be reflected in the original (which is not what we want!)
 * If you've taken any snapshots of your Golden Node, you can include them in the clone, or just take the current machine state. 
-* Wait for VirtualBox to clone the virtual hard drive, which could take a bit.
+* Wait for VirtualBox to clone the virtual hard drive, which could take a bit of time.
 
 ## 2. Updating MAC address and hostname
 
@@ -21,9 +21,9 @@ With the Headnode and Golden Node properly configured, all that remains is to cl
 
 ## 3. Update dhcpd.conf in Headnode
 
-* Just like when configuring the Golden Node, you'll need to update the `/etc/dhcp/dhpcd.conf` file in the Headnode so its DHCP server knows which IP to assign the newly-created node. This is the same process as when editing the file for the Golden Node, just make sure to update the hostname and IP address so that they match the hostfile.
+* Just like when configuring the Golden Node, you'll need to update the `/etc/dhcp/dhpcd.conf` file in the Headnode so its DHCP server knows which IP to assign the newly-created node. This is the same process as when editing the file for the Golden Node, just make sure to update the hostname and IP address so that they match the hostfile, `/etc/hostname`.
 
-That's there is to cloning a node! You can repeat this process multiple times to create a bigger cluster, but you'll eventually be limited by how many computing resources your host computer can provide.
+That's all there is to cloning a node! You can repeat this process multiple times to create a bigger cluster, but you'll eventually be limited by your host computer's storage capacity as well well as its memory(RAM). 
 
 
 [**NEXT: Introduction to Docker**](08_Docker.md)
