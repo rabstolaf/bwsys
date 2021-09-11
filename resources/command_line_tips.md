@@ -4,8 +4,8 @@ This short document contains a couple of shortcuts that can help you use the Bas
 These are useful for both Linux and Mac.
 
 ## Controlling the Screen
-`Ctrl+L`: Clear the screen. This is similar to running the “clear” command.
-`Ctrl+S`: Stop all output to the screen. This is particularly useful when running commands with a lot of long, verbose output, but you don’t want to stop the command itself with Ctrl+C.
+`Ctrl+L`: Clear the screen. This is similar to running the “clear” command.  
+`Ctrl+S`: Stop all output to the screen. This is particularly useful when running commands with a lot of long, verbose output, but you don’t want to stop the command itself with Ctrl+C.  
 `Ctrl+Q`: Resume output to the screen after stopping it with Ctrl+S.
 
 ## Moving the Cursor
