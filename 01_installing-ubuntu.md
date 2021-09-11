@@ -1,7 +1,7 @@
 [**PREVIOUS: Important Terms**](00_terms.md) 
 
 # Installing Ubuntu
-Make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine. See how to do this on [thing README](README.md) if you haven't done that already.
+Make sure to have an image (ISO) of **Ubuntu 18.04 Server** downloaded and **VirtualBox** installed on your machine. See how to do this on [this README](README.md) if you haven't done that already.
 
 This will take you through the steps for creating a virtual machine and configuring it properly.
 Then it will guide you through the process of installing the Operating System called Ubuntu 18.04 Server on that virtual machine. 
