@@ -22,9 +22,9 @@ Use the following shortcuts to quickly move the cursor around the current line w
 ## Deleting Text
 Use the following shortcuts to quickly delete characters:
 
-`Ctrl+D` or `Delete`: Delete the character under the cursor.
-`Alt+D`: Delete all characters after the cursor on the current line.
-`Ctrl+H` or `Backspace`: Delete the character before the cursor.
+`Ctrl+D` or `Delete`: Delete the character under the cursor.  
+`Alt+D`: Delete all characters after the cursor on the current line.  
+`Ctrl+H` or `Backspace`: Delete the character before the cursor.  
 
 ## Fixing Typos
 These shortcuts allow you to fix typos and undo your key presses.
