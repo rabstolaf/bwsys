@@ -20,6 +20,7 @@ Do the following steps:
 ### 04: [Applications](04_applications.md)
 ### 05: [Golden node set up](05_golden-node-configuration.md)
 ### 06: [Golden node configuration](06_golden-node-configuration.md)
-### 07: [Creating more nodes](07_creating-more-nodes.md)
-
-* [**Begin the training**](00_terms.md)
+### 07: [Creating more nodes](07_creating-more-nodes.md)  
+  
+  
+### [**Begin the training**](00_terms.md)
