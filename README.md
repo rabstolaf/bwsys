@@ -12,4 +12,14 @@ Do the following steps:
 
 [Here is a document](resources/command_line_tips.md) that have a lot of cool shortcuts for using during and after your training. You can always come back to it in order to learn and remind yourself how to cruise on the command line.
 
-* [**Go to the beginning of the training**](00_terms.md)
+## Table of contents 
+### 00: [Terms](00_terms.md)
+### 01: [Installing Ubuntu](01_installing-ubuntu.md)
+### 02: [Configuring the head node](02_configuring-the-headnode.md)
+### 03: [Scripting basics](03_scripting.md)
+### 04: [Applications](04_applications.md)
+### 05: [Golden node set up](05_golden-node-configuration.md)
+### 06: [Golden node configuration](06_golden-node-configuration.md)
+### 07: [Creating more nodes](07_creating-more-nodes.md)
+
+* [**Begin the training**](00_terms.md)
