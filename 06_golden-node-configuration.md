@@ -67,6 +67,9 @@ This will show you the directories available for mounting from your headnode
 ## 4. NTP
 
 > The Golden Node will only synchronize its time with the headnode.
+* `$ date` &mdash; this command will show you the date and time
+* `$ sudo rm /etc/localtime` &mdash; will delete the file.
+* `$ sudo ln -s /usr/share/zoneinfo/US/Central /etc/localtime` &mdash; will create another symlink with the same name and link it to `/usr/share/zoneinfo/US/Central`.This should/will fix your timezone to CDT.
 
 * `$ sudo apt install ntp`
 * Open the `/etc/ntp.conf` file
