@@ -4,10 +4,12 @@ Before you begin, take a quick look at [this README](README.md). A README file i
 
 ## Intro
 
-This training will take you through setting up a cluster (a network of computers) on your own personal laptop.
+This training will take you through setting up a cluster (a network of computers) on your own personal laptop. Later, you will run a program from one of the computers which will be "shared" between all the computers in the cluster. This program is the "job" and this "job" is shared among the computers, each doing a part of the job.
+
 This document will give you an overview of what you will do in the training as well as a glossary of terms you should familiarize yourself with before moving on with the training.
 The rest of the documents should be followed in order till document 7, after which the training branches off into specializations and you may choose what exactly you want to do. (or do all of them!)
 Throughout the training, you can **Google** things you do not understand but do not hesitate to ask Trainers for help in case you need any sort of help.  
+
 Have fun!
 
 ## Goals
@@ -23,6 +25,8 @@ Have fun!
 1. Setup a Virtual Machine with Ubuntu 18.04 running on it.
 2. Configure networking on the VM to set it up as the headnode/server.
 3. Learn shell scripting.
+
+Later, you may:
 4. Install Docker and get used to working with containers.
 5. Create a Docker image and configure it to act as your golden node.
 6. Clone the Docker image to create a cluster of Docker containers running on your VM.
