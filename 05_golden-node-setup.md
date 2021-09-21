@@ -30,7 +30,7 @@ This will involve letting your Golden Node netboot from the headnode.
 
 * When the Node starts, press <kbd>F12</kbd> to load the boot menu
 * Press <kbd>l</kbd> to select *lan*
-* The Node should get DHCP and an IP of 10.0.0.1
+* The Node should get DHCP and an IP of 172.22.0.1
 * It should then PXE-Boot and show you the Ubuntu 18.04 Server installer menu
 * Press <kbd>Enter</kbd> and wait a little
 
