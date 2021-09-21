@@ -66,7 +66,7 @@ These are the files that contain the LDAP configuration.
 * We need to edit the `/etc/ntp.conf` file to make the machine access time from the St. Olaf time servers to enable faster time synchronization.
   * Comment out all lines that access ubuntu time servers for the time.
   * Add `timehost.stolaf.edu` as a time server instead
-  * Add the line `restrict 10.0.0.0 mask 255.255.255.0 nomodify notrap` in the appropriate place
+  * Add the line `restrict 172.22.0.0 mask 255.255.255.0 nomodify notrap` in the appropriate place
 
     > This restricts the nodes from directly accessing the time servers for time.
     > Instead, they should sync time with your headnode.
@@ -107,15 +107,15 @@ If they are, then you did it right!
 
 > This step modifies the `/etc/hosts` file and adds IP addresses corresponding to the worker nodes that we will use in setting up our cluster. This allows the computer to recognize the IPs by the host name that you give them. For instance, the line:
 
-<pre> <code> 10.0.0.254   worker01 </code></pre>
+<pre> <code> 172.22.0.254   worker01 </code></pre>
 
-recognizes the name `worker01` as the IP `10.0.0.254`.
+recognizes the name `worker01` as the IP `172.22.0.254`.
 > [This discussion](https://askubuntu.com/questions/183176/what-is-the-use-of-etc-hosts) gives a nice idea about the intents and purposes for editing this file.
 
 * We need to edit the `/etc/hosts` file to add the worker nodes in our cluster
   * Add a new line for every worker node you want to add.
-    For example: `10.0.0.1  worker01`
-  * Add a line to set the headnode IP to `10.0.0.254`, in the format of the line above.
+    For example: `172.22.0.1  worker01`
+  * Add a line to set the headnode IP to `172.22.0.254`, in the format of the line above.
 * We can test this step:
   * `$ ssh localhost` should log you back into your machine
   * `$ ssh <worker_node>` should give you a `no route to host` error
@@ -148,7 +148,7 @@ Be sure to use spaces and **not tabs** in the file.
 (Tabs are invalid in yaml files)
 * Add the not-configured interface under `ethernets` (Use website as template)
 * Set `renderer` to `networkd`
-* Set `addresses` to `[10.0.0.254/24]` &mdash; This creates a network of ip addresses from `10.0.0.0` to `10.0.0.255`
+* Set `addresses` to `[172.22.0.254/24]` &mdash; This creates a network of ip addresses from `172.22.0.0` to `172.22.0.255`
 * Set `dhcp4` to `no`
 * **Do not set any gateway**
 * Save and exit
@@ -164,8 +164,8 @@ Be sure to use spaces and **not tabs** in the file.
 
 * `$ sudo apt install nfs-kernel-server` &mdash; this package controls the NFS mounting
 * Open the `/etc/exports` file
-* Add the line `/home	10.0.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
-* Also add `/opt	10.0.0.0/24(rw,sync)` &mdash;
+* Add the line `/home	172.22.0.0/24(rw,sync)` &mdash; this publishes your `/home` folder and makes it available for mounting in the ip range mentioned
+* Also add `/opt	172.22.0.0/24(rw,sync)` &mdash;
 * Save and exit
 * `$ sudo exportfs -a` &mdash; have changes to /etc/exports take effect immediately
 * `$ sudo showmount -e` &mdash; this should show you the folder that you published
@@ -191,10 +191,11 @@ Be careful when you modify it
 * `$ sudo iptables -t nat -L` &mdash; this will list out all present iptables rule.
 This should be clean.
 If not, run `$ sudo iptables -t nat -F`, and then `$ sudo iptables -t nat -L` again to verify it is empty now.
-* `$ sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your WiFi/St. Olaf network facing interface. This allow your worker nodes access to St. Olaf's network, this will be the `tun0` interface.
+* `$ sudo iptables -t nat -A POSTROUTING -s 172.22.0.0/24 -o *interface* -j MASQUERADE` &mdash; where *interface* is your WiFi/St. Olaf network facing interface. This allow your worker nodes access to St. Olaf's network, this will be the `tun0` interface.
 This command will mask the IP addresses of your cluster so that the nodes can access the internet
 * List the rules again to see if the rule was added
 * `$ sudo apt install iptables-persistent` &mdash; this package will permanently save your iptable rules (which does not happen otherwise).
+
 Save the `ipv4` rules and not the `ipv6` rules.
 * If you reboot your machine and list the rules again, the rule should still be there!
 * If you need to modify the iptables rules, run `$ sudo dpkg-reconfigure iptables-persistent`, and save the `ipv4` rules.
