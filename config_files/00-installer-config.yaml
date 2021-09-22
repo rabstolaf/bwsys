@@ -11,6 +11,6 @@ network:
       dhcp4: true
       optional: true
     enp0s8:
-      addresses: [10.0.0.254/24]
+      addresses: [172.22.0.254/24]
       dhcp4: no
   version: 2
