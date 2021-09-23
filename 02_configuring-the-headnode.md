@@ -86,7 +86,7 @@ If they are, then you did it right!
   * Add the line `%bw-sudo ALL=(ALL:ALL) ALL` in the appropriate place
   * Save and exit as you would for `nano` editor
 * `$ sudo usermod -aG bw-sudo <username>` &mdash; this adds yourself to the group bw-sudo
-* Log out and log back in for the `usermod` to take effect. To test this, use:
+* To test this, use:
   `$ groups <username>`
 * Your user should be in the group bw-sudo.
 
