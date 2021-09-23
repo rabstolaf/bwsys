@@ -1,6 +1,6 @@
 # Cluster Management Training Documents
 
-This repository contains training documents for St. Olaf Cluster Management.
+This repository contains training documents for St. Olaf Cluster Management. This training is meant to give you some of the most important tools and technologies that you will use on the job as a Cluster Manager. You will use these skills to diagnose servers and set up resources on these servers for students and faculty at St. Olaf College. Depending on the specific team(s) you'll be working on, you may need to supplement these skills and knowledge. There is also additional training once you are on the job to help you understand what your role(s) entails. Good luck!
 
 ## First Steps
 
