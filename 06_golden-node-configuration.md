@@ -90,8 +90,8 @@ The following will be done on the golden node
 This will show you the directories available for mounting from your headnode
 * Open `/etc/fstab`
 * Add the following lines:
-<br/>`sudo <headnode>:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
-<br/>`sudo <headnode>:/opt	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
+<br/>`<headnode>:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
+<br/>`<headnode>:/opt	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
 * `$ sudo mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
 * You might have to log out and log back in to your golden node for this mounting to take effect
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
