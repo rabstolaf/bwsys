@@ -1,6 +1,35 @@
 [**PREVIOUS: Golden Node Setup**](05_golden-node-setup.md)
 
-# Golden Node Configuration
+# Golden Node Configuration  
+
+
+## 1. Netplan configuration 
+First, let's make sure you have your have a network connection to your headnode. Because of the NAT configuration we made on the headnode, this connection should also allow your worker node to access the internet via the head node. We used a package called [iptables](https://www.youtube.com/watch?v=vbhr4csDeI4) to do this.
+
+Run the command:
+`$ ip adddress show`  
+You should see two interfaces numbered 1 and 2 on the left side of the screen. The first has the inet 127.0.0.1/8. That is the loopback address.  
+The second interface is the one that will be connected to the network between the head node and worker node(s). Usually, this is name `enp0s3`. This could be different for you.  
+  
+Activate this interface and enable it to listen to the head node's DHCP service by editing `/etc/netplan/00-installer-config.yaml`
+In `/etc/netplan/00-installer-config.yaml`, configure the `enp0s3` just it is set up in [the netplan configuration file](config_files/00-installer-config.yaml)  
+
+Run: `sudo netplan --debug apply`  
+
+After that, run:  
+`ip address show`  , you shoudld see there is now more information on that interface. This includes `inet 172.22.0.1`. If you see that IP address, `172.22.0.1`, you have done this right. Weel done :)  
+
+To check whether you have access to the internet, run this command: 
+`ping google.com`  
+
+If you have access to the internet, you should see output that looks like this:
+
+> PING gooogle.com(ord38s31-in-x04.1e100.net (2607:f8b0:4009:81a::2004)) 56 data bytes
+> 64 bytes from ord38s31-in-x04.1e100.net (2607:f8b0:4009:81a::2004): icmp_seq=1 ttl=121 time=18.4 ms
+> 64 bytes from ord38s31-in-x04.1e100.net (2607:f8b0:4009:81a::2004): icmp_seq=1 ttl=121 time=19.1 ms
+> 64 bytes from ord38s31-in-x04.1e100.net (2607:f8b0:4009:81a::2004): icmp_seq=1 ttl=121 time=17.4 ms  
+
+Now we can move on ... 
 
 * To update the list of package sources and to update the existing packages, run: `sudo apt update` and `sudo apt upgrade`
 * To install essential packages, run: `sudo apt install w3m iptables openssh-client wget nano info man-db manpages friendly-recovery tmux grub2 traceroute bash-completion command-not-found dnsutils lshw lsof mtr psmisc tcpdump apt-transport-https update-manager-core gcc g++ libtool gedit emacs ssh sshpass xorg make`
@@ -13,7 +42,7 @@
   * Install and configure LDAP
   * Configure Golden Node through the mounted `/opt` folder to use OpenMPI
 
-## 1. Update `/etc/hosts` file
+## 2. Update `/etc/hosts` file
 
 > This file is mainly for hostname resolving - mapping a hostname to a specific IP address - so make this identical to the headnode's file.
 > Refer to the document about [Configuring The Headnode](02_configuring-the-headnode.md) to see what you did and do the same here.
@@ -32,7 +61,7 @@ Then:
   * `$ ssh <localhost>` should log you back into your machine
   * `$ ssh <headnode>` should require a password to login
 
-## 2. Passwordless SSH
+## 3. Passwordless SSH
 
 > This will enable you to SSH into your headnode from your Golden Node and vice versa without a password.
 
@@ -47,7 +76,7 @@ Do not create a passphrase.
 * `$ exit` or <kbd>Ctrl</kbd>+<kbd>D</kbd> &mdash; this allows you to close an SSH session.
 Use it the appropriate number of times to get back to your Golden Node.
 
-## 3. NFS
+## 4. NFS
 
 > In our headnode, we had used the `/etc/exports` file to publish and make our `/home` directory and `/opt` directory available for mounting. We will now mount it on the Golden Node
 The following will be done on the golden node
@@ -64,7 +93,7 @@ This will show you the directories available for mounting from your headnode
 * `/home` contains all of the user directories. To have a syncronized user directory amongst all of our machines, `/home` should generally be mounted and accessable amongst all the machines in a cluster.
 * You will utilize your mounted `/opt` directory later with OpenMPI configuration.
 
-## 4. NTP
+## 5. NTP
 
 > The Golden Node will only synchronize its time with the headnode.
 * `$ date` &mdash; this command will show you the date and time
@@ -81,7 +110,7 @@ Do the same except the following:
 * Use `ntpq -p` to check if it is working.
 * If it is working, it should show one of the entries containing the string 'ola'.
 
-## 5. LDAP
+## 6. LDAP
 
 > The purpose of LDAP here is the same as mentioned before  when you set up the headnode.
 > So the configuration process is the same as well.
@@ -97,7 +126,7 @@ Do the same except the following:
 Logout of your VM and try to log back in using your St. Olaf username and password.
 If it works, then you did it right!
 
-## 6. OpenMPI
+## 7. OpenMPI
 * Through our OpenMPI configuration in our headnode, the necessary configuration files should all be in `/opt/openmpi-4.1.1/bin/`.
 
 * Using the mounted `/opt` folder, the golden node can access all the files needed to run OpenMPI via NFS. So, all you have to do is run the same script you wrote earlier to link the binaries in `/opt/openmpi-4.1.1/bin/` to your local `/usr/bin/` (ALl of configuration files should be in `/opt/openmpi-4.1.1/bin/`)
@@ -116,7 +145,8 @@ If it works, then you did it right!
 > Feel free to go through the training multiple times as that will give you a better understanding of how everything works.
 > There will be serveral other documents with information about other stuff you can learn.
 > All of them will build off of this basic training.
-> That means that you are mostly free to read through and work with those documents in any order you want.
+> That means that you are mostly free to read through and work with those documents in any order you want.  
+  
 ###  Best of luck!  
   
 
