@@ -113,7 +113,7 @@ This will show you the directories available for mounting from your headnode
 Do the same except the following:
   * Instead of `server timehost.stolaf.edu` write `server *headnode*`
   * There is no need to add the lines about restricting access
-* To start the ntp service, run: `$ sudo systemctl start ntp`
+* To start the ntp service, run: `$ sudo systemctl restart ntp`
 * Use `ntpq -p` to check if it is working.
 * If it is working, it should show one of the entries containing the string 'ola'.
 
