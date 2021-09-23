@@ -115,7 +115,7 @@ Do the same except the following:
   * There is no need to add the lines about restricting access
 * To start the ntp service, run: `$ sudo systemctl restart ntp`
 * Use `ntpq -p` to check if it is working.
-* If it is working, it should show one of the entries containing the string 'ola'.
+* If it is working, it should show one of the entries containing the string `head`.
 
 ## 6. LDAP
 
@@ -123,15 +123,29 @@ Do the same except the following:
 > So the configuration process is the same as well.
 
 * Run: `$ sudo apt install libnss-ldap libpam-ldap`
+
+  * The St. Olaf LDAP server is at `ldaps://ad.stolaf.edu` (**Two `/` not Three `/`**)
+  * The base dn is `ou=stoUsers,dc=ad,dc=stolaf,dc=edu`
+  * LDAP Version is 3
+  * **Do not** make local root database admin
+  * LDAP Database **does not** require login
+
+* It is time to test LDAP.
+  Logout of your VM and try to log back in using your St. Olaf *username* and *password*.
+  If it works, then you did it right!
+* **Note:** If your *username* on your VM is different than your St. Olaf *username*, then you need to create a user first.
+  Run the following command before testing: `sudo useradd -m -s /bin/bash <stolaf-username>`
+
 * Remember on the headnode, you configured `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf` when you set up ldap. We need the same configuration files on the golden node. So instead of re-editing those files on the golden node, we can just copy them over from the headnode using the `scp` command. 
 * The `scp` command allows secure copying of all kinds of files between machines. Here is a [tutorial](https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/) if you want to read more about `scp`.
 * Use`scp` to copy the configuration files from the headnode:
   * Run: `$ sudo scp <user>@<headnode>:/etc/ldap.conf /etc/ldap.conf`&mdash; where \*user\* and \*headnode\* are the username and address of your headnode. Assuming your hosts file is setup, you should be able to type `headnode` literally. 
   * Remember, you would have to run the scp command for each of these files: `/etc/ldap.conf`, `/etc/ldap/ldap.conf` and `/etc/nsswitch.conf`!
-<br/>Then:
+<br/>
+Then:
 * Test it the same way you tested for the headnode: 
 Logout of your VM and try to log back in using your St. Olaf username and password.
-If it works, then you did it right!
+If it works, congratulations!!
 
 ## 7. OpenMPI
 * Through our OpenMPI configuration in our headnode, the necessary configuration files should all be in `/opt/openmpi-4.1.1/bin/`.
