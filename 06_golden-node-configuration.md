@@ -92,8 +92,10 @@ This will show you the directories available for mounting from your headnode
 * Add the following lines:
 <br/>`<headnode>:/home	/home	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
 <br/>`<headnode>:/opt	/opt	nfs	defaults	0	0` &mdash; where *headnode* is the headnode name
-* `$ sudo mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did
-* You might have to log out and log back in to your golden node for this mounting to take effect
+* `$ sudo mount -av` &mdash; this will mount everything `/etc/fstab` and tell you what it did  
+
+> NOTE: You might have to log out and log back in to your golden node for this mounting to take effect  
+
 * Test if it worked by creating a file in your `/home` directory on your headnode and check if the file is there in `/home` directory on the Golden Node
 * `/home` contains all of the user directories. To have a syncronized user directory amongst all of our machines, `/home` should generally be mounted and accessable amongst all the machines in a cluster.
 * You will utilize your mounted `/opt` directory later with OpenMPI configuration.
