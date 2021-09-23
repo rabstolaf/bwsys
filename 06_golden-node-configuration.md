@@ -17,7 +17,11 @@ In `/etc/netplan/00-installer-config.yaml`, configure the `enp0s3` just it is se
 Run: `sudo netplan --debug apply`  
 
 After that, run:  
-`ip address show`  , you shoudld see there is now more information on that interface. This includes `inet 172.22.0.1`. If you see that IP address, `172.22.0.1`, you have done this right. Weel done :)  
+`ip address show`  
+You should see there is now more information on that interface.  
+This includes `inet 172.22.0.1`. If you see that IP address, `172.22.0.1`, you have done this right.  
+
+Well done :)  
 
 To check whether you have access to the internet, run this command: 
 `ping google.com`  
