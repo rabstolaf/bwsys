@@ -87,7 +87,7 @@ $ echo $HOME
 var1=foo
 var2=bar
 
-export var1
+export $var1
 ```
 * After you run this program, try to find out what the variables are set to on the command line.
 ```sh
