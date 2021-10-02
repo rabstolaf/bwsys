@@ -46,7 +46,7 @@ In the following commmand, the `-zxf` option is a combination of two options. `-
 
 * We are now going to copy the openmpi files to the /opt directory which we made accessible to the worker nodes.
 * `$ sudo mkdir -p /opt/openmpi-4.1.1/bin`  - This creates the /opt/openmpi-4.1.1/bin directory
-* `$ sudo cp -r /usr/lib/openmpi-4.1.1/bin /opt/openmpi-4.1.1`  - This copies the files over
+* `$ sudo cp -r /usr/lib/openmpi-4.1.1/bin /opt/openmpi-4.1.1/bin`  - This copies the files over
 
 * You can test this step on the Golden Node after setting up NFS. You should have the same files in /opt/openmpi-4.1.1/bin that are on the head node on the worker node as well.
 
