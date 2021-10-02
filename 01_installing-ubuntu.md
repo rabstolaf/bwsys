@@ -10,6 +10,8 @@ It does not have a Graphical User Interface (GUI) where you can use the mouse an
 
 Also, note that depending on how VirtualBox is configured on your computer, sometimes your mouse can become locked on your virtual machine, and you won't be able to move the mouse outside of it. 
 
+Also, note that depending on how VirtualBox is configured on your computer, sometimes your mouse can become locked into your virtual machine, and you won't be able to move the mouse outside of it. Press the right Ctrl button to release the mouse if this happens and you need to use a program outside of the virtual machine.
+
 ## 1. Create a Virtual Machine (VM)
 
 * Open VirtualBox and click on *New* to create a new VM
@@ -49,7 +51,29 @@ Hit *Done* and wait for installation to finish
 
 ## 3. Command Line Basics
 
-The rest of the tutorial consists of typing a lot of commands which will be written in the following manner:
+## 3. Command Line Basics
+* The rest of the tutorial consists of typing a lot of commands which will be written in the following manner:
+
+$ ls -lah
+
+* Note that the $ is not part of the command you type, and that the command line in your virtual machine also has a $ at the end of the line. 
+
+* The $ generally indicates that you're running commands without root privileges. While some commands require root priviledges it's best to avoid using them, as this increases risk of damaging important system components. <!-- When running commands as the root user , the command line will generally have a # symbol at the end of the command line.-->
+
+* To run a command as root, preface your command with the command sudo. To see this, first try running this command:
+$ apt update
+
+* Usually if sudo isn't used, a command will usually let the user know if they need root priviledges via error messages. While the most usual one is "Permission denied" there are a few instances of other messages in the error message, such as "Is the user running as root?".
+
+* In this case, insert sudo at the start of the command, like this:
+
+$ sudo apt update
+
+* If this is the first time you're using sudo in this session, you'll be prompted to enter your password. Note that neither the letters you type nor asterisk will actually appear in the terminal. Press enter once you've typed in your password, and you should see the command execute successfully.
+
+* One last trick: the following command executes your last run command, but as root. This can be helpful if you just typed a long command but forgot to put sudo in front. Try it like this:
+
+$ apt upgrade
 
 * In general, if you do not know how a certain command such as `grep` works, there are two ways to find out. 
 
@@ -88,7 +112,7 @@ If this is the first time you're using `sudo` in this session, you'll be prompte
 
 It is advised to not become `root` while going through this training, unless absolutely necessary.
 
----
+* It is advised to not become root while going through this training, unless absolutely necessary.
 
 ## 4. Update and Install Some Packages
 
