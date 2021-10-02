@@ -7,7 +7,7 @@
 First, let's make sure you have your have a network connection to your headnode. Because of the NAT configuration we made on the headnode, this connection should also allow your worker node to access the internet via the head node. We used a package called [iptables](https://www.youtube.com/watch?v=vbhr4csDeI4) to do this.
 
 Run the command:
-`$ ip adddress show`  
+`$ ip address show`  
 
 You should see two interfaces numbered 1 and 2 on the left side of the screen. The first has the inet 127.0.0.1/8. That is the loopback address.  
 The second interface is the one that will be connected to the network between the head node and worker node(s). Usually, this is name `enp0s3`. This could be different for you.  
