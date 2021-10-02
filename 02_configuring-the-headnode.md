@@ -10,9 +10,15 @@
 * After that, we activate our second network interface and configure it to have a static ip address.
 * We use NFS to publish our `/home` and `/opt` folders from the headnode.
 * Lastly, we configure NAT(Network Address Translation) and DHCP(Dynamic Host Configuration Protocol) so that, later, our workers nodes can get proper IP addresses and connect to the internet.
-<!-- End of cut down -->
+<!-- End of cut down -->  
 
-Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before proceeding with this document.
+Be sure to have completed [*Installing Ubuntu*](01_installing-ubuntu.md) before proceeding with this document.  
+
+###  This is only applicable if you are doing this training REMOTELY.  Set up your VPN.
+* Download a VPN of your choice onto your laptop or desktop computer. 
+* Activate your VPN.
+* Once its connected, go to the network settings of your head node on VirtualBox (which is what you configuring)
+* Change the 1st interface from bridged Ethernet to NAT (You may need to turn off your Virtual Machine in order to be able to do that)
 
 ### Modifying configuration files
 
@@ -169,13 +175,6 @@ Be sure to use spaces and **not tabs** in the file.
 * Save and exit
 * `$ sudo exportfs -a` &mdash; have changes to /etc/exports take effect immediately
 * `$ sudo showmount -e` &mdash; this should show you the folder that you published
-
-##  This is only applicable if you are doing this training REMOTELY.  You will now configure your settings so as to use VPN now.
-
-* Activate your VPN.
-* Once its connected, go to the network settings of your head node(which is what you configuring)
-* Change the 1st interface from bridged Ethernet to NAT.
-
 
 ## 8. Configuring NAT
 
