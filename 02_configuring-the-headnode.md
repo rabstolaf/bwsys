@@ -71,7 +71,7 @@ These are the files that contain the LDAP configuration.
 * `$ sudo apt install ntp`
 * We need to edit the `/etc/ntp.conf` file to make the machine access time from the St. Olaf time servers to enable faster time synchronization.
   * Comment out all lines that access ubuntu time servers for the time.
-  * Add `timehost.stolaf.edu` as a time server instead
+  * Add `sever timehost.stolaf.edu` which is the St. Olaf College's time server
   * Add the line `restrict 172.22.0.0 mask 255.255.255.0 nomodify notrap` in the appropriate place
 
     > This restricts the nodes from directly accessing the time servers for time.
